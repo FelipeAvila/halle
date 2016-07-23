@@ -1,0 +1,104 @@
+<ion-view view-title="Create user">
+
+  <ion-header-bar class="bar-positive">
+    <div class="buttons">
+      <a class="button icon-left ion-chevron-left button-clear button-white" ng-click="voltar();">Voltar</a>
+    </div>
+    <h1 class="title">{{ message.createTitle}}</h1>
+  </ion-header-bar>
+
+  <ion-content ng-controller="createUserController">
+
+      <br/><br/>
+      <form name="createUserForm" novalidate>
+        <div class="list">
+          <div class="list">
+            <span class="error-container" ng-if="error">
+              <p class="error">
+               <i class="ion-information-circled"></i>
+               {{ msgError }}
+             </p>
+            </span>
+
+            <span class="error-container" ng-if="!online">
+              <p class="error">
+               <i class="ion-information-circled"></i>
+               {{ message.online }}
+             </p>
+            </span>
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.createLogin }}</span>
+            <input type="text"
+                   class="placeholder-input"
+                   placeholder="{{ message.createLogin }}"
+                   name="login"
+                   ng-model="login"
+                   ng-minlength="5"
+                   ng-maxlength="50"
+                   required>
+          </label>
+          <span class="error-container" ng-if="createUserForm.login.$dirty && createUserForm.login.$invalid">
+            <p class="error" ng-if="createUserForm.login.$error.required">
+             <i class="ion-information-circled"></i>
+             {{ message.createLoginRequired }}
+           </p>
+            <p class="error" ng-if="createUserForm.login.$error.minlength">
+             <i class="ion-information-circled"></i>
+             {{ message.createLoginMinlength }}
+           </p>
+            <p class="error" ng-if="createUserForm.login.$error.maxlength">
+             <i class="ion-information-circled"></i>
+             {{ message.createLoginMaxlength }}
+           </p>
+          </span>
+
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.createPhone }}</span>
+            <input type="text"
+                   class="placeholder-input"
+                   placeholder="{{ message.createPhone }}"
+                   name="phone"
+                   ng-model="phone"
+                   required>
+          </label>
+          <span class="error-container" ng-if="createUserForm.phone.$dirty && createUserForm.phone.$invalid">
+            <p class="error" ng-if="createUserForm.phone.$error.required">
+             <i class="ion-information-circled"></i>
+             {{ message.createPhoneRequired}}
+           </p>
+          </span>
+
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.createPwd }}</span>
+            <input type="password"
+                   class="placeholder-input"
+                   placeholder="{{ message.createPwd }}"
+                   name="password"
+                   ng-model="password"
+                   ng-minlength="5"
+                   ng-maxlength="8"
+                   required>
+          </label>
+          <span class="error-container" ng-if="createUserForm.password.$dirty && createUserForm.password.$invalid">
+            <p class="error" ng-if="createUserForm.password.$error.required">
+             <i class="ion-information-circled"></i>
+             {{ message.createPwdRequired}}
+           </p>
+            <p class="error" ng-if="createUserForm.password.$error.minlength">
+             <i class="ion-information-circled"></i>
+             {{ message.createPwdMinlength }}
+           </p>
+            <p class="error" ng-if="createUserForm.password.$error.maxlength">
+             <i class="ion-information-circled"></i>
+             {{ message.createPwdMaxlength }}
+           </p>
+          </span>
+
+          <button primary block
+                  class="button button-block button-login"
+                  ng-disabled="createUserForm.$invalid"
+                  ng-click="submit(login, phone, password)">{{ message.createBtnEnter }}</button>
+        </div>
+      </form>
+    </ion-content>
+</ion-view>

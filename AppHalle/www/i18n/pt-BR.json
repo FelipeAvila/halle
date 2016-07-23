@@ -1,0 +1,52 @@
+{
+  "title" : "halle",
+
+  "online": "Você não esta online!",
+
+  "login" : "Login",
+  "loginCreate": "Faça Parte",
+  "loginPwd": "Senha",
+  "loginBtnEnter": "Entrar",
+  "loginForgotPwd": "Esqueci minha senha",
+
+  "loginError": "Ocorreu um problema, favor verificar a sua conexão.",
+
+  "loginRequired": "O login é obrigatório.",
+  "loginMinlength": "O login precisa ter mais do que 5 caracteres.",
+  "loginMaxlength": "O login precisa ter no máximo 50 caracteres.",
+
+  "loginPwdRequired": "A senha é obrigatório.",
+  "loginPwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
+  "loginPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+
+
+  "createTitle" : "halle - Faça parte!",
+  "createLogin" : "Login",
+  "createPhone": "Telefone",
+  "createPwd": "Senha",
+  "createBtnEnter": "Vamos lá",
+  "createConfirm": "Código de confirmação",
+
+  "createLoginRequired": "O login é obrigatório.",
+  "createLoginMinlength": "O login precisa ter mais do que 5 caracteres.",
+  "createLoginMaxlength": "O login precisa ter no máximo 50 caracteres.",
+
+  "createPhoneRequired": "O telefone é obrigatório.",
+
+  "createPwdRequired": "A senha é obrigatório.",
+  "createPwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
+  "createPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+
+  "homeMenu" : "Menu",
+  "homeMenuInvite" : "Convidar amigos",
+  "homeMenuProfile" : "Editar perfil",
+  "homeMenuForgotPwd" : "Esqueci minha senha",
+  "homeMenuChangePwd" : "Trocar a senha",
+  "homeMenuChangePhone" : "Trocar de telefone",
+  "homeMenuFeedback" : "Feedback",
+  "homeMenuSair" : "Sair",
+
+  "exit" : "Sair",
+  "cancel": "Cancelar",
+  "exitMessage": "Tem certeza que desaja sair?"
+}

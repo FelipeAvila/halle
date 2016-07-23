@@ -1,0 +1,101 @@
+<ion-view view-title="login">
+
+  <ion-header-bar style="border:0;">
+  </ion-header-bar>
+
+  <ion-footer-bar class="bar bar-footer bar-footer-login">
+      <h1 class="title">
+          <button  ng-click="create();" class="button-login-create">{{message.loginCreate}}</button>
+      </h1>
+  </ion-footer-bar>
+
+  <ion-content ng-controller="loginController">
+      <img class="ico_logo" src="img\ico_logo.svg" class="ico_logo">
+
+      <form name="loginForm" novalidate>
+
+        <div class="list">
+          <span class="error-container" ng-if="error">
+            <p class="error">
+             <i class="ion-information-circled"></i>
+             {{ msgError }}
+           </p>
+          </span>
+
+          <span class="error-container" ng-if="!online">
+            <p class="error">
+             <i class="ion-information-circled"></i>
+             {{ message.online }}
+           </p>
+          </span>
+
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.login }}</span>
+            <input type="text"
+                   class="placeholder-input"
+                   placeholder="{{ message.login }}"
+                   name="login"
+                   ng-model="login"
+                   ng-minlength="5"
+                   ng-maxlength="50"
+                   required>
+          </label>
+          <span class="error-container" ng-if="loginForm.login.$dirty && loginForm.login.$invalid">
+            <p class="error" ng-if="loginForm.login.$error.required">
+             <i class="ion-information-circled"></i>
+             {{ message.loginRequired }}
+           </p>
+            <p class="error" ng-if="loginForm.login.$error.minlength">
+             <i class="ion-information-circled"></i>
+             {{ message.loginMinlength }}
+           </p>
+            <p class="error" ng-if="loginForm.login.$error.maxlength">
+             <i class="ion-information-circled"></i>
+             {{ message.loginMaxlength }}
+           </p>
+          </span>
+
+
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.loginPwd }}</span>
+            <input type="password"
+                   class="placeholder-input"
+                   placeholder="{{ message.loginPwd }}"
+                   name="password"
+                   ng-model="password"
+                   ng-minlength="5"
+                   ng-maxlength="8"
+                   required>
+          </label>
+          <span class="error-container" ng-if="loginForm.password.$dirty && loginForm.password.$invalid">
+            <p class="error" ng-if="loginForm.password.$error.required">
+             <i class="ion-information-circled"></i>
+             {{ message.loginPwdRequired}}
+           </p>
+            <p class="error" ng-if="loginForm.password.$error.minlength">
+             <i class="ion-information-circled"></i>
+             {{ message.loginPwdMinlength }}
+           </p>
+            <p class="error" ng-if="loginForm.password.$error.maxlength">
+             <i class="ion-information-circled"></i>
+             {{ message.loginPwdMaxlength }}
+           </p>
+          </span>
+
+          <button primary block
+                  class="button button-block button-login"
+                  ng-disabled="loginForm.$invalid"
+                  ng-click="submit(login, password)">{{ message.loginBtnEnter }}</button>
+        </div>
+
+        <div class="row">
+          <div class="col col-50">
+          </div>
+          <div class="col">
+            <a nav-direction="foward" class="link">{{ message.loginForgotPwd }}</a>
+          </div>
+        </div>
+      </form>
+
+    </ion-content>
+</ion-view>
