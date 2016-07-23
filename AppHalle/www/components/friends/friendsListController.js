@@ -10,10 +10,6 @@ app.controller('friendsListController', function($scope, $rootScope, FriendsList
   .$promise
   .then(function(data) {
     $scope.friendslist = data;
-    console.log('data - ' + data.id);
   }, function(error) {
-    console.log('error - ' + error);
- });
-
-
+  });
 });

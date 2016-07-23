@@ -3,22 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; font-src data: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <title>Halle</title>
 
+    <!-- CSS IONIC -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <!-- CSS PROJETO -->
     <link href="css/style.css" rel="stylesheet">
+    <!-- CSS phonenumber -->
+    <link href="lib/phonenumber/css/intlpn.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
     <!-- Angular -->
     <script src="lib/ionic/js/angular/angular-resource.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/cordova/ng-cordova.js"></script>
+    <script src="lib/cordova/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
+
+    <!-- PLUGIN phonenumber -->
+    <script src="lib/phonenumber/js/intlpnIonic.js"></script>
+    <script src="lib/phonenumber/js/data.js"></script>
+    <script src="lib/phonenumber/lib/libphonenumber/build/utils.js"></script>
 
 
     <!-- your app's js -->
@@ -30,7 +38,6 @@
     <script src="components/login/loginController.js"></script>
     <script src="components/createUser/createUserController.js"></script>
     <script src="components/friends/friendsListController.js"></script>
-
     <!--Model -->
 
     <!-- services -->

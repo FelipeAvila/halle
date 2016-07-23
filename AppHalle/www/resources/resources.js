@@ -30,3 +30,11 @@ app.factory('FriendsListResource', function ($resource, ApiEndpoint) {
                          );
     return data;
 });
+
+app.factory('InvitePhoeNumberResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/invite/phone/:token/:phone',
+                                      {token: '@token', phone : '@phone' },
+                                      {get:   {method:'POST'}}
+                         );
+    return data;
+});

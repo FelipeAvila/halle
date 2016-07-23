@@ -1,0 +1,12 @@
+<span class="error-container" ng-if="error">
+  <p class="error">
+   <i class="ion-information-circled"></i>
+   {{ msgError }}
+ </p>
+</span>
+<div class="card">
+  <div class="item item-divider">
+    {{message.inviteContactsPhone}}
+  </div>
+  <intlpn ng-model="data.phone" placeholder="(99) 9999-9999" default-country="br"></intlpn>
+</div>

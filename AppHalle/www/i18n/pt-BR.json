@@ -1,6 +1,10 @@
 {
   "title" : "halle",
 
+  "exit" : "Sair",
+  "cancel": "Cancelar",
+  "exitMessage": "Tem certeza que desaja sair?",
+
   "online": "Você não esta online!",
 
   "login" : "Login",
@@ -18,7 +22,6 @@
   "loginPwdRequired": "A senha é obrigatório.",
   "loginPwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
   "loginPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
-
 
   "createTitle" : "halle - Faça parte!",
   "createLogin" : "Login",
@@ -38,7 +41,8 @@
   "createPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
 
   "homeMenu" : "Menu",
-  "homeMenuInvite" : "Convidar amigos",
+  "homeMenuInvite" : "Convidar amigos contatos",
+  "homeMenuInvitePhone" : "Convidar amigos telefone",
   "homeMenuProfile" : "Editar perfil",
   "homeMenuForgotPwd" : "Esqueci minha senha",
   "homeMenuChangePwd" : "Trocar a senha",
@@ -46,7 +50,9 @@
   "homeMenuFeedback" : "Feedback",
   "homeMenuSair" : "Sair",
 
-  "exit" : "Sair",
-  "cancel": "Cancelar",
-  "exitMessage": "Tem certeza que desaja sair?"
+  "inviteContacts" : "Convidar",
+  "inviteContactsPhone" : "Telefone",
+  "inviteContactsSendInvite" : "Enviar",
+  "inviteContactsInvalid": "Telefone inválido!",
+  "inviteContactsError": "Ocorreu um erro ao enviar o convite."
 }
