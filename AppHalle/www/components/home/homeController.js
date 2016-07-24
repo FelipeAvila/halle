@@ -22,8 +22,8 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
   var myPopup = $ionicPopup.show({
     template: '<ion-list>                                '+
-              '  <ion-item ng-repeat="con in getAllContacts()">  '+
-              '    {{con.displayName}}                   '+
+              '  <ion-item ng-repeat="con in getAllContacts().find()">  '+
+              '    {{con.name}}                          '+
               '  </ion-item>                             '+
               '</ion-list>                               ',
     title: $rootScope.message.inviteContacts,
