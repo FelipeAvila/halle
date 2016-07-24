@@ -4,13 +4,13 @@
     <div class="buttons">
       <a class="button icon-left ion-chevron-left button-clear button-white" ng-click="voltar();">Voltar</a>
     </div>
-    <h1 class="title">{{ message.createTitle}}</h1>
+    <h1 class="title">{{ message.forgotTitle}}</h1>
   </ion-header-bar>
 
-  <ion-content ng-controller="createUserController">
+  <ion-content ng-controller="forgotController">
 
       <br/><br/>
-      <form name="createUserForm">
+      <form name="forgotForm">
         <div class="list">
           <div class="list">
 
@@ -29,33 +29,24 @@
             </span>
 
           <label class="item item-input item-floating-label label-input">
-            <span class="input-label label-input label-login-heigth">{{ message.createLogin }}</span>
+            <span class="input-label label-input label-login-heigth">{{ message.forgotLogin }}</span>
             <input type="text"
                    class="placeholder-input"
-                   placeholder="{{ message.createLogin }}"
+                   placeholder="{{ message.forgotLogin }}"
                    name="login"
                    ng-model="login">
           </label>
 
           <label class="item item-input item-floating-label label-input">
-            <span class="input-label label-input label-login-heigth">{{ message.createPhone }}</span>
+            <span class="input-label label-input label-login-heigth">{{ message.forgotPhone }}</span>
             <intlpn ng-model="phone"
                     style="border:0"
                     placeholder="(99) 9999-9999"
                     default-country="br"></intlpn>
           </label>
 
-          <label class="item item-input item-floating-label label-input">
-            <span class="input-label label-input label-login-heigth">{{ message.createPwd }}</span>
-            <input type="password"
-                   class="placeholder-input"
-                   placeholder="{{ message.createPwd }}"
-                   name="password"
-                   ng-model="password">
-          </label>
-
           <button class="button button-block button-login"
-                  ng-click="submit(login, phone, password)">{{ message.createBtnEnter }}</button>
+                  ng-click="submit(login, phone)">{{ message.forgotBtnEnter }}</button>
         </div>
       </form>
     </ion-content>

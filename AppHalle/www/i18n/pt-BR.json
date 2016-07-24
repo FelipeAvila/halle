@@ -34,11 +34,24 @@
   "createLoginMinlength": "O login precisa ter mais do que 5 caracteres.",
   "createLoginMaxlength": "O login precisa ter no máximo 50 caracteres.",
 
-  "createPhoneRequired": "O telefone é obrigatório.",
+  "createPhoneRequired": "O telefone inválido.",
 
   "createPwdRequired": "A senha é obrigatório.",
   "createPwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
   "createPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+
+  "forgotTitle" : "Esqueci minha senha",
+  "forgotLogin" : "Login",
+  "forgotPhone" : "Telefone",
+  "forgotBtnEnter" : "Solicitar",
+
+  "forgotRequired": "O login é obrigatório.",
+  "forgotMinlength": "O login precisa ter mais do que 5 caracteres.",
+  "forgotMaxlength": "O login precisa ter no máximo 50 caracteres.",
+
+  "forgotRequired": "O telefone inválido.",
+  "forgotError": "Ocorreu um problema, favor verificar a sua conexão.",
+  "forgotCopyPass" : "Anote a sua nova senha.",
 
   "homeMenu" : "Menu",
   "homeMenuInvite" : "Convidar amigos contatos",
