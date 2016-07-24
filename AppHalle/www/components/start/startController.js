@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.startController', []);
 
 // Controler da pagina de start
-app.controller('startController', function($scope, $timeout, $ionicLoading, $state, $location) {
+app.controller('startController', function($scope, $rootScope, $timeout, $ionicLoading, $state, $location, ValidTokenResource) {
    // Setup the loader
    $ionicLoading.show({
      content: '',
@@ -12,7 +12,6 @@ app.controller('startController', function($scope, $timeout, $ionicLoading, $sta
      showDelay: 0
    });
 
-   // Set a timeout to clear loader, however you would actually call the $ionicLoading.hide(); method whenever everything is ready or loaded.
    $timeout(function () {
      $ionicLoading.hide();
    }, 2000);
@@ -20,10 +19,31 @@ app.controller('startController', function($scope, $timeout, $ionicLoading, $sta
    // Acessando o storage local
    var storage = new getLocalStorage();
 
-   if (storage.get() != null) {
-     $state.go("home.friendslist");
-   }
-   else {
+   // acessando o recurso de API
+  // INICIO
+  ValidTokenResource.get({ token: storage.get() })
+   .$promise
+   .then(function(data) {
+
+     if (data.code === "200") {
+       $state.go("home.friendslist");
+     }
+     else {
+       $scope.msgError =  data.message;
+     }
+
+   }, function(error) {
+     $scope.error = true;
+
+     if (error.data === null) {
+       $scope.msgError = $rootScope.message.loginError;
+     }
+     else {
+       $scope.msgError =  error.data.message;
+     }
      $state.go("login");
-   }
+
+  });
+  // final
+
 });

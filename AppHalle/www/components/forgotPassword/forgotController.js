@@ -55,8 +55,6 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
        }, function(error) {
          $scope.error = true;
 
-         console.log('forgot - ' + error.data.message);
-
          if (error.data === null) {
            $scope.msgError = $rootScope.message.forgotError;
          }

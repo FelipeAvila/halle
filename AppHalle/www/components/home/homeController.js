@@ -62,33 +62,37 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
         onTap: function(e) {
            if ($scope.data.phone) {
              $scope.error = false;
-             $scope.msgError = "";
-             // chamar o serviço
-             console.log('OK - ' +  $scope.data.phone);
+
              // Acessando o storage local
              var storage = new getLocalStorage();
              var token = storage.get();
              var phone = $scope.data.phone;
-             console.log('OK PHONE- ' +  phone);
 
               // acessando o recurso de API
              InvitePhoeNumberResource.save({ token: token, phone: phone })
               .$promise
                 .then(function(data) {
-                  $scope.error = true;
-                  console.log('OK - OK');
-
+                  $scope.error = false;
                 }, function(error) {
                   $scope.error = true;
-                  $scope.msgError = $rootScope.message.inviteContactsError;
-                  e.preventDefault();
-                  console.log('OK - NOK- ' + error.data);
+                  if (error.data === null) {
+                    $scope.msgError = $rootScope.message.inviteContactsError;
+                  }
+                  else {
+                    $scope.msgError =  error.data.message;
+                  }
                 });
 
+                //don't allow the user to close
+                if (!$scope.error) {
+                  e.preventDefault();
+                }
+
            } else {
+             //don't allow the user to close
+             e.preventDefault();
              $scope.error = true;
              $scope.msgError = $rootScope.message.inviteContactsInvalid;
-             e.preventDefault();
            }
          }
       }
