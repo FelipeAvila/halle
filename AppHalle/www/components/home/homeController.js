@@ -5,7 +5,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
   $scope.contacts = {};
 
   $scope.getAllContacts = function() {
-      $cordovaContacts.find().then(function(allContacts) {
+    $cordovaContacts.find().then(function(allContacts) {
       $scope.contacts = allContacts;
       console.log(JSON.stringify(allContacts));
     });
@@ -14,11 +14,15 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
  // INIT POPUP INVITE CONTACTS
  // An elaborate, custom popup
  $scope.showInvite = function() {
-   $scope.data = {};
-   console.log('showInvite')
+
+   console.log('showInvite - ');
+
+   console.log('showInvite - ' + $scope.contacts);
+
+
   var myPopup = $ionicPopup.show({
     template: '<ion-list>                                '+
-              '  <ion-item ng-repeat="con in contacts">  '+
+              '  <ion-item ng-repeat="con in getAllContacts()">  '+
               '    {{con.displayName}}                   '+
               '  </ion-item>                             '+
               '</ion-list>                               ',
@@ -30,11 +34,11 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
         text: '<b>Save</b>',
         type: 'button-positive',
         onTap: function(e) {
-          if (!$scope.data.wifi) {
+          if (!$scope.data) {
             //don't allow the user to close unless he enters wifi password
             e.preventDefault();
           } else {
-            return $scope.data.wifi;
+            return;
           }
         }
       }

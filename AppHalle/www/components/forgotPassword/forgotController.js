@@ -38,10 +38,6 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
       $scope.error = true;
     }
     else {
-
-      // Acessando o storage local
-      var storage = new getLocalStorage();
-
        // acessando o recurso de API
       ForgotResource.get({ login: login, phone: phone })
        .$promise
