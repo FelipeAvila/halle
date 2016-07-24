@@ -1,15 +1,15 @@
-<ion-view view-title="login">
+<ion-view scroll="true" view-title="login">
 
-  <ion-header-bar style="border:0;">
-  </ion-header-bar>
 
-  <ion-footer-bar class="bar bar-footer bar-footer-login">
-      <h1 class="title">
-          <button  ng-click="create();" class="button-login-create">{{message.loginCreate}}</button>
-      </h1>
+  <ion-footer-bar class="bar bar-footer bar-footer-login ">
+   
+        <button  ng-click="create();" class="button-login-create">{{message.loginCreate}}</button>
+     
   </ion-footer-bar>
 
   <ion-content ng-controller="loginController">
+      <div class="spacer" style="width: 320px; height: 20px;"></div>
+      
       <img class="ico_logo" src="img\ico_logo.svg" class="ico_logo">
 
       <form name="loginForm">
@@ -46,17 +46,17 @@
                    name="password"
                    ng-model="password">
           </label>
-
-          <button class="button button-block button-login"
+          
+        <div class="spacer" style="width: 320px; height: 25px;"></div>
+          
+        <button class="button button-block button-login"
                   ng-click="submit(login, password)">{{ message.loginBtnEnter }}</button>
         </div>
 
         <div class="row">
-          <div class="col col-50">
-          </div>
-          <div class="col">
-            <a nav-direction="foward" class="link" href="#/forgot">{{ message.loginForgotPwd }}</a>
-          </div>
+       
+            <a nav-direction="foward" class="label-forgotpass" href="#/forgot">{{ message.loginForgotPwd }}</a>
+ 
         </div>
       </form>
 
