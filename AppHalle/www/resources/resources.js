@@ -72,6 +72,15 @@ app.factory('FindUserResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
+app.factory('EditUserResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/user/', {},
+                                      {save: {method:'POST',
+                                                headers: [{'Content-Type': 'application/json'}]
+                                      }}
+                         );
+    return data;
+});
+
 app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/valid/:token',
                                       {token: '@token' },
@@ -80,7 +89,7 @@ app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
-app.factory('changePasswordResource', function ($resource, ApiEndpoint) {
+app.factory('ChangePasswordResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/changepassword/:token/:password',
                                       {token: '@token', password: '@password' },
                                       {update:   {method:'PUT'}}
@@ -88,7 +97,7 @@ app.factory('changePasswordResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
-app.factory('changePhoneResource', function ($resource, ApiEndpoint) {
+app.factory('ChangePhoneResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/changephone/:token/:phone',
                                       {token: '@token', phone: '@phone' },
                                       {update:   {method:'PUT'}}
@@ -96,9 +105,11 @@ app.factory('changePhoneResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
-app.factory('feedbackResource', function ($resource, ApiEndpoint) {
+app.factory('FeedbackResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/feedback/',
-                                      {save:   {method:'POST'}}
+                                      {save:   {method:'POST',
+                                                headers: [{'Content-Type': 'application/json'}]
+                                      }}
                          );
     return data;
 });

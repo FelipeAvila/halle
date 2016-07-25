@@ -1,12 +1,12 @@
 var app = angular.module('halleApp.changePasswordController', []);
 
 // Controller da pagina de criar usuario
-app.controller('changePasswordController', function($scope, $rootScope, $state, $http, changePasswordResource) {
+app.controller('changePasswordController', function($scope, $rootScope, $state, $http, ChangePasswordResource) {
 
   // Form data
   $scope.data = {};
 
-  // Perform the login action when the user submits the login form
+  // Perform the submit
   $scope.onSubmit = function() {
     // mensagem de erro
     $scope.error = false;
@@ -64,7 +64,7 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
       var token = storage.get();
 
       // acessando o recurso de API
-     changePasswordResource.update({ token: token, password: password1 })
+     ChangePasswordResource.update({ token: token, password: password1 })
       .$promise
         .then(function(data) {
           $scope.sucess = true;

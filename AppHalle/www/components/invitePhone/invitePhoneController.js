@@ -6,7 +6,7 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
   // Form data
   $scope.data = {};
 
-  // Perform the login action when the user submits the login form
+  // Perform the submit
   $scope.onSubmit = function() {
     // mensagem de erro
     $scope.error = false;

@@ -1,12 +1,12 @@
 var app = angular.module('halleApp.feedbackController', []);
 
 // Controller da pagina de criar usuario
-app.controller('feedbackController', function($scope, $rootScope, $state, $http, feedbackResource) {
+app.controller('feedbackController', function($scope, $rootScope, $state, $http, FeedbackResource) {
 
   // Form data
   $scope.data = {};
 
-  // Perform the login action when the user submits the login form
+  // Perform the submit
   $scope.onSubmit = function() {
     // mensagem de erro
     $scope.error = false;
@@ -49,7 +49,7 @@ app.controller('feedbackController', function($scope, $rootScope, $state, $http,
 
       var info = {'token': token, 'subject': subject, 'description': description};
       // acessando o recurso de API
-     feedbackResource.save({}, info)
+     FeedbackResource.save({}, info)
       .$promise
         .then(function(data) {
           $scope.sucess = true;

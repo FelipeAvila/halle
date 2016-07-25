@@ -1,6 +1,8 @@
 {
   "title" : "halle",
 
+  "back" : "Voltar",
+
   "exit" : "Sair",
   "cancel": "Cancelar",
   "exitMessage": "Tem certeza que desaja sair?",
@@ -79,7 +81,7 @@
   "changePhoneNewPhone" : "Telefone",
   "changePhoneInvalid": "Telefone inválido!",
   "changePhoneError": "Ocorreu um erro ao enviar o convite.",
-  "changePhoneSend" : "Enviar convite",
+  "changePhoneSend" : "Enviar",
 
   "changePwdRequired": "A nova senha é obrigatório.",
   "changePwdRequired2": "A confirmação da senha é obrigatório.",
@@ -97,7 +99,14 @@
   "feedbackDescriptionRequired" : "O campo descrição é obrigatório.",
   "feedbackDescriptionMaxlength": "O campo descrição precisa ter no máximo 5000 caracteres.",
   "feedbacksubjectMaxlength" :  "O campo assunto precisa ter no máximo 500 caracteres.",
-  "feedbackSubmit" : "Enviar"
+  "feedbackSubmit" : "Enviar",
 
+  "editProfileName" : "Nome",
+  "editProfileNickname": "Apelido",
+  "editProfileBirthday" : "Data de nascimento",
+  "editProfileEmail" : "E-mail",
+  "editProfileSend" : "Enviar",
+  "editProfileInvalid": "Informações inválidas!",
+  "editProfileError": "Erro ao efetuar a alteração do cadastro."
 
 }

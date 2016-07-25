@@ -2,15 +2,14 @@
 
   <ion-pane ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-pane>
 
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-positive">
-      <h1 class="title">{{ homeMenu }}</h1>
-    </header>
+    <ion-header-bar class="navbar-color">
+      <h1 class="h1-terms">Menu</h1>
+    </ion-header-bar>
     <ion-content class="has-header">
       <ion-list>
         <!--
@@ -21,7 +20,7 @@
         <ion-item menu-close class="text-menu" href="#/home/invitePhone">
           {{  message.homeMenuInvitePhone }}
         </ion-item>
-        <ion-item menu-close class="text-menu">
+        <ion-item menu-close class="text-menu" href="#/home/editProfile">
           {{  message.homeMenuProfile }}
         </ion-item>
         <ion-item menu-close  class="text-menu" href="#/home/changePassword">

@@ -2,7 +2,7 @@
 
   <ion-header-bar class="bar-positive">
     <div class="buttons">
-      <a class="button icon-left ion-chevron-left button-clear button-white" ng-click="voltar();">Voltar</a>
+      <a class="button icon-left ion-chevron-left button-clear button-white" ng-click="voltar();">{{message.back}}</a>
     </div>
     <h1 class="title">{{ message.forgotTitle}}</h1>
   </ion-header-bar>
@@ -40,10 +40,7 @@
 
           <label class="item item-input item-floating-label label-input">
             <span class="input-label label-input label-login-heigth">{{ message.forgotPhone }}</span>
-            <intlpn ng-model="phone"
-                    style="border:0"
-                    placeholder="(99) 9999-9999"
-                    default-country="br"></intlpn>
+            <intlpn ng-model="phone" style="border:0" placeholder="(99) 9999-9999" default-country="br" ></intlpn>
           </label>
 
           <button class="button button-block button-login"

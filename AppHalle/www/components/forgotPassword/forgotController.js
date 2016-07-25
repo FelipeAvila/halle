@@ -8,7 +8,7 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
       $state.go("login");
   };
 
-  // Ação submit
+  // Perform the submit
   $scope.submit = function(login, phone) {
     // mensagem de erro
     $scope.error = false;

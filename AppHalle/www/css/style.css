@@ -13,7 +13,18 @@ body {
     background-color: white;
 }
 
-/******************* FORM *******************/
+/******************* H1 *******************/
+.h1-terms {
+    color: #FFFFFF;
+    font-family: verdana;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 500;
+    vertical-align: middle;
+}
 
 
 /****************** IMAGES **********************/
@@ -81,18 +92,18 @@ body {
   height: auto;
   background: #2b98d5;
   margin-top: auto!important;
-  margin-bottom: auto!important;    
-  vertical-align: middle!important;  
+  margin-bottom: auto!important;
+  vertical-align: middle!important;
   position: absolute!important;
   display: block!important;
   border: 0;
   text-align: center;
   color: #ffffff;
-  font-family: Helvetica Neue!important;    
+  font-family: Helvetica Neue!important;
   font-size: 28px!important;
   font-weight: 500!important;
   padding: 0px;
-        
+
 }
 /****************** LINK **********************/
 
@@ -133,6 +144,18 @@ body {
     font-family: Helvetica Neue;
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    color:#2b98d5;
+    text-align: center;
+    font-family: Helvetica Neue;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+/****************CARD ********************************/
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;

@@ -1,12 +1,12 @@
 var app = angular.module('halleApp.changePhoneController', []);
 
 // Controller da pagina de criar usuario
-app.controller('changePhoneController', function($scope, $rootScope, $state, $http, changePhoneResource) {
+app.controller('changePhoneController', function($scope, $rootScope, $state, $http, ChangePhoneResource) {
 
   // Form data
   $scope.data = {};
 
-  // Perform the login action when the user submits the login form
+  // Perform the submit
   $scope.onSubmit = function() {
     // mensagem de erro
     $scope.error = false;
@@ -37,7 +37,7 @@ app.controller('changePhoneController', function($scope, $rootScope, $state, $ht
       var token = storage.get();
 
       // acessando o recurso de API
-     changePhoneResource.save({ token: token, phone: phone })
+     ChangePhoneResource.save({ token: token, phone: phone })
       .$promise
         .then(function(data) {
           $scope.sucess = true;
