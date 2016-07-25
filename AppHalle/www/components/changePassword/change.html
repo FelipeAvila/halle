@@ -1,0 +1,23 @@
+  <div class="list">
+    <span class="error-container" ng-if="error">
+      <p class="error">
+       <i class="ion-information-circled"></i>
+       {{ msgError }}
+     </p>
+    </span>
+
+    <label class="item item-input item-floating-label label-input">
+      <input type="password"
+             class="placeholder-input"
+             placeholder="{{ message.changePasswordNewPwd }}"
+             name="password1"
+             ng-model="password1">
+    </label>
+    <label class="item item-input item-floating-label label-input">
+      <input type="password"
+             class="placeholder-input"
+             placeholder="{{ message.changePasswordNewPwd2 }}"
+             name="password2"
+             ng-model="password2">
+    </label>
+</div>

@@ -6,6 +6,22 @@ app.constant('ApiEndpoint', {
 //  url: 'http://localhost:8080/HalleWEB/service'
 });
 
+/***************** Contacts ****************************/
+app.factory("ContactManagerResource", function($cordovaContacts) {
+    var contacts; //variable that holds contacts, returned from getContacts
+
+     return {
+       getContacts: function() {
+         var options = {};
+          options.filter = "";
+          options.multiple = true;
+
+          //get the phone contacts
+          return $cordovaContacts.find(options);
+        }
+     }
+  });
+
 /*****************Recursos*****************************/
 app.factory('AuthResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/auth/:login/:password',
@@ -60,6 +76,14 @@ app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/valid/:token',
                                       {token: '@token' },
                                       {get:   {method:'GET'}}
+                         );
+    return data;
+});
+
+app.factory('changePasswordResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/user/changepassword/:token/:password',
+                                      {token: '@token', password: '@password' },
+                                      {get:   {method:'PUT'}}
                          );
     return data;
 });

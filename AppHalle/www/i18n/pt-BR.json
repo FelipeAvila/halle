@@ -67,5 +67,17 @@
   "inviteContactsPhone" : "Telefone",
   "inviteContactsSendInvite" : "Enviar",
   "inviteContactsInvalid": "Telefone inválido!",
-  "inviteContactsError": "Ocorreu um erro ao enviar o convite."
+  "inviteContactsError": "Ocorreu um erro ao enviar o convite.",
+
+  "changePassword" : "Trocar a Senha",
+  "changePasswordNewPwd" : "Nova Senha",
+  "changePasswordNewPwd2" : "Confirme",
+  "changePasswordSend" : "Enviar",
+
+  "changePwdRequired": "A senha é obrigatório.",
+  "changePwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
+  "changePwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+  "changePwdDif" : "Senhas diferentes."
+
+
 }

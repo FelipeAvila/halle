@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $state, $stateParams, $cordovaContacts, $ionicPlatform, InvitePhoeNumberResource) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $state, $stateParams, $cordovaContacts, $ionicPlatform, InvitePhoeNumberResource, ContactManagerResource, changePasswordResource) {
   $scope.contacts = {};
 
   $scope.getAllContacts = function() {
@@ -104,6 +104,92 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
   });
  };
  // FINISH POPUP INVITE PHONE
+
+ // INIT EXIT - Trocar Senha
+ $scope.showChangePassword = function() {
+  $scope.data = {};
+
+  var myPopup = $ionicPopup.show({
+    templateUrl: '/components/changePassword/change.html',
+    title: $rootScope.message.changePassword,
+    scope: $scope,
+    buttons: [
+      { text: $rootScope.message.cancel },
+      {
+        text: '<b>'+ $rootScope.message.changePasswordSend +'</b>',
+        type: 'button-positive',
+        onTap: function(e) {
+            $scope.error = false;
+            $scope.msgError = "";
+
+            console.log('PWD1: ' + $scope.data.password);
+            console.log('PWD2: ' + $scope.data.password2);            
+            // Validação
+            // senha
+            if ($scope.data.password == null) {
+              $scope.msgError = $rootScope.message.changePwdRequired;
+            }
+            else {
+              if ($scope.data.password.length < 5 ) {
+                $scope.msgError = $rootScope.message.changePwdMinlength;
+              }
+              else if ($scope.data.password.length > 8) {
+                $scope.msgError = $rootScope.message.changePwdMaxlength;
+              }
+            }
+            // senha 2
+            if ($scope.data.password2 == null) {
+              $scope.msgError = $rootScope.message.changePwdRequired;
+            }
+            else {
+              if ($scope.data.password2.length < 5 ) {
+                $scope.msgError = $rootScope.message.changePwdMinlength;
+              }
+              else if ($scope.data.password2.length > 8) {
+                $scope.msgError = $rootScope.message.changePwdMaxlength;
+              }
+            }
+
+            if ($scope.data.password != $scope.data.password2) {
+              $scope.msgError = $rootScope.message.changePwdDif;
+            }
+
+            if ($scope.msgError == "") {
+              $scope.msgError = true;
+            }
+            else {
+              // Tudo ok vamos iniciar a troca da senha
+              // Acessando o storage local
+              var storage = new getLocalStorage();
+              var token = storage.get();
+              var password = $scope.data.password;
+
+              // acessando o recurso de API
+             changePasswordResource.save({ token: token, password: password })
+              .$promise
+                .then(function(data) {
+                  $scope.error = false;
+                }, function(error) {
+                  $scope.error = true;
+                  if (error.data === null) {
+                    $scope.msgError = $rootScope.message.inviteContactsError;
+                  }
+                  else {
+                    $scope.msgError =  error.data.message;
+                  }
+                });
+
+                //don't allow the user to close
+                if (!$scope.error) {
+                  e.preventDefault();
+                }
+            }
+          }
+      }
+    ]
+  });
+ };
+ // FINISH POPUP Trocar Senha
 
  // INIT EXIT - A confirm dialog
  $scope.showExit = function() {
