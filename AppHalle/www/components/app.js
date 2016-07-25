@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.friendsListController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.changePhoneController', 'halleApp.friendsListController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -49,6 +49,34 @@ app.config(function($stateProvider, $urlRouterProvider){
         }
       }
     })
+    .state('home.invitePhone', {
+      url: '/invitePhone',
+      views: {
+        'menuContent' :{
+          templateUrl: 'components/invitePhone/invitePhone.html',
+          controller: 'invitePhoneController'
+        }
+      }
+    })
+    .state('home.changePassword', {
+      url: '/changePassword',
+      views: {
+        'menuContent' :{
+          templateUrl: 'components/changePassword/changePassword.html',
+          controller: 'changePasswordController'
+        }
+      }
+    })
+    .state('home.changePhone', {
+      url: '/changePhone',
+      views: {
+        'menuContent' :{
+          templateUrl: 'components/changePhone/changePhone.html',
+          controller: 'changePhoneController'
+        }
+      }
+    })
+
 
     $urlRouterProvider.otherwise('/start');
 });

@@ -13,23 +13,22 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
+        <!--
         <ion-item menu-close class="text-menu" ng-click="showInvite()">
           {{  message.homeMenuInvite }}
         </ion-item>
-        <ion-item menu-close class="text-menu" ng-click="showInvitePhone()">
+        -->
+        <ion-item menu-close class="text-menu" href="#/home/invitePhone">
           {{  message.homeMenuInvitePhone }}
         </ion-item>
         <ion-item menu-close class="text-menu">
           {{  message.homeMenuProfile }}
         </ion-item>
-        <ion-item menu-close  class="text-menu" ng-click="showChangePassword()">
+        <ion-item menu-close  class="text-menu" href="#/home/changePassword">
           {{  message.homeMenuChangePwd }}
         </ion-item>
-        <ion-item menu-close  class="text-menu">
+        <ion-item menu-close  class="text-menu"  href="#/home/changePhone">
           {{  message.homeMenuChangePhone }}
-        </ion-item>
-        <ion-item menu-close class="text-menu">
-          {{  message.homeMenuForgotPwd }}
         </ion-item>
         <ion-item menu-close class="text-menu">
           {{  message.homeMenuFeedback }}

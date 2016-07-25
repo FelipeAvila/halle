@@ -66,7 +66,6 @@ app.controller('loginController', function($ionicSideMenuDelegate, $scope, $stat
              $scope.msgError =  error.data.message;
            }
       });
-
     }
     // fim if testa erro
 

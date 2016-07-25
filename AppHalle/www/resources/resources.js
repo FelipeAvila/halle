@@ -56,7 +56,7 @@ app.factory('FriendsListResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
-app.factory('InvitePhoeNumberResource', function ($resource, ApiEndpoint) {
+app.factory('InvitePhoneNumberResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/invite/phone/:token/:phone',
                                       {token: '@token', phone : '@phone' },
                                       {get:   {method:'GET'}}
@@ -83,7 +83,15 @@ app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
 app.factory('changePasswordResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/changepassword/:token/:password',
                                       {token: '@token', password: '@password' },
-                                      {get:   {method:'PUT'}}
+                                      {update:   {method:'PUT'}}
+                         );
+    return data;
+});
+
+app.factory('changePhoneResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/user/changephone/:token/:phone',
+                                      {token: '@token', phone: '@phone' },
+                                      {update:   {method:'PUT'}}
                          );
     return data;
 });

@@ -68,15 +68,27 @@
   "inviteContactsSendInvite" : "Enviar",
   "inviteContactsInvalid": "Telefone inválido!",
   "inviteContactsError": "Ocorreu um erro ao enviar o convite.",
+  "inviteContactsSend" : "Enviar convite",
 
   "changePassword" : "Trocar a Senha",
   "changePasswordNewPwd" : "Nova Senha",
   "changePasswordNewPwd2" : "Confirme",
   "changePasswordSend" : "Enviar",
 
-  "changePwdRequired": "A senha é obrigatório.",
-  "changePwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
-  "changePwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+  "changePhoneContacts" : "Convidar",
+  "changePhoneNewPhone" : "Telefone",
+  "changePhoneInvalid": "Telefone inválido!",
+  "changePhoneError": "Ocorreu um erro ao enviar o convite.",
+  "changePhoneSend" : "Enviar convite",
+
+  "changePwdRequired": "A nova senha é obrigatório.",
+  "changePwdRequired2": "A confirmação da senha é obrigatório.",
+  "changePwdMinlength": "A nova senha precisa ter mais do que 5 caracteres.",
+  "changePwdMaxlength": "A nova senha precisa ter no máximo 8 caracteres.",
+  "changePwdMinlength2": "A confirmação da senha precisa ter mais do que 5 caracteres.",
+  "changePwdMaxlength2": "A confirmação da senha precisa ter no máximo 8 caracteres.",
+  "changePwdError": "Ocorreu um erro ao mudar a senha.",
+
   "changePwdDif" : "Senhas diferentes."
 
 
