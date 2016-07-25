@@ -88,8 +88,16 @@
   "changePwdMinlength2": "A confirmação da senha precisa ter mais do que 5 caracteres.",
   "changePwdMaxlength2": "A confirmação da senha precisa ter no máximo 8 caracteres.",
   "changePwdError": "Ocorreu um erro ao mudar a senha.",
+  "changePwdDif" : "Senhas diferentes.",
 
-  "changePwdDif" : "Senhas diferentes."
+  "feedbackSubject" : "Assunto",
+  "feedbackDescription" : "Descrição",
+  "feedbackRequired" : "Os campos são obrigatórios.",
+  "feedbackSubjectRequired" : "O campo assunto é obrigatório.",
+  "feedbackDescriptionRequired" : "O campo descrição é obrigatório.",
+  "feedbackDescriptionMaxlength": "O campo descrição precisa ter no máximo 5000 caracteres.",
+  "feedbacksubjectMaxlength" :  "O campo assunto precisa ter no máximo 500 caracteres.",
+  "feedbackSubmit" : "Enviar"
 
 
 }

@@ -95,3 +95,10 @@ app.factory('changePhoneResource', function ($resource, ApiEndpoint) {
                          );
     return data;
 });
+
+app.factory('feedbackResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/feedback/',
+                                      {save:   {method:'POST'}}
+                         );
+    return data;
+});

@@ -1,7 +1,7 @@
-var app = angular.module('halleApp.invitePhoneController', []);
+var app = angular.module('halleApp.feedbackController', []);
 
 // Controller da pagina de criar usuario
-app.controller('invitePhoneController', function($scope, $rootScope, $state, $http, InvitePhoneNumberResource) {
+app.controller('feedbackController', function($scope, $rootScope, $state, $http, feedbackResource) {
 
   // Form data
   $scope.data = {};
@@ -16,16 +16,27 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
     $scope.msgSucess = "";
 
     // atributos
-    var phone = $scope.data.phone;
+    var subject = $scope.data.subject;
+    var description = $scope.data.description;
 
     // Validação
     if ($scope.data.$valid) {
-      $scope.msgError = $rootScope.message.inviteContactsInvalid;
+      $scope.msgError = $rootScope.message.feedbackRequired;
+    }
+    // description
+    if (description == null) {
+      $scope.msgError = $rootScope.message.feedbackDescriptionRequired;
+    }
+    else if (description.length > 5000) {
+          $scope.msgError = $rootScope.message.feedbackDescriptionMaxlength;
     }
 
-    // telefone
-    if (phone == null) {
-      $scope.msgError = $rootScope.message.inviteContactsInvalid;
+    // subject
+    if (subject == null) {
+      $scope.msgError = $rootScope.message.feedbackSubjectRequired;
+    }
+    else if (subject.length > 500) {
+        $scope.subject = $rootScope.message.feedbacksubjectMaxlength;
     }
 
     if ($scope.msgError != "") {
@@ -36,8 +47,9 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
       var storage = new getLocalStorage();
       var token = storage.get();
 
+      var info = {'token': token, 'subject': subject, 'description': description};
       // acessando o recurso de API
-     InvitePhoneNumberResource.save({ token: token, phone: phone })
+     feedbackResource.save({}, info)
       .$promise
         .then(function(data) {
           $scope.sucess = true;
@@ -48,5 +60,6 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
           $scope.msgError =  error.data.message;
         });
     }
+
   }
 });
