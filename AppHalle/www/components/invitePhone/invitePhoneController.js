@@ -16,6 +16,7 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
     $scope.msgSucess = "";
 
     // atributos
+    var name = $scope.data.name;
     var phone = $scope.data.phone;
 
     // Validação
@@ -28,6 +29,10 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
       $scope.msgError = $rootScope.message.inviteContactsInvalid;
     }
 
+    if (name == null) {
+      $scope.msgError = $rootScope.message.inviteContactsName;
+    }
+
     if ($scope.msgError != "") {
       $scope.error = true;
     }
@@ -37,7 +42,7 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
       var token = storage.get();
 
       // acessando o recurso de API
-     InvitePhoneNumberResource.save({ token: token, phone: phone })
+     InvitePhoneNumberResource.save({ token: token, name: name, phone: phone })
       .$promise
         .then(function(data) {
           $scope.sucess = true;

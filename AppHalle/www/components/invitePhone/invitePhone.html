@@ -26,6 +26,17 @@
         </span>
 
         <label class="item item-input item-floating-label label-input">
+          <span class="input-label label-input label-login-heigth">{{ message.editProfileName }}</span>
+          <input type="text"
+                 maxlength="100"
+                 class="placeholder-input"
+                 placeholder="{{ message.editProfileName }}"
+                 name="name"
+                 ng-model="data.name">
+        </label>
+
+
+        <label class="item item-input item-floating-label label-input">
           <span class="input-label label-input label-login-heigth">{{ message.inviteContactsPhone }}</span>
           <intlpn ng-model="data.phone"
                   style="border:0"

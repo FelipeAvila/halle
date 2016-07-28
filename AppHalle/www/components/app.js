@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.changePhoneController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -67,15 +67,6 @@ app.config(function($stateProvider, $urlRouterProvider){
         }
       }
     })
-    .state('home.changePhone', {
-      url: '/changePhone',
-      views: {
-        'menuContent' :{
-          templateUrl: 'components/changePhone/changePhone.html',
-          controller: 'changePhoneController'
-        }
-      }
-    })
     .state('home.feedback', {
       url: '/feedback',
       views: {
@@ -91,6 +82,15 @@ app.config(function($stateProvider, $urlRouterProvider){
         'menuContent' :{
           templateUrl: 'components/editProfile/editProfile.html',
           controller: 'editProfileController'
+        }
+      }
+    })
+    .state('home.message', {
+      url: '/message',
+      views: {
+        'menuContent' :{
+          templateUrl: 'components/message/message.html',
+          controller: 'messageController'
         }
       }
     })

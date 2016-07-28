@@ -8,7 +8,6 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
 
   $scope.onLoad = function() {
 
-    console.log('onLoad');
     // Acessando o storage local
     var storage = new getLocalStorage();
     var token = storage.get();
@@ -18,6 +17,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
     .$promise
       .then(function(data) {
           $scope.data = data;
+          $scope.data.birthday = new Date($scope.data.birthday);
       },
       function(error) {
         $scope.error = true;
@@ -53,7 +53,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
       var storage = new getLocalStorage();
       var token = storage.get();
 
-      var info = {'token': token, 'nickname': nickname, 'birthday': birthday, 'email': email};
+      var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': birthday, 'email': email};
       // acessando o recurso de API
      EditUserResource.save({}, info)
       .$promise

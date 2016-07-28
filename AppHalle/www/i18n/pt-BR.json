@@ -61,14 +61,16 @@
   "homeMenuProfile" : "Editar perfil",
   "homeMenuForgotPwd" : "Esqueci minha senha",
   "homeMenuChangePwd" : "Trocar a senha",
-  "homeMenuChangePhone" : "Trocar de telefone",
+  "homeMenuDeleteCount" : "Remover conta",
   "homeMenuFeedback" : "Feedback",
   "homeMenuSair" : "Sair",
 
-  "inviteContacts" : "Convidar",
+  "inviteContacts" : "Convidar amigo",
+  "inviteContactsName" : "Nome do amigo",
   "inviteContactsPhone" : "Telefone",
   "inviteContactsSendInvite" : "Enviar",
   "inviteContactsInvalid": "Telefone inválido!",
+  "inviteContactsName": "Você precisa informar um nome.",
   "inviteContactsError": "Ocorreu um erro ao enviar o convite.",
   "inviteContactsSend" : "Enviar convite",
 
@@ -76,12 +78,6 @@
   "changePasswordNewPwd" : "Nova Senha",
   "changePasswordNewPwd2" : "Confirme",
   "changePasswordSend" : "Enviar",
-
-  "changePhoneContacts" : "Convidar",
-  "changePhoneNewPhone" : "Telefone",
-  "changePhoneInvalid": "Telefone inválido!",
-  "changePhoneError": "Ocorreu um erro ao enviar o convite.",
-  "changePhoneSend" : "Enviar",
 
   "changePwdRequired": "A nova senha é obrigatório.",
   "changePwdRequired2": "A confirmação da senha é obrigatório.",
@@ -107,6 +103,11 @@
   "editProfileEmail" : "E-mail",
   "editProfileSend" : "Enviar",
   "editProfileInvalid": "Informações inválidas!",
-  "editProfileError": "Erro ao efetuar a alteração do cadastro."
+  "editProfileError": "Erro ao efetuar a alteração do cadastro.",
+
+  "deletePhone" : "Remover conta do Halle",
+  "deleteError": "Não foi possível remover a sua conta",
+
+  "friendMessageReceive" : "Mensagens Recebidas"
 
 }

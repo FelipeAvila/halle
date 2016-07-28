@@ -1,0 +1,13 @@
+<ion-modal-view  ng-init="onLoad()">
+  <ion-content scroll="false">
+    <br/><br/><br/><br/>
+
+
+    <ion-slide-box pager-click="navSlide(index)" auto-play="true" does-continue="true" ng-repeat="item in messagelist">
+        <ion-slide >
+          <ion-slide-page><h1>Entrei... {{item.phoneFriend}}</h1></ion-slide-page>
+        </ion-slide>
+    </ion-slide-box>
+
+  </ion-content>
+</ion-modal-view>

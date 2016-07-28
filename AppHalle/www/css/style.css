@@ -188,6 +188,16 @@ body {
     background: #88d0f7;
 }
 
+/******************* SLIDE ****************************/
+.slider {
+  height: 100%;
+  text-align: center;
+}
+
+.scroll {
+  height: 100%;
+}
+
 /********************ERROR*****************************/
 .error-container {
   margin: 5px 0;

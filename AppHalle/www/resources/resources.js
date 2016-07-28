@@ -3,7 +3,7 @@ var app = angular.module('halleApp.resources', ['ngResource']);
 /****************Constantes ***********************/
 app.constant('ApiEndpoint', {
   url: 'http://192.241.158.95/HalleWEB/service'
-//  url: 'http://localhost:8080/HalleWEB/service'
+  //url: 'http://localhost:8080/HalleWEB/service'
 });
 
 /***************** Contacts ****************************/
@@ -57,9 +57,9 @@ app.factory('FriendsListResource', function ($resource, ApiEndpoint) {
 });
 
 app.factory('InvitePhoneNumberResource', function ($resource, ApiEndpoint) {
-    var data =  $resource(ApiEndpoint.url +'/invite/phone/:token/:phone',
-                                      {token: '@token', phone : '@phone' },
-                                      {get:   {method:'GET'}}
+    var data =  $resource(ApiEndpoint.url +'/invite/phone/:token/:name/:phone',
+                                      {token: '@token', name : '@name', phone : '@phone' },
+                                      {save:   {method:'POST'}}
                          );
     return data;
 });
@@ -73,13 +73,14 @@ app.factory('FindUserResource', function ($resource, ApiEndpoint) {
 });
 
 app.factory('EditUserResource', function ($resource, ApiEndpoint) {
-    var data =  $resource(ApiEndpoint.url +'/user/', {},
-                                      {save: {method:'POST',
+    var data =  $resource(ApiEndpoint.url +'/user/',
+                                      {save:   {method:'POST',
                                                 headers: [{'Content-Type': 'application/json'}]
                                       }}
                          );
     return data;
 });
+
 
 app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/valid/:token',
@@ -97,10 +98,10 @@ app.factory('ChangePasswordResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
-app.factory('ChangePhoneResource', function ($resource, ApiEndpoint) {
-    var data =  $resource(ApiEndpoint.url +'/user/changephone/:token/:phone',
-                                      {token: '@token', phone: '@phone' },
-                                      {update:   {method:'PUT'}}
+app.factory('DeletePhoneResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/user/:token',
+                                      {token: '@token' },
+                                      {delete:   {method:'DELETE'}}
                          );
     return data;
 });
@@ -110,6 +111,14 @@ app.factory('FeedbackResource', function ($resource, ApiEndpoint) {
                                       {save:   {method:'POST',
                                                 headers: [{'Content-Type': 'application/json'}]
                                       }}
+                         );
+    return data;
+});
+
+app.factory('MessageReceiveResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/message/:token',
+                                      {token: '@token' },
+                                      {get:   {method:'GET', isArray: true}}
                          );
     return data;
 });

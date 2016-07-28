@@ -18,32 +18,37 @@ app.controller('startController', function($scope, $rootScope, $timeout, $ionicL
 
    // Acessando o storage local
    var storage = new getLocalStorage();
-
-   // acessando o recurso de API
-  // INICIO
-  ValidTokenResource.get({ token: storage.get() })
-   .$promise
-   .then(function(data) {
-
-     if (data.code === "200") {
-       $state.go("home.friendslist");
-     }
-     else {
-       $scope.msgError =  data.message;
-     }
-
-   }, function(error) {
-     $scope.error = true;
-
-     if (error.data === null) {
-       $scope.msgError = $rootScope.message.loginError;
-     }
-     else {
-       $scope.msgError =  error.data.message;
-     }
+   if (storage.get() === null) {
      $state.go("login");
+   }
+   else {
+       // acessando o recurso de API
+      // INICIO
+      ValidTokenResource.get({ token: storage.get() })
+       .$promise
+       .then(function(data) {
 
-  });
-  // final
+         if (data.code === "200") {
+           $state.go("home.friendslist");
+         }
+         else {
+           $scope.msgError =  data.message;
+         }
+
+       }, function(error) {
+         $scope.error = true;
+
+         if (error.data === null) {
+           $scope.msgError = $rootScope.message.loginError;
+         }
+         else {
+           $scope.msgError =  error.data.message;
+         }
+         $state.go("login");
+
+      });
+      // final
+   }
+
 
 });
