@@ -15,9 +15,9 @@
           </div>
         </span>
         </div>
-          <ion-item class=" item-borderless" ng-repeat="item in friendslist" href="#/home/friendslist/{{item.id}}">
+          <ion-item class=" item-borderless" ng-repeat="item in friendslist" >
             <div class="list">
-                <a class="item item-avatar" href="#">
+                <a class="item item-avatar" ng-click="sendMessage({{item.phoneFriend}})">
                   <img src="avatar\128-7.jpg">
                   <h2>{{ item.name }}</h2>
                 </a>

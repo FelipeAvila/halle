@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, MessageSendResource) {
   $scope.contacts = {};
 
   $scope.getAllContacts = function() {
@@ -10,6 +10,35 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
       console.log(JSON.stringify(allContacts));
     });
   };
+
+  // INIT SEND message
+  $scope.sendMessage = function(phoneFriend) {
+    console.log(phoneFriend);
+
+    var messageTypeId = 0;
+
+    // Acessando o storage local
+    var storage = new getLocalStorage();
+    var token = storage.get();
+
+    var info = {'token': token, 'phoneFriend': phoneFriend, 'messageTypeId': messageTypeId};
+    // acessando o recurso de API
+   MessageReceiveResource.save({}, info)
+    .$promise
+      .then(function(data) {
+        $scope.sucess = true;
+        $scope.msgSucess =  data.message;
+        console.log('SUCESS');
+      },
+      function(error) {
+        $scope.error = true;
+        $scope.msgError =  error.data.message;
+        console.log('ERROR');
+      });
+      console.log('CALL');
+      $state.go("home.friendslist");
+  }
+  // END SEND message
 
  // INIT POPUP INVITE CONTACTS
  // An elaborate, custom popup

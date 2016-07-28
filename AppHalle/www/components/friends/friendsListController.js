@@ -19,7 +19,6 @@ app.controller('friendsListController', function($scope, $rootScope, FriendsList
   }, function(error) {
   });
 
-
   // acessando o recurso de API
  FriendsListResource.get({ token: token })
   .$promise

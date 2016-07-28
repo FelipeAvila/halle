@@ -122,3 +122,12 @@ app.factory('MessageReceiveResource', function ($resource, ApiEndpoint) {
                          );
     return data;
 });
+
+app.factory('MessageSendResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/message/',
+                                      {save:   {method:'POST',
+                                                headers: [{'Content-Type': 'application/json'}]
+                                      }}
+                         );
+    return data;
+});

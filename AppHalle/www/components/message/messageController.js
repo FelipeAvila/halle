@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicSlideBoxDelegate, MessageReceiveResource) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $interval, $ionicSlideBoxDelegate, MessageReceiveResource) {
 
   // Form data
   $scope.data = {};
@@ -18,21 +18,24 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
       .$promise
       .then(function(data) {
         $scope.messagelist = data;
-
-        if (data != null) {
-          $scope.sucess = true;
-          $scope.amountMessage = data.length;
-          console.log('onLoad - ' + $scope.amountMessage);
-
-
-        }
+        console.log('leonaro - ' +$scope.messagelist);
+        $ionicSlideBoxDelegate.update();
       }, function(error) {
       });
   };
   //FINAL LOAD
 
-  $scope.navSlide = function(index) {
-      $ionicSlideBoxDelegate.slide(index, 500);
-  }
+    $scope.data.slides = [
+        {
+            title : "Slide 1",
+            data  : "Slide 1 Content"
+        },
+        {
+            title : "Slide 2",
+            data  : "Slide 2 Content"
+        }
+    ];
+
+
 
 });
