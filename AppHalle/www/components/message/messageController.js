@@ -18,7 +18,6 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
       .$promise
       .then(function(data) {
         $scope.messagelist = data;
-        console.log('leonaro - ' +$scope.messagelist);
         $ionicSlideBoxDelegate.update();
       }, function(error) {
       });

@@ -11,9 +11,9 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
     // mensagem de erro
     $scope.error = false;
     $scope.msgError = "";
-    // mensagem de sucesso
-    $scope.sucess = false;
-    $scope.msgSucess = "";
+    // mensagem de OK
+    $scope.Success = false;
+    $scope.msgSuccess = "";
 
     // atributos
     var password1 = $scope.data.password1;
@@ -67,8 +67,8 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
      ChangePasswordResource.update({ token: token, password: password1 })
       .$promise
         .then(function(data) {
-          $scope.sucess = true;
-          $scope.msgSucess =  data.message;
+          $scope.Success = true;
+          $scope.msgSuccess =  data.message;
         },
         function(error) {
           $scope.error = true;

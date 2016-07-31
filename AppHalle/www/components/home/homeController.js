@@ -20,7 +20,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
     var name = "";
     var phoneFriend = "";
 
-      console.log('Teste contatos');
       $cordovaContacts.find({filter : '', fields:  [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
           $scope.contacts = allContacts;
           angular.forEach(allContacts, function(item, index){
@@ -36,11 +35,10 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
                 InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
                 .$promise
                   .then(function(data) {
-                    $scope.sucess = true;
-                    $scope.msgSucess =  data.message;
+                    $scope.Success = true;
+                    $scope.msgSuccess =  data.message;
                   },
                   function(error) {
-                    $scope.error = true;
                     $scope.msgError =  error.data.message;
                   });
 
@@ -50,15 +48,12 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
           });
 
           goHome();
-
       });
   };
   // FINAL getAllContacts
 
   // INIT SEND message
   $scope.sendMessage = function(phoneFriend) {
-    console.log(phoneFriend);
-
     var messageTypeId = 0;
 
     // Acessando o storage local
@@ -70,8 +65,10 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
    MessageSendResource.save({}, info)
     .$promise
       .then(function(data) {
-        $scope.sucess = true;
-        $scope.msgSucess =  data.message;
+        $scope.Success = true;
+        $scope.msgSuccess =  data.message;
+        showAlert();
+
       },
       function(error) {
         $scope.error = true;
@@ -152,5 +149,15 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
    });
  };
  // END EXIT
+
+ $scope.showAlert = function() {
+   $ionicPopup.alert({
+     title: 'Success',
+     content: 'Hello World!!!'
+   }).then(function(res) {
+     console.log('Test Alert Box');
+   });
+ };
+
 
 });

@@ -11,9 +11,9 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
     // mensagem de erro
     $scope.error = false;
     $scope.msgError = "";
-    // mensagem de sucesso
-    $scope.sucess = false;
-    $scope.msgSucess = "";
+    // mensagem de OK
+    $scope.Success = false;
+    $scope.msgSuccess = "";
 
     // atributos
     var name = $scope.data.name;
@@ -45,8 +45,8 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
      InvitePhoneNumberResource.save({ token: token, name: name, phone: phone })
       .$promise
         .then(function(data) {
-          $scope.sucess = true;
-          $scope.msgSucess =  data.message;
+          $scope.Success = true;
+          $scope.msgSuccess =  data.message;
         },
         function(error) {
           $scope.error = true;

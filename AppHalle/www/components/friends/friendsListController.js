@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.friendsListController', []);
 
 app.controller('friendsListController', function($scope, $rootScope, FriendsListResource, MessageReceiveResource) {
-  $scope.sucess = false;
+  $scope.Success = false;
 
   $scope.onLoad = function() {
     // Acessando o storage local
@@ -14,7 +14,7 @@ app.controller('friendsListController', function($scope, $rootScope, FriendsList
     .then(function(data) {
       $scope.messagelist = data;
       if (data != null) {
-        $scope.sucess = true;
+        $scope.Success = true;
         $scope.amountMessage = data.length;
       }
     }, function(error) {
@@ -29,5 +29,6 @@ app.controller('friendsListController', function($scope, $rootScope, FriendsList
     });
      $scope.$broadcast('scroll.refreshComplete');
   }
+
 
 });

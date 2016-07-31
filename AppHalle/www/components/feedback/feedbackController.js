@@ -11,9 +11,9 @@ app.controller('feedbackController', function($scope, $rootScope, $state, $http,
     // mensagem de erro
     $scope.error = false;
     $scope.msgError = "";
-    // mensagem de sucesso
-    $scope.sucess = false;
-    $scope.msgSucess = "";
+    // mensagem de OK
+    $scope.Success = false;
+    $scope.msgSuccess = "";
 
     // atributos
     var subject = $scope.data.subject;
@@ -52,8 +52,8 @@ app.controller('feedbackController', function($scope, $rootScope, $state, $http,
      FeedbackResource.save({}, info)
       .$promise
         .then(function(data) {
-          $scope.sucess = true;
-          $scope.msgSucess =  data.message;
+          $scope.Success = true;
+          $scope.msgSuccess =  data.message;
         },
         function(error) {
           $scope.error = true;
