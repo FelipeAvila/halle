@@ -23,7 +23,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
       console.log('Teste contatos');
       $cordovaContacts.find({filter : '', fields:  [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
           $scope.contacts = allContacts;
-          console.log(allContacts);
           angular.forEach(allContacts, function(item, index){
             if (item.displayName != null && item.phoneNumbers != null) {
               var p = item.phoneNumbers[0].value.replace(/ /g,'');
