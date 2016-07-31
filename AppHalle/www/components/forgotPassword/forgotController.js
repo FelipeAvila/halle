@@ -3,6 +3,13 @@ var app = angular.module('halleApp.forgotController', []);
 // Controller da pagina de criar usuario
 app.controller('forgotController', function($scope, $rootScope, $state, $ionicPopup, ForgotResource) {
 
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+
   // Ação voltar
   $scope.voltar = function() {
       $state.go("login");
@@ -10,10 +17,6 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
 
   // Perform the submit
   $scope.submit = function(login, phone) {
-    // mensagem de erro
-    $scope.error = false;
-    $scope.msgError = "";
-
     // Validação
     // telefone
     if (phone == null) {

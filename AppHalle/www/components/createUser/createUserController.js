@@ -3,6 +3,15 @@ var app = angular.module('halleApp.createUserController', []);
 // Controller da pagina de criar usuario
 app.controller('createUserController', function($scope, $rootScope, $state, CreateUserResource) {
 
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+  // Acessando o storage local
+  var storage = new getLocalStorage();
+
   // Ação voltar
   $scope.voltar = function() {
       $state.go("login");
@@ -10,9 +19,6 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
 
   // Ação submit
   $scope.submit = function(login, phone, password) {
-    // mensagem de erro
-    $scope.error = false;
-    $scope.msgError = "";
 
     // Validação
     // senha
@@ -51,10 +57,6 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
       $scope.error = true;
     }
     else {
-
-      // Acessando o storage local
-      var storage = new getLocalStorage();
-
        // acessando o recurso de API
       CreateUserResource.save({ login: login, phone: phone, password: password })
        .$promise
@@ -73,6 +75,5 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
 
     }
      //final do if testa erro
-
   };
 });

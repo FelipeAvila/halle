@@ -5,6 +5,15 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
 
   // Form data
   $scope.data = {};
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+  // Acessando o storage local
+  var storage = new getLocalStorage();
+  var token = storage.get();
 
   // Perform the submit
   $scope.onSubmit = function() {
@@ -59,10 +68,6 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
     }
     else {
       // Tudo ok vamos iniciar a troca da senha
-      // Acessando o storage local
-      var storage = new getLocalStorage();
-      var token = storage.get();
-
       // acessando o recurso de API
      ChangePasswordResource.update({ token: token, password: password1 })
       .$promise
@@ -76,7 +81,5 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
         });
 
      }
-
-
   };
 });

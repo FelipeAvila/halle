@@ -5,6 +5,16 @@ app.controller('feedbackController', function($scope, $rootScope, $state, $http,
 
   // Form data
   $scope.data = {};
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+  // Acessando o storage local
+  var storage = new getLocalStorage();
+  var token = storage.get();
+
 
   // Perform the submit
   $scope.onSubmit = function() {
@@ -43,10 +53,6 @@ app.controller('feedbackController', function($scope, $rootScope, $state, $http,
       $scope.error = true;
     }
     else {
-      // Acessando o storage local
-      var storage = new getLocalStorage();
-      var token = storage.get();
-
       var info = {'token': token, 'subject': subject, 'description': description};
       // acessando o recurso de API
      FeedbackResource.save({}, info)

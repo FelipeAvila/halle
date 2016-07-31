@@ -1,8 +1,17 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, MessageSendResource, InvitePhoneNumberResource, MessageReceiveResource) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource) {
   $scope.contacts = {};
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+  // Acessando o storage local
+  var storage = new getLocalStorage();
+  var token = storage.get();
 
   // INIT home
   $scope.goHome = function() {
@@ -12,10 +21,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
   // INIT getAllContacts
   $scope.getAllContacts = function() {
-
-    // Acessando o storage local
-    var storage = new getLocalStorage();
-    var token = storage.get();
 
     var name = "";
     var phoneFriend = "";
@@ -46,37 +51,10 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
             }
           });
-
-          goHome();
       });
   };
   // FINAL getAllContacts
 
-  // INIT SEND message
-  $scope.sendMessage = function(phoneFriend) {
-    var messageTypeId = 0;
-
-    // Acessando o storage local
-    var storage = new getLocalStorage();
-    var token = storage.get();
-
-    var info = {'token': token, 'phoneFriend': phoneFriend, 'messageTypeId': messageTypeId};
-    // acessando o recurso de API
-   MessageSendResource.save({}, info)
-    .$promise
-      .then(function(data) {
-        $scope.Success = true;
-        $scope.msgSuccess =  data.message;
-        showAlert();
-
-      },
-      function(error) {
-        $scope.error = true;
-        $scope.msgError =  error.data.message;
-      });
-      $state.go("home.friendslist");
-  }
-  // END SEND message
 
 
  // INIT DELETE PHONE - A confirm dialog
@@ -89,11 +67,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
    });
 
    confirmPopup.then(function(res) {
-
      // Tudo ok vamos iniciar a troca da senha
-     // Acessando o storage local
-     var storage = new getLocalStorage();
-     var token = storage.get();
 
      if(res) {
        // removendo a conta
@@ -140,7 +114,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
    confirmPopup.then(function(res) {
      if(res) {
        // Acessando o storage local
-       var storage = new getLocalStorage();
        storage.remove();
 
        // redirecionando para o Login
@@ -149,15 +122,5 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
    });
  };
  // END EXIT
-
- $scope.showAlert = function() {
-   $ionicPopup.alert({
-     title: 'Success',
-     content: 'Hello World!!!'
-   }).then(function(res) {
-     console.log('Test Alert Box');
-   });
- };
-
 
 });

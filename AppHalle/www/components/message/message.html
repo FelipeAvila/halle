@@ -1,12 +1,10 @@
 <ion-modal-view  ng-init="onLoad()">
   <ion-content scroll="false">
     <br/><br/><br/><br/>
-
     <ion-slide-box show-pager="true">
-
+      
       <ion-slide ng-repeat="item in messagelist">
-          {{item.nickname}}
-          <h1>{{item.messageType.description}}</h1>
+          <h1>{{item.nickname}}{{item.messageType.description}}</h1>
       </ion-slide>
 
     </ion-slide-box>

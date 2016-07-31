@@ -2,7 +2,13 @@ var app = angular.module('halleApp.startController', []);
 
 // Controler da pagina de start
 app.controller('startController', function($scope, $rootScope, $timeout, $ionicLoading, $state, $location, ValidTokenResource) {
-   // Setup the loader
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+
    $ionicLoading.show({
      content: '',
      template : '<div class="spacer" style="width: auto; height: 250px;"></div><i class="ion-loading-c">espalhe <strong>A paz do Senhor</strong> no mundo</i>',

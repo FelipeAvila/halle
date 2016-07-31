@@ -5,14 +5,18 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // Form data
   $scope.data = {};
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+  // Acessando o storage local
+  var storage = new getLocalStorage();
+  var token = storage.get();
 
   // INICIO LOAD
   $scope.onLoad = function() {
-
-     // Acessando o storage local
-     var storage = new getLocalStorage();
-     var token = storage.get();
-
       // acessando o recurso de API
      MessageReceiveResource.get({ token: token })
       .$promise
@@ -23,18 +27,5 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
       });
   };
   //FINAL LOAD
-
-    $scope.data.slides = [
-        {
-            title : "Slide 1",
-            data  : "Slide 1 Content"
-        },
-        {
-            title : "Slide 2",
-            data  : "Slide 2 Content"
-        }
-    ];
-
-
 
 });

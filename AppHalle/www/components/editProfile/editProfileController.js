@@ -5,12 +5,17 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
 
   // Form data
   $scope.data = {};
+  // mensagem de erro
+  $scope.error = false;
+  $scope.msgError = "";
+  // mensagem de OK
+  $scope.Success = false;
+  $scope.msgSuccess = "";
+  // Acessando o storage local
+  var storage = new getLocalStorage();
+  var token = storage.get();
 
   $scope.onLoad = function() {
-
-    // Acessando o storage local
-    var storage = new getLocalStorage();
-    var token = storage.get();
 
     // acessando o recurso de API
    FindUserResource.get({ token: token })
@@ -49,10 +54,6 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
       $scope.error = true;
     }
     else {
-      // Acessando o storage local
-      var storage = new getLocalStorage();
-      var token = storage.get();
-
       var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': birthday, 'email': email};
       // acessando o recurso de API
      EditUserResource.save({}, info)
