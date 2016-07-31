@@ -1,14 +1,25 @@
 <ion-side-menus>
-
   <ion-pane ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
+
+      <ion-nav-back-button class="button-icon ion-arrow-left-c">
+      </ion-nav-back-button>
+      <ion-nav-buttons side="right">
+        <button class="button icon ion-refresh" ng-click="getAllContacts()"></<button>
+        <button class="button icon ion-home" ng-click="goHome()"></button>
+      </ion-nav-buttons>
+
     </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    <ion-nav-view name="menuContent" animation="slide-left-right">
+      <div class="bar bar-header bar-positive">
+            <h1 class="title">{{message.title}}</h1>
+      </div>
+    </ion-nav-view>
   </ion-pane>
 
   <ion-side-menu side="left">
     <ion-header-bar class="navbar-color">
-      <h1 class="h1-terms">Menu</h1>
+      <h1 class="h1-terms"></h1>
     </ion-header-bar>
     <ion-content class="has-header">
       <ion-list>
@@ -22,7 +33,7 @@
           {{  message.homeMenuInvitePhone }}
         </ion-item>
         <ion-item menu-close class="text-menu" href="#/home/editProfile">
-              <i class="fa fa-user" aria-hidden="true" style="font-size:20px;color:#2b98d5;"></i> &nbsp 
+              <i class="fa fa-user" aria-hidden="true" style="font-size:20px;color:#2b98d5;"></i> &nbsp
           {{  message.homeMenuProfile }}
         </ion-item>
         <ion-item menu-close  class="text-menu" href="#/home/changePassword">
@@ -39,9 +50,6 @@
         </ion-item>
         <ion-item menu-close  class="text-menu" ng-click="showExit()">
                <i class="fa fa-times-circle"  aria-hidden="true" style="font-size:20px;color:#2b98d5;"></i> &nbsp
-            
-            
-            
           {{  message.homeMenuSair }}
         </ion-item>
       </ion-list>
