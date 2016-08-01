@@ -2,11 +2,20 @@
   <ion-content scroll="false">
     <br/><br/><br/><br/>
     <ion-slide-box show-pager="true">
-      
-      <ion-slide ng-repeat="item in messagelist">
-          <h1>{{item.nickname}}{{item.messageType.description}}</h1>
-      </ion-slide>
 
+      <ion-slide ng-repeat="item in messagelist">
+        <div class="box">
+            {{item.nickname}}{{item.messageType.description}}
+            <br/><br/><br/><br/>
+            <div class="message">
+              <hr/>
+              {{message.messageReply}} {{item.nickname}}
+              <br/>
+              <hr/>
+              {{message.messageAdd}} {{item.nickname}}
+            </div>
+        </div>
+      </ion-slide>
     </ion-slide-box>
   </ion-content>
 </ion-modal-view>

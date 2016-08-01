@@ -58,8 +58,8 @@
   "forgotCopyPass" : "Anote a sua nova senha.",
 
   "homeMenu" : "Menu",
-  "homeMenuInvite" : "Convidar amigos contatos",
-  "homeMenuInvitePhone" : "Convidar amigos telefone",
+  "homeMenuInvite" : "Adicionar irmãos - contatos",
+  "homeMenuInvitePhone" : "Adicionar irmão",
   "homeMenuProfile" : "Editar perfil",
   "homeMenuForgotPwd" : "Esqueci minha senha",
   "homeMenuChangePwd" : "Trocar a senha",
@@ -67,14 +67,14 @@
   "homeMenuFeedback" : "Feedback",
   "homeMenuSair" : "Sair",
 
-  "inviteContacts" : "Convidar amigo",
-  "inviteContactsName" : "Nome do amigo",
+  "inviteContacts" : "Adicionar irmão",
+  "inviteContactsName" : "Nome do irmão",
   "inviteContactsPhone" : "Telefone",
   "inviteContactsSendInvite" : "Enviar",
   "inviteContactsInvalid": "Telefone inválido!",
   "inviteContactsName": "Você precisa informar um nome.",
   "inviteContactsError": "Ocorreu um erro ao enviar o convite.",
-  "inviteContactsSend" : "Enviar convite",
+  "inviteContactsSend" : "Adicionar",
 
   "changePassword" : "Trocar a Senha",
   "changePasswordNewPwd" : "Nova Senha",
@@ -110,6 +110,9 @@
   "deletePhone" : "Remover conta do Halle",
   "deleteError": "Não foi possível remover a sua conta",
 
-  "friendMessageReceive" : "Mensagens Recebidas"
+  "friendMessageReceive" : "Mensagens Recebidas",
+
+  "messageReply": "Responder o ",
+  "messageAdd": "Adicione o "
 
 }
