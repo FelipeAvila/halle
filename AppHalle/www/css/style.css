@@ -150,11 +150,24 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
-    color:#2b98d5;
+   /**** background: rgba(43, 152, 213,.5);
+    background-image: url("../img/fundoAzul.jpg");***/
+    
+   background:  #2b98d5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  color: #fff;    /********#2b98d5;************/
     text-align: center;
     font-family: Helvetica Neue;
     font-size: 24px;
     font-weight: 400;
+}
+.msgcard{
+    color: #fff; 
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 2px;
+    
 }
 
 /****************AVATAR*******************************/
