@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $state, $ionicPopup, FriendsListResource, MessageSendResource, MessageReceiveResource) {
+app.controller('friendsListController', function($scope, $rootScope, $state, $interval, $ionicPopup, FriendsListResource, MessageSendResource, MessageReceiveResource) {
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -9,60 +9,75 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $io
   $scope.msgSuccess = "";
   // Acessando o storage local
   var storage = new getLocalStorage();
-  var token = storage.get();
+
   // Lista de amigos
   $scope.friendslist = {};
   // Total de mensagens recebidas
   $scope.amountMessage = 0;
 
+  // Inicio INIT
+  $scope.init = function() {
+    // get Token
+    var token = storage.get();
+
+     // acessando o recurso de API
+    MessageReceiveResource.get({ token: token })
+     .$promise
+     .then(function(data) {
+       $scope.messagelist = data;
+       if (data != null) {
+         $scope.Success = true;
+         $scope.amountMessage = data.length;
+       }
+     }, function(error) {
+     });
+
+     // acessando o recurso de API
+    FriendsListResource.get({ token: token })
+     .$promise
+     .then(function(data) {
+       $scope.friendslist = data;
+     }, function(error) {
+     });
+     $scope.$broadcast('scroll.refreshComplete');
+
+  }
+  //FINAL INIT
+
+  // onLoad
   $scope.onLoad = function() {
 
-    // acessando o recurso de API
-   MessageReceiveResource.get({ token: token })
-    .$promise
-    .then(function(data) {
-      $scope.messagelist = data;
-      if (data != null) {
-        $scope.Success = true;
-        $scope.amountMessage = data.length;
-      }
-    }, function(error) {
-    });
+    $interval(function(){
+      $scope.init();
+    }, 5000);
 
-    // acessando o recurso de API
-   FriendsListResource.get({ token: token })
-    .$promise
-    .then(function(data) {
-      $scope.friendslist = data;
-    }, function(error) {
-    });
-     $scope.$broadcast('scroll.refreshComplete');
+    $scope.init();
   }
 
   // INIT SEND message
   $scope.sendMessage = function(phoneFriend) {
-    var messageTypeId = 0;
+      var messageTypeId = 0;
+      var token = storage.get();
 
-    var info = {'token': token, 'phoneFriend': phoneFriend, 'messageTypeId': messageTypeId};
-    // acessando o recurso de API
-   MessageSendResource.save({}, info)
-    .$promise
-      .then(function(data) {
-        $scope.Success = true;
-        $scope.msgSuccess =  data.message;
+      var info = {'token': token, 'phoneFriend': phoneFriend, 'messageTypeId': messageTypeId};
+      // acessando o recurso de API
+     MessageSendResource.save({}, info)
+      .$promise
+        .then(function(data) {
+          $scope.Success = true;
+          $scope.msgSuccess =  data.message;
 
-        $ionicPopup.alert({
-          title: $rootScope.message.title,
-          content: $rootScope.message.messageSendSuccess
-        }).then(function(res) {
-          console.log('Test Alert Box');
+          $ionicPopup.alert({
+            title: $rootScope.message.title,
+            content: $rootScope.message.messageSendSuccess
+          }).then(function(res) {
+          });
+        },
+        function(error) {
+          $scope.error = true;
+          $scope.msgError =  error.data.message;
         });
-      },
-      function(error) {
-        $scope.error = true;
-        $scope.msgError =  error.data.message;
-      });
-      $state.go("home.friendslist");
+        $state.go("home.friendslist");
   }
   // END SEND message
 

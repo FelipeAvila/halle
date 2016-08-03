@@ -14,21 +14,17 @@
       <input type="search" placeholder="Search">
     </label>
 
-    <span ng-if="Success">
+    <span ng-if="amountMessage > 0">
       <div class="card">
         <p>{{ amountMessage }}</p>
-          <p><a
-                
-                href="#/home/message" class="msgcard" >{{ message.friendMessageReceive }}
-              
-              </a></p>
+          <p><a href="#/home/message">{{ message.friendMessageReceive }}</a></p>
       </div>
     </span>
 
     <ion-list>
       <ion-item class="item item item-avatar" ng-repeat="item in friendslist">
         <img ng-src="avatar\128-7.jpg" alt="" class="ItemImg" ng-click="sendMessage('{{item.phoneFriend}}')"/>
-        <h2>  {{item.name}}</h2>
+        <h2>{{item.name}}</h2>
       </ion-item>
     </ion-list>
 

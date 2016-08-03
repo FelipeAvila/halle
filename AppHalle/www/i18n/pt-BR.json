@@ -7,6 +7,7 @@
   "cancel": "Cancelar",
   "exitMessage": "Tem certeza que desaja sair?",
   "refresh" : "Atualizando...",
+  "ok": "OK",
 
   "online": "Você não esta online!",
   "messageSendSuccess": "A PAZ do SENHOR foi enviada!",
@@ -112,7 +113,9 @@
 
   "friendMessageReceive" : "Mensagens Recebidas",
 
-  "messageReply": "Responder o ",
-  "messageAdd": "Adicione o "
-
+  "messageReply": "Responder",
+  "messageAdd": "Adicionar amigo",
+  "messageFriend": "como amigo",
+  "messageInviteSuccess" : "Amigo incluído!",
+  "messageFriendName" : "Confirme o nome do irmão"
 }

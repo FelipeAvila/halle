@@ -115,3 +115,11 @@ app.factory('MessageSendResource', function ($resource, ApiEndpoint) {
                          );
     return data;
 });
+
+app.factory('MessageUpdateResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/message/update/:token/:messageid',
+                                        {token: '@token', messageid : '@messageid' },
+                                        {save:   {method:'POST'}}
+                                    );
+    return data;
+});

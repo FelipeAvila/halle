@@ -19,6 +19,12 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
 
   // Ação submit
   $scope.submit = function(login, phone, password) {
+    // mensagem de erro
+    $scope.error = false;
+    $scope.msgError = "";
+    // mensagem de OK
+    $scope.Success = false;
+    $scope.msgSuccess = "";
 
     // Validação
     // senha
