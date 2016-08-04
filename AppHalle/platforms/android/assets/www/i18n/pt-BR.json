@@ -11,6 +11,7 @@
 
   "online": "Você não esta online!",
   "messageSendSuccess": "A PAZ do SENHOR foi enviada!",
+  "messageSendError": "Você precisa completar o cadastro para compartilhar a PAZ do SENHOR.",
 
   "login" : "Login",
   "loginCreate": "Faça Parte",
