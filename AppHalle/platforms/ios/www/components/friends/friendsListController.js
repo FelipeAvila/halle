@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $state, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource) {
+app.controller('friendsListController', function($scope, $rootScope, $state, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource) {
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -54,8 +54,6 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
     $scope.init();
   }
 
-
-
   // INIT SEND message
   $scope.sendMessage = function(phoneFriend) {
       var messageTypeId = 0;
@@ -69,17 +67,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
           $scope.Success = true;
           $scope.msgSuccess =  data.message;
 
-          var message = 'teste';
-          var image = null;
-          var link = null;
-          $cordovaSocialSharing
-             .shareViaWhatsApp(message, image, link)
-             .then(function(result) {
-               // Success!
-             }, function(err) {
-               // An error occurred. Show a message to the user
-             });
-
+          $scope.share();
 
           $ionicPopup.alert({
             title: $rootScope.message.title,
@@ -95,5 +83,29 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
   }
   // END SEND message
 
+  $scope.share = function() {
+    var token = storage.get();
+
+    //$cordovaSocialSharing.shareViaSMS('Você tem uma mensagem no halle.', phoneFriend);
+
+    // acessando o recurso de API
+   FindUserResource.get({ token: token })
+    .$promise
+      .then(function(data) {
+          $scope.data = data;
+          if ($scope.data.nickname != null) {
+            $cordovaSocialSharing.share($scope.data.name + ', deseja a PAZ do SENHOR.', 'Enviado via halle', null, 'http://www.halle.com');
+          }
+          else {
+            $ionicPopup.alert({
+              title: $rootScope.message.title,
+              content: $rootScope.message.messageSendError
+            }).then(function(res) {
+            });
+          }
+      },
+      function(error) {
+      });
+  }
 
 });

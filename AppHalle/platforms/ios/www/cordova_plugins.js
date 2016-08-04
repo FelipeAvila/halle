@@ -122,12 +122,12 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-contacts": "2.1.0",
     "cordova-plugin-device": "1.1.2",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.1",
-    "ionic-plugin-keyboard": "2.2.1"
+    "ionic-plugin-keyboard": "2.2.1",
+    "cordova-plugin-compat": "1.0.0"
 };
 // BOTTOM OF METADATA
 });
