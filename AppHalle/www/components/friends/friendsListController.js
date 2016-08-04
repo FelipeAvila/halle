@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $state, $interval, $ionicPopup, FriendsListResource, MessageSendResource, MessageReceiveResource) {
+app.controller('friendsListController', function($scope, $rootScope, $state, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource) {
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -54,6 +54,8 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
     $scope.init();
   }
 
+
+
   // INIT SEND message
   $scope.sendMessage = function(phoneFriend) {
       var messageTypeId = 0;
@@ -66,6 +68,18 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
         .then(function(data) {
           $scope.Success = true;
           $scope.msgSuccess =  data.message;
+
+          var message = 'teste';
+          var image = null;
+          var link = null;
+          $cordovaSocialSharing
+             .shareViaWhatsApp(message, image, link)
+             .then(function(result) {
+               // Success!
+             }, function(err) {
+               // An error occurred. Show a message to the user
+             });
+
 
           $ionicPopup.alert({
             title: $rootScope.message.title,
@@ -80,5 +94,6 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
         $state.go("home.friendslist");
   }
   // END SEND message
+
 
 });
