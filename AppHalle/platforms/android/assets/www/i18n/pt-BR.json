@@ -1,0 +1,121 @@
+{
+  "title" : "halle",
+
+  "back" : "Voltar",
+
+  "exit" : "Sair",
+  "cancel": "Cancelar",
+  "exitMessage": "Tem certeza que desaja sair?",
+  "refresh" : "Atualizando...",
+  "ok": "OK",
+
+  "online": "Você não esta online!",
+  "messageSendSuccess": "A PAZ do SENHOR foi enviada!",
+
+  "login" : "Login",
+  "loginCreate": "Faça Parte",
+  "loginPwd": "Senha",
+  "loginBtnEnter": "Entrar",
+  "loginForgotPwd": "Esqueci minha senha",
+
+  "loginError": "Ocorreu um problema, favor verificar a sua conexão.",
+
+  "loginRequired": "O login é obrigatório.",
+  "loginMinlength": "O login precisa ter mais do que 5 caracteres.",
+  "loginMaxlength": "O login precisa ter no máximo 50 caracteres.",
+
+  "loginPwdRequired": "A senha é obrigatório.",
+  "loginPwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
+  "loginPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+
+  "createTitle" : "halle - Faça parte!",
+  "createLogin" : "Login",
+  "createPhone": "Telefone",
+  "createPwd": "Senha",
+  "createBtnEnter": "Vamos lá",
+  "createConfirm": "Código de confirmação",
+
+  "createLoginRequired": "O login é obrigatório.",
+  "createLoginMinlength": "O login precisa ter mais do que 5 caracteres.",
+  "createLoginMaxlength": "O login precisa ter no máximo 50 caracteres.",
+
+  "createPhoneRequired": "O telefone inválido.",
+
+  "createPwdRequired": "A senha é obrigatório.",
+  "createPwdMinlength": "A senha precisa ter mais do que 5 caracteres.",
+  "createPwdMaxlength": "A senha precisa ter no máximo 8 caracteres.",
+
+  "forgotTitle" : "Esqueci minha senha",
+  "forgotLogin" : "Login",
+  "forgotPhone" : "Telefone",
+  "forgotBtnEnter" : "Solicitar",
+
+  "forgotRequired": "O login é obrigatório.",
+  "forgotMinlength": "O login precisa ter mais do que 5 caracteres.",
+  "forgotMaxlength": "O login precisa ter no máximo 50 caracteres.",
+
+  "forgotRequired": "O telefone inválido.",
+  "forgotError": "Ocorreu um problema, favor verificar a sua conexão.",
+  "forgotCopyPass" : "Anote a sua nova senha.",
+
+  "homeMenu" : "Menu",
+  "homeMenuInvite" : "Adicionar irmãos - contatos",
+  "homeMenuInvitePhone" : "Adicionar irmão",
+  "homeMenuProfile" : "Editar perfil",
+  "homeMenuForgotPwd" : "Esqueci minha senha",
+  "homeMenuChangePwd" : "Trocar a senha",
+  "homeMenuDeleteCount" : "Remover conta",
+  "homeMenuFeedback" : "Feedback",
+  "homeMenuSair" : "Sair",
+
+  "inviteContacts" : "Adicionar irmão",
+  "inviteContactsName" : "Nome do irmão",
+  "inviteContactsPhone" : "Telefone",
+  "inviteContactsSendInvite" : "Enviar",
+  "inviteContactsInvalid": "Telefone inválido!",
+  "inviteContactsName": "Você precisa informar um nome.",
+  "inviteContactsError": "Ocorreu um erro ao enviar o convite.",
+  "inviteContactsSend" : "Adicionar",
+
+  "changePassword" : "Trocar a Senha",
+  "changePasswordNewPwd" : "Nova Senha",
+  "changePasswordNewPwd2" : "Confirme",
+  "changePasswordSend" : "Enviar",
+
+  "changePwdRequired": "A nova senha é obrigatório.",
+  "changePwdRequired2": "A confirmação da senha é obrigatório.",
+  "changePwdMinlength": "A nova senha precisa ter mais do que 5 caracteres.",
+  "changePwdMaxlength": "A nova senha precisa ter no máximo 8 caracteres.",
+  "changePwdMinlength2": "A confirmação da senha precisa ter mais do que 5 caracteres.",
+  "changePwdMaxlength2": "A confirmação da senha precisa ter no máximo 8 caracteres.",
+  "changePwdError": "Ocorreu um erro ao mudar a senha.",
+  "changePwdDif" : "Senhas diferentes.",
+
+  "feedbackSubject" : "Assunto",
+  "feedbackDescription" : "Descrição",
+  "feedbackRequired" : "Os campos são obrigatórios.",
+  "feedbackSubjectRequired" : "O campo assunto é obrigatório.",
+  "feedbackDescriptionRequired" : "O campo descrição é obrigatório.",
+  "feedbackDescriptionMaxlength": "O campo descrição precisa ter no máximo 5000 caracteres.",
+  "feedbacksubjectMaxlength" :  "O campo assunto precisa ter no máximo 500 caracteres.",
+  "feedbackSubmit" : "Enviar",
+
+  "editProfileName" : "Nome",
+  "editProfileNickname": "Apelido",
+  "editProfileBirthday" : "Data de nascimento",
+  "editProfileEmail" : "E-mail",
+  "editProfileSend" : "Enviar",
+  "editProfileInvalid": "Informações inválidas!",
+  "editProfileError": "Erro ao efetuar a alteração do cadastro.",
+
+  "deletePhone" : "Remover conta do Halle",
+  "deleteError": "Não foi possível remover a sua conta",
+
+  "friendMessageReceive" : "Mensagens Recebidas",
+
+  "messageReply": "Responder",
+  "messageAdd": "Adicionar amigo",
+  "messageFriend": "como amigo",
+  "messageInviteSuccess" : "Amigo incluído!",
+  "messageFriendName" : "Confirme o nome do irmão"
+}
