@@ -105,6 +105,21 @@ body {
   padding: 0px;
 
 }
+.button-base{
+    border-color: transparent;
+     box-shadow: none;
+   background: none;
+    font-size: 30px!important;
+}
+.button-blue{
+   color: #2b98d5;"
+}
+.button-white{
+
+    color: #fff;"
+
+}
+
 /****************** LINK **********************/
 
 /****************** FOOTER LOGIN **********************/
@@ -155,6 +170,21 @@ body {
     font-family: Helvetica Neue;
     font-size: 24px;
     font-weight: 400;
+}
+
+/****************TITLE********************************/
+.title {
+  color:#2b98d5;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 24px;
+}
+
+.subtitle {
+  color:#2b98d5;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 14px;
 }
 
 /****************AVATAR*******************************/

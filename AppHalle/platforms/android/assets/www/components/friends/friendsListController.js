@@ -86,15 +86,13 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
   $scope.share = function() {
     var token = storage.get();
 
-    //$cordovaSocialSharing.shareViaSMS('Você tem uma mensagem no halle.', phoneFriend);
-
     // acessando o recurso de API
    FindUserResource.get({ token: token })
     .$promise
       .then(function(data) {
           $scope.data = data;
           if ($scope.data.nickname != null) {
-            $cordovaSocialSharing.share($scope.data.name + ', deseja a PAZ do SENHOR.', 'Enviado via halle', null, 'http://www.halle.com');
+            $cordovaSocialSharing.share($scope.data.name + $rootScope.message.messagePaz, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
           }
           else {
             $ionicPopup.alert({

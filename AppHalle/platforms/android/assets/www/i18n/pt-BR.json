@@ -8,10 +8,13 @@
   "exitMessage": "Tem certeza que desaja sair?",
   "refresh" : "Atualizando...",
   "ok": "OK",
+  "messageSend" : "Enviado via halle",
+  "messagePaz" : ", deseja a PAZ do SENHOR.",
 
   "online": "Você não esta online!",
   "messageSendSuccess": "A PAZ do SENHOR foi enviada!",
   "messageSendError": "Você precisa completar o cadastro para compartilhar a PAZ do SENHOR.",
+
 
   "login" : "Login",
   "loginCreate": "Faça Parte",
@@ -61,6 +64,7 @@
 
   "homeMenu" : "Menu",
   "homeMenuInvite" : "Adicionar irmãos - contatos",
+  "homeMenuInviteFriend" : "Indicar",
   "homeMenuInvitePhone" : "Adicionar irmão",
   "homeMenuProfile" : "Editar perfil",
   "homeMenuForgotPwd" : "Esqueci minha senha",
@@ -113,10 +117,21 @@
   "deleteError": "Não foi possível remover a sua conta",
 
   "friendMessageReceive" : "Mensagens Recebidas",
-
   "messageReply": "Responder",
   "messageAdd": "Adicionar amigo",
   "messageFriend": "como amigo",
   "messageInviteSuccess" : "Amigo incluído!",
-  "messageFriendName" : "Confirme o nome do irmão"
+  "messageFriendName" : "Confirme o nome do irmão",
+
+  "inviteFriendTitle" : "Indicar Amigos",
+  "inviteFriendSubTitle" : "Gostou do halle?",
+  "inviteFriendSubTitle2" : "Agora você pode indicar amigos para",
+  "inviteFriendSubTitle3" : "experimentar antes de todo mundo.",
+  "inviteFriendNameFriend" : "Nome do amigo",
+  "inviteFriendEmail" : "E-mail",
+  "inviteFriendWhatsapp" : "Whatsapp",
+  "inviteFriendFacabook" : "Facebook",
+  "inviteFriendMessage" : "Este é um convite para você participar do Halle o aplicativo que está espalhando a Paz do Senhor pelo mundo! É só clicar aqui para baixar na Google play, aqui para iOS ou aqui para o site.",
+  "inviteFriendSubject" : "Você recebeu uma indicação para espalhar a Paz do Senhor pelo mundo!",
+  "inviteFriendFriend" : "AMIGOS"
 }
