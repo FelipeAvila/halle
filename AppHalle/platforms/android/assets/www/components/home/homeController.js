@@ -26,12 +26,18 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
     var phoneFriend = "";
 
       alert('Inicio da busca de contatos');
-      $cordovaContacts.find({filter : '', fields:  [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
-          alert('JSON com os contatos - ' + JSON.stringify(allContacts));
-          $scope.contacts = allContacts;
 
+      var opts = { //search options
+          filter: '', // 'Name'
+          multiple: true, // Yes, return any contact that matches criteria
+          fields: ['displayName', 'name']
+      };
+
+      $cordovaContacts.find(opts).then(function(allContacts) {
+        alert('JSON com os contatos - ' + JSON.stringify(allContacts));
+
+          $scope.contacts = allContacts;
           angular.forEach(allContacts, function(item, index){
-            alert('JSON contato - ' + JSON.stringify(item));
 
             if (item.displayName != null && item.phoneNumbers != null) {
               var p = item.phoneNumbers[0].value.replace(/ /g,'');
@@ -55,8 +61,13 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
               }
 
             }
+          }, function(error) {
+             console.log('Ocorreu um erro!');
+             console.log(JSON.stringify(error));
+
           });
       });
+
   };
   // FINAL getAllContacts
 
