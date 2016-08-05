@@ -1,6 +1,6 @@
 {
-    "AddressBook.framework": 2,
-    "AddressBookUI.framework": 2,
-    "Social.framework": 2,
-    "MessageUI.framework": 2
+    "AddressBook.framework": 1,
+    "AddressBookUI.framework": 1,
+    "Social.framework": 1,
+    "MessageUI.framework": 1
 }

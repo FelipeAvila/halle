@@ -21,20 +21,17 @@
 
 var fs = require('fs');
 var path = require('path');
-var unorm = require('unorm');
-var projectFile = require('./lib/projectFile');
 
 var CordovaError = require('cordova-common').CordovaError;
 var CordovaLogger = require('cordova-common').CordovaLogger;
 var events = require('cordova-common').events;
-var PluginManager = require('cordova-common').PluginManager;
 
 function setupEvents(externalEventEmitter) {
     if (externalEventEmitter) {
         // This will make the platform internal events visible outside
         events.forwardEventsTo(externalEventEmitter);
     } else {
-        // There is no logger if external emitter is not present,
+        // There is no logger if external emitter is not present, 
         // so attach a console logger
         CordovaLogger.get().subscribe(events);
     }
@@ -111,13 +108,8 @@ function Api(platform, platformRootDir, events) {
 Api.createPlatform = function (destination, config, options, events) {
     setupEvents(events);
 
-    // CB-6992 it is necessary to normalize characters
-    // because node and shell scripts handles unicode symbols differently
-    // We need to normalize the name to NFD form since iOS uses NFD unicode form
-    var name = unorm.nfd(config.name());
-
     return require('../../../lib/create')
-    .createProject(destination, config.packageName(), name, options)
+    .createProject(destination, config.packageName(), config.name(), options)
     .then(function () {
         // after platform is created we return Api instance based on new Api.js location
         // This is required to correctly resolve paths in the future api calls
@@ -206,20 +198,8 @@ Api.prototype.prepare = function (cordovaProject) {
  *   CordovaError instance.
  */
 Api.prototype.addPlugin = function (plugin, installOptions) {
-    var xcodeproj = projectFile.parse(this.locations);
-
-    installOptions = installOptions || {};
-    installOptions.variables = installOptions.variables || {};
-    // Add PACKAGE_NAME variable into vars
-    if (!installOptions.variables.PACKAGE_NAME) {
-        installOptions.variables.PACKAGE_NAME = xcodeproj.getPackageName();
-    }
-
-    return PluginManager.get(this.platform, this.locations, xcodeproj)
-        .addPlugin(plugin, installOptions)
-        // CB-11022 return non-falsy value to indicate
-        // that there is no need to run prepare after
-        .thenResolve(true);
+    var Plugman = require('./lib/plugman/Plugman');
+    return Plugman.get(this.locations).addPlugin(plugin, installOptions);
 };
 
 /**
@@ -236,13 +216,8 @@ Api.prototype.addPlugin = function (plugin, installOptions) {
  *   CordovaError instance.
  */
 Api.prototype.removePlugin = function (plugin, uninstallOptions) {
-
-    var xcodeproj = projectFile.parse(this.locations);
-    return PluginManager.get(this.platform, this.locations, xcodeproj)
-        .removePlugin(plugin, uninstallOptions)
-        // CB-11022 return non-falsy value to indicate
-        // that there is no need to run prepare after
-        .thenResolve(true);
+    var Plugman = require('./lib/plugman/Plugman');
+    return Plugman.get(this.locations).removePlugin(plugin, uninstallOptions);
 };
 
 /**
@@ -316,9 +291,6 @@ Api.prototype.clean = function(cleanOptions) {
     return require('./lib/check_reqs').run()
     .then(function () {
         return require('./lib/clean').run.call(self, cleanOptions);
-    })
-    .then(function () {
-        return require('./lib/prepare').clean.call(self, cleanOptions);
     });
 };
 

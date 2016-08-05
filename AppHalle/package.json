@@ -25,7 +25,7 @@
     "cordova-plugin-x-socialsharing"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }
