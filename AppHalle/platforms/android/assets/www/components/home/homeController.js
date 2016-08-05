@@ -25,9 +25,14 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
     var name = "";
     var phoneFriend = "";
 
+      alert('Inicio da busca de contatos');
       $cordovaContacts.find({filter : '', fields:  [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
+          alert('JSON com os contatos - ' + JSON.stringify(allContacts));
           $scope.contacts = allContacts;
+
           angular.forEach(allContacts, function(item, index){
+            alert('JSON contato - ' + JSON.stringify(item));
+
             if (item.displayName != null && item.phoneNumbers != null) {
               var p = item.phoneNumbers[0].value.replace(/ /g,'');
               var p1 = p.replace(/-/g,'');
