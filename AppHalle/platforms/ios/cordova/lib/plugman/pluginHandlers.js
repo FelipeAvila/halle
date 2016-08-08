@@ -50,8 +50,8 @@ var handlers = {
             var src = obj.src,
                 srcFile = path.resolve(plugin.dir, src),
                 destFile = path.resolve(project.resources_dir, path.basename(src));
-            if (!fs.existsSync(srcFile)) throw new CordovaError('Cannot find resource file "' + srcFile + '" for plugin ' + plugin.id + ' in iOS platform');
-            if (fs.existsSync(destFile)) throw new CordovaError('File already exists at detination "' + destFile + '" for resource file specified by plugin ' + plugin.id + ' in iOS platform');
+            if (!fs.existsSync(srcFile)) throw new CordovaError('cannot find "' + srcFile + '" ios <resource-file>');
+            if (fs.existsSync(destFile)) throw new CordovaError('target destination "' + destFile + '" already exists');
             project.xcode.addResourceFile(path.join('Resources', path.basename(src)));
             shell.cp('-R', srcFile, project.resources_dir);
         },
@@ -79,8 +79,8 @@ var handlers = {
 
             var srcFile = path.resolve(plugin.dir, src),
                 targetDir = path.resolve(project.plugins_dir, plugin.id, path.basename(src));
-            if (!fs.existsSync(srcFile)) throw new CordovaError('Cannot find framework "' + srcFile + '" for plugin ' + plugin.id + ' in iOS platform');
-            if (fs.existsSync(targetDir)) throw new CordovaError('Framework "' + targetDir + '" for plugin ' + plugin.id + ' already exists in iOS platform');
+            if (!fs.existsSync(srcFile)) throw new CordovaError('cannot find "' + srcFile + '" ios <framework>');
+            if (fs.existsSync(targetDir)) throw new CordovaError('target destination "' + targetDir + '" already exists');
             shell.mkdir('-p', path.dirname(targetDir));
             shell.cp('-R', srcFile, path.dirname(targetDir)); // frameworks are directories
             // CB-10773 translate back slashes to forward on win32
@@ -118,44 +118,43 @@ var handlers = {
     },
     'lib-file': {
         install:function(obj, plugin, project, options) {
-            events.emit('verbose', '<lib-file> install is not supported for iOS plugins');
+            events.emit('verbose', 'lib-file.install is not supported for ios');
         },
         uninstall:function(obj, plugin, project, options) {
-            events.emit('verbose', '<lib-file> uninstall is not supported for iOS plugins');
+            events.emit('verbose', 'lib-file.uninstall is not supported for ios');
         }
     },
     'asset':{
         install:function(obj, plugin, project, options) {
             if (!obj.src) {
-                throw new CordovaError(generateAttributeError('src', 'asset', plugin.id));
+                throw new CordovaError('<asset> tag without required "src" attribute. plugin=' + plugin.dir);
             }
             if (!obj.target) {
-                throw new CordovaError(generateAttributeError('target', 'asset', plugin.id));
+                throw new CordovaError('<asset> tag without required "target" attribute');
             }
 
-            copyFile(plugin.dir, obj.src, project.www, obj.target);
-            if (options && options.usePlatformWww) copyFile(plugin.dir, obj.src, project.platformWww, obj.target);
+            var www = options.usePlatformWww ? project.platformWww : project.www;
+
+            copyFile(plugin.dir, obj.src, www, obj.target);
         },
         uninstall:function(obj, plugin, project, options) {
             var target = obj.target;
 
             if (!target) {
-                throw new CordovaError(generateAttributeError('target', 'asset', plugin.id));
+                throw new Error('<asset> tag without required "target" attribute');
             }
 
-            removeFile(project.www, target);
+            var www = options.usePlatformWww ? project.platformWww : project.www;
+
+            removeFile(www, target);
             removeFileF(path.resolve(project.www, 'plugins', plugin.id));
-            if (options && options.usePlatformWww) {
-                removeFile(project.platformWww, target);
-                removeFileF(path.resolve(project.platformWww, 'plugins', plugin.id));
-            }
         }
     },
     'js-module': {
         install: function (obj, plugin, project, options) {
             // Copy the plugin's files into the www directory.
             var moduleSource = path.resolve(plugin.dir, obj.src);
-            var moduleName = plugin.id + '.' + (obj.name || path.basename(obj.src, path.extname (obj.src)));
+            var moduleName = plugin.id + '.' + (obj.name || path.parse(obj.src).name);
 
             // Read in the file, prepend the cordova.define, and write it back out.
             var scriptContent = fs.readFileSync(moduleSource, 'utf-8').replace(/^\ufeff/, ''); // Window BOM
@@ -164,19 +163,15 @@ var handlers = {
             }
             scriptContent = 'cordova.define("' + moduleName + '", function(require, exports, module) {\n' + scriptContent + '\n});\n';
 
-            var moduleDestination = path.resolve(project.www, 'plugins', plugin.id, obj.src);
+            var www = options.usePlatformWww ? project.platformWww : project.www;
+            var moduleDestination = path.resolve(www, 'plugins', plugin.id, obj.src);
             shell.mkdir('-p', path.dirname(moduleDestination));
             fs.writeFileSync(moduleDestination, scriptContent, 'utf-8');
-            if (options && options.usePlatformWww) {
-                var platformWwwDestination = path.resolve(project.platformWww, 'plugins', plugin.id, obj.src);
-                shell.mkdir('-p', path.dirname(platformWwwDestination));
-                fs.writeFileSync(platformWwwDestination, scriptContent, 'utf-8');
-            }
         },
         uninstall: function (obj, plugin, project, options) {
             var pluginRelativePath = path.join('plugins', plugin.id, obj.src);
-            removeFileAndParents(project.www, pluginRelativePath);
-            if (options && options.usePlatformWww) removeFileAndParents(project.platformWww, pluginRelativePath);
+            var www = options.usePlatformWww ? project.platformWww : project.www;
+            removeFileAndParents(www, pluginRelativePath);
         }
     }
 };
@@ -186,7 +181,7 @@ module.exports.getInstaller = function (type) {
         return handlers[type].install;
     }
 
-    events.emit('warn', '<' + type + '> is not supported for iOS plugins');
+    events.emit('warn', '<' + type + '> is not supported for ios plugins');
 };
 
 module.exports.getUninstaller = function(type) {
@@ -194,7 +189,7 @@ module.exports.getUninstaller = function(type) {
         return handlers[type].uninstall;
     }
 
-    events.emit('warn', '<' + type + '> is not supported for iOS plugins');
+    events.emit('warn', '<' + type + '> is not supported for ios plugins');
 };
 
 function installHelper(type, obj, plugin_dir, project_dir, plugin_id, options, project) {
@@ -277,13 +272,13 @@ function copyFile (plugin_dir, src, project_dir, dest, link) {
     var real_path = fs.realpathSync(src);
     var real_plugin_path = fs.realpathSync(plugin_dir);
     if (real_path.indexOf(real_plugin_path) !== 0)
-        throw new CordovaError('File "' + src + '" is located outside the plugin directory "' + plugin_dir + '"');
+        throw new CordovaError('"' + src + '" not located within plugin!');
 
     dest = path.resolve(project_dir, dest);
 
     // check that dest path is located in project directory
     if (dest.indexOf(project_dir) !== 0)
-        throw new CordovaError('Destination "' + dest + '" for source file "' + src + '" is located outside the project');
+        throw new CordovaError('"' + dest + '" not located within project!');
 
     shell.mkdir('-p', path.dirname(dest));
 
@@ -336,8 +331,4 @@ function removeFileAndParents (baseDir, destFile, stopper) {
             break;
         }
     }
-}
-
-function generateAttributeError(attribute, element, id) {
-    return 'Required attribute "' + attribute + '" not specified in <' + element + '> element from plugin: ' + id;
 }

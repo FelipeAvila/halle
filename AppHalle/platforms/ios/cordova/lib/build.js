@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -36,11 +36,11 @@ module.exports.run = function (buildOpts) {
     buildOpts = buildOpts || {};
 
     if (buildOpts.debug && buildOpts.release) {
-        return Q.reject('Cannot specify "debug" and "release" options together.');
+        return Q.reject('Only one of "debug"/"release" options should be specified');
     }
 
     if (buildOpts.device && buildOpts.emulator) {
-        return Q.reject('Cannot specify "device" and "emulator" options together.');
+        return Q.reject('Only one of "device"/"emulator" options should be specified');
     }
 
     if(buildOpts.buildConfig) {
@@ -48,8 +48,7 @@ module.exports.run = function (buildOpts) {
             return Q.reject('Build config file does not exist:' + buildOpts.buildConfig);
         }
         events.emit('log','Reading build config file:', path.resolve(buildOpts.buildConfig));
-        var contents = fs.readFileSync(buildOpts.buildConfig, 'utf-8');
-        var buildConfig = JSON.parse(contents.replace(/^\ufeff/, '')); // Remove BOM
+        var buildConfig = JSON.parse(fs.readFileSync(buildOpts.buildConfig, 'utf-8'));
         if(buildConfig.ios) {
             var buildType = buildOpts.release ? 'release' : 'debug';
             var config = buildConfig.ios[buildType];
@@ -81,9 +80,9 @@ module.exports.run = function (buildOpts) {
     }).then(function () {
         var configuration = buildOpts.release ? 'Release' : 'Debug';
 
-        events.emit('log','Building project: ' + path.join(projectPath, projectName + '.xcodeproj'));
-        events.emit('log','\tConfiguration: ' + configuration);
-        events.emit('log','\tPlatform: ' + (buildOpts.device ? 'device' : 'emulator'));
+        events.emit('log','Building project  : ' + path.join(projectPath, projectName + '.xcodeproj'));
+        events.emit('log','\tConfiguration : ' + configuration);
+        events.emit('log','\tPlatform      : ' + (buildOpts.device ? 'device' : 'emulator'));
 
         var xcodebuildArgs = getXcodeArgs(projectName, projectPath, configuration, buildOpts.device);
         return spawn('xcodebuild', xcodebuildArgs, projectPath);
@@ -146,10 +145,12 @@ function getXcodeArgs(projectName, projectPath, configuration, isDevice) {
         xcodebuildArgs = [
             '-xcconfig', path.join(__dirname, '..', 'build-' + configuration.toLowerCase() + '.xcconfig'),
             '-project', projectName + '.xcodeproj',
+            'ARCHS=armv7 arm64',
             '-target', projectName,
             '-configuration', configuration,
-            '-destination', 'platform=iOS',
+            '-sdk', 'iphoneos',
             'build',
+            'VALID_ARCHS=armv7 arm64',
             'CONFIGURATION_BUILD_DIR=' + path.join(projectPath, 'build', 'device'),
             'SHARED_PRECOMPS_DIR=' + path.join(projectPath, 'build', 'sharedpch')
         ];
@@ -157,11 +158,12 @@ function getXcodeArgs(projectName, projectPath, configuration, isDevice) {
         xcodebuildArgs = [
             '-xcconfig', path.join(__dirname, '..', 'build-' + configuration.toLowerCase() + '.xcconfig'),
             '-project', projectName + '.xcodeproj',
+            'ARCHS=i386',
             '-target', projectName ,
             '-configuration', configuration,
             '-sdk', 'iphonesimulator',
-            '-destination', 'platform=iOS Simulator',
             'build',
+            'VALID_ARCHS=i386',
             'CONFIGURATION_BUILD_DIR=' + path.join(projectPath, 'build', 'emulator'),
             'SHARED_PRECOMPS_DIR=' + path.join(projectPath, 'build', 'sharedpch')
         ];
