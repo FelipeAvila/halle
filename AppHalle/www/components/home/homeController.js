@@ -61,10 +61,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
               }
 
             }
-          }, function(error) {
-             console.log('Ocorreu um erro!');
-             console.log(JSON.stringify(error));
-
           });
       });
 
