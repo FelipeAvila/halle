@@ -119,6 +119,8 @@
   "deleteError": "Não foi possível remover a sua conta",
 
   "friendMessageReceive" : "Mensagens Recebidas",
+  "friendFilter" : "Filtrar amigos...",
+
   "messageReply": "Responder",
   "messageAdd": "Adicionar amigo",
   "messageFriend": "como amigo",
