@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.editProfileController', []);
 
 // Controller da pagina de criar usuario
-app.controller('editProfileController', function($scope, $rootScope, $state, $http, FindUserResource, EditUserResource) {
+app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource, UploadUserResource) {
 
   // Form data
   $scope.data = {};
@@ -15,8 +15,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
   var storage = new getLocalStorage();
   var token = storage.get();
 
+  // Inicio onload
   $scope.onLoad = function() {
-
     // acessando o recurso de API
    FindUserResource.get({ token: token })
     .$promise
@@ -29,8 +29,9 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
         $scope.msgError =  error.data.message;
       });
   }
+  // final onload
 
-  // Perform the submit action
+  // inicio onSubmit
   $scope.onSubmit = function() {
     // mensagem de erro
     $scope.error = false;
@@ -44,6 +45,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
     var nickname = $scope.data.nickname;
     var birthday = $scope.data.birthday;
     var email = $scope.data.email;
+    var photo = $scope.data.photo;
 
     // Validação
     if ($scope.data.$valid) {
@@ -54,7 +56,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
       $scope.error = true;
     }
     else {
-      var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': birthday, 'email': email};
+      var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': birthday, 'email': email, 'photo': photo};
       // acessando o recurso de API
      EditUserResource.save({}, info)
       .$promise
@@ -73,4 +75,29 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
         });
     }
   }
+  // final onSubmit
+
+  // inicio upload
+  $scope.photo = function() {
+    var options = {
+        quality: 60,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 250,
+        targetHeight: 250,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+    };
+
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+       //var srcImage = "data:image/jpeg;base64," + imageData;
+       $scope.data.photo = imageData;
+    }, function(err) {
+        // error
+    });
+  }
+  // final upload
+
 });

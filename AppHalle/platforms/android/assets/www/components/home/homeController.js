@@ -25,8 +25,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
     var name = "";
     var phoneFriend = "";
 
-      alert('Inicio da busca de contatos');
-
       var opts = { //search options
           filter: '', // 'Name'
           multiple: true, // Yes, return any contact that matches criteria
@@ -34,8 +32,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
       };
 
       $cordovaContacts.find(opts).then(function(allContacts) {
-        alert('JSON com os contatos - ' + JSON.stringify(allContacts));
-
           $scope.contacts = allContacts;
           angular.forEach(allContacts, function(item, index){
 
@@ -61,10 +57,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
               }
 
             }
-          }, function(error) {
-             console.log('Ocorreu um erro!');
-             console.log(JSON.stringify(error));
-
           });
       });
 

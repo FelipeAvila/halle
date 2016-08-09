@@ -63,9 +63,9 @@
   "forgotCopyPass" : "Anote a sua nova senha.",
 
   "homeMenu" : "Menu",
-  "homeMenuInvite" : "Adicionar irmãos - contatos",
+  "homeMenuInvite" : "Adicionar amigos - contatos",
   "homeMenuInviteFriend" : "Indicar",
-  "homeMenuInvitePhone" : "Adicionar irmão",
+  "homeMenuInvitePhone" : "Adicionar amigo",
   "homeMenuProfile" : "Editar perfil",
   "homeMenuForgotPwd" : "Esqueci minha senha",
   "homeMenuChangePwd" : "Trocar a senha",
@@ -112,6 +112,8 @@
   "editProfileSend" : "Enviar",
   "editProfileInvalid": "Informações inválidas!",
   "editProfileError": "Erro ao efetuar a alteração do cadastro.",
+  "editProfileUpload": "Carrgar Imagem",
+  "editProfilePhoto": "Foto",
 
   "deletePhone" : "Remover conta do Halle",
   "deleteError": "Não foi possível remover a sua conta",

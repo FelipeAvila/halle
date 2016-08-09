@@ -65,6 +65,16 @@ app.factory('EditUserResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
+app.factory('UploadUserResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/user/upload/:token',
+                                      {token: '@token' },
+                                      {save:   {method:'POST',
+                                                headers: [{enctype:'multipart/form-data'}]
+                                      }}
+                         );
+    return data;
+});
+
 
 app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/valid/:token',

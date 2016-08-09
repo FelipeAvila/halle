@@ -112,6 +112,8 @@
   "editProfileSend" : "Enviar",
   "editProfileInvalid": "Informações inválidas!",
   "editProfileError": "Erro ao efetuar a alteração do cadastro.",
+  "editProfileUpload": "Carrgar Imagem",
+  "editProfilePhoto": "Foto",
 
   "deletePhone" : "Remover conta do Halle",
   "deleteError": "Não foi possível remover a sua conta",

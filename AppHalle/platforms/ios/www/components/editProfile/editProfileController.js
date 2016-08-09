@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.editProfileController', []);
 
 // Controller da pagina de criar usuario
-app.controller('editProfileController', function($scope, $rootScope, $state, $http, FindUserResource, EditUserResource) {
+app.controller('editProfileController', function($scope, $rootScope, $state, FindUserResource, EditUserResource) {
 
   // Form data
   $scope.data = {};
@@ -15,8 +15,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
   var storage = new getLocalStorage();
   var token = storage.get();
 
+  // Inicio onload
   $scope.onLoad = function() {
-
     // acessando o recurso de API
    FindUserResource.get({ token: token })
     .$promise
@@ -29,8 +29,9 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
         $scope.msgError =  error.data.message;
       });
   }
+  // final onload
 
-  // Perform the submit action
+  // inicio onSubmit
   $scope.onSubmit = function() {
     // mensagem de erro
     $scope.error = false;
@@ -73,4 +74,14 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ht
         });
     }
   }
+  // final onSubmit
+
+  // inicio upload
+  $scope.photo = function() {
+
+
+
+  }
+  // final upload
+
 });

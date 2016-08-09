@@ -24,20 +24,23 @@
     <ion-list>
       <ion-item class="item-borderless"  ng-repeat="item in friendslist">
         <div class="row" >
-            <div class="col-10 ">&nbsp;</div>
-            <div class="col-80  item-avatar-left align-avatar-photo">
-                <img src="avatar\128-7.jpg" ng-click="sendMessage('{{item.phoneFriend}}')">
-            </div>
-            <div class="col-10 avatar-align"></div>  
-        </div>  
+          <div class="col-10 ">&nbsp;</div>
+          <div class="col-80  item-avatar-left align-avatar-photo" ng-if="item.photoFriend == null">
+            <img src="avatar\pomba-da-paz.jpg" ng-click="sendMessage('{{item.phoneFriend}}')">
+          </div>
+          <div class="col-80  item-avatar-left align-avatar-photo" ng-if="item.photoFriend != null">
+            <img ng-src="data:image/JPEG;base64,{{item.photoFriend}}" ng-click="sendMessage('{{item.phoneFriend}}')">
+          </div>
+          <div class="col-10 avatar-align"></div>
+        </div>
         <div class="row">
             <div class="col-10 ">&nbsp;</div>
             <div class="col-80 align-avatar">
                 <p class="p-main">{{item.name}}</p>
             </div>
-            <div class="col-10">&nbsp;</div>    
-        </div>    
-          
+            <div class="col-10">&nbsp;</div>
+        </div>
+
       </ion-item>
     </ion-list>
 

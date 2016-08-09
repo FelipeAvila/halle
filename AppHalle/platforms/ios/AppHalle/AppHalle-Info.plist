@@ -39,5 +39,7 @@
     <string/>
     <key>UIRequiresFullScreen</key>
     <true/>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string/>
   </dict>
 </plist>

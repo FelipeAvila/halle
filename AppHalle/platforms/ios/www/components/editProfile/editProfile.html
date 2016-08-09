@@ -1,29 +1,46 @@
 <ion-modal-view>
   <ion-content>
-    <br/><br/><br/><br/>
+    <br/><br/>
+    <span class="success-container" ng-if="Success">
+      <p class="success">
+       <i class="ion-information-circled"></i>
+       {{ msgSuccess }}
+     </p>
+    </span>
+
+    <span class="error-container" ng-if="error">
+      <p class="error">
+       <i class="ion-information-circled"></i>
+       {{ msgError }}
+     </p>
+    </span>
+
+    <span class="error-container" ng-if="!online">
+      <p class="error">
+       <i class="ion-information-circled"></i>
+       {{ message.online }}
+     </p>
+    </span>
+
+    <div class="row" >
+      <div class="col-10 ">&nbsp;</div>
+      <div class="col-80  item-avatar-left align-avatar-photo" ng-if="data.photo == null">
+        <img src="avatar\pomba-da-paz.jpg">
+      </div>
+      <div class="col-80  item-avatar-left align-avatar-photo" ng-if="data.photo != null">
+        <img ng-src="data:image/JPEG;base64,{{data.photo}}">
+      </div>
+
+      <div class="col-10 avatar-align"></div>
+    </div>
+
+    <div class="item">
+			<button class="button button-block button-positive icon-left ion-ios7-camera" ng-click="photo()">{{message.editProfilePhoto}}</button>
+		</div>
+
     <form ng-submit="onSubmit()" ng-init="onLoad()">
       <div class="list">
 
-        <span class="success-container" ng-if="Success">
-          <p class="success">
-           <i class="ion-information-circled"></i>
-           {{ msgSuccess }}
-         </p>
-        </span>
-
-        <span class="error-container" ng-if="error">
-          <p class="error">
-           <i class="ion-information-circled"></i>
-           {{ msgError }}
-         </p>
-        </span>
-
-        <span class="error-container" ng-if="!online">
-          <p class="error">
-           <i class="ion-information-circled"></i>
-           {{ message.online }}
-         </p>
-        </span>
         <label class="item item-input item-floating-label label-input">
           <span class="input-label label-input label-login-heigth">{{ message.editProfileName }}</span>
           <input type="text"
