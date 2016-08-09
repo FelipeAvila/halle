@@ -11,7 +11,7 @@
 
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
-      <input type="search"
+      <input type="text"
              placeholder="{{message.friendFilter}}"
              ng-model="search">
     </label>
@@ -24,7 +24,7 @@
     </span>
 
     <ion-list>
-      <ion-item class="item-borderless"  ng-repeat="item in friendslist  | filter:search">
+      <ion-item class="item-borderless"  ng-repeat="item in friendslist"> <!--  | filter: {name: search} -->
         <div class="row" >
           <div class="col-10 ">&nbsp;</div>
           <div class="col-80  item-avatar-left align-avatar-photo" ng-if="item.photoFriend == null">

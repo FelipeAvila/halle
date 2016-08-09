@@ -1,89 +1,90 @@
 <ion-modal-view>
-  <ion-content>
-    <br/><br/>
-    <span class="success-container" ng-if="Success">
-      <p class="success">
-       <i class="ion-information-circled"></i>
-       {{ msgSuccess }}
-     </p>
-    </span>
+  <ion-content ng-init="onLoad()">
 
-    <span class="error-container" ng-if="error">
-      <p class="error">
-       <i class="ion-information-circled"></i>
-       {{ msgError }}
-     </p>
-    </span>
+    <figure class="snip1336">
+      <img src="background\fundo1.jpg" alt="sample87" />
 
-    <span class="error-container" ng-if="!online">
-      <p class="error">
-       <i class="ion-information-circled"></i>
-       {{ message.online }}
-     </p>
-    </span>
+      <figcaption>
+        <div ng-if="data.photo == null">
+          <img src="avatar\pomba-da-paz.jpg" class="profile" ng-click="photo()">
+        </div>
+        <div ng-if="data.photo != null">
+          <img ng-src="data:image/JPEG;base64,{{data.photo}}" class="profile" ng-click="photo()">
+        </div>
 
-    <div class="row" >
-      <div class="col-10 ">&nbsp;</div>
-      <div class="col-80  item-avatar-left align-avatar-photo" ng-if="data.photo == null">
-        <img src="avatar\pomba-da-paz.jpg">
-      </div>
-      <div class="col-80  item-avatar-left align-avatar-photo" ng-if="data.photo != null">
-        <img ng-src="data:image/JPEG;base64,{{data.photo}}">
-      </div>
-      <div class="col-10 avatar-align"></div>  
-    </div>
+        <h2 class="h2-menu">{{data.name}}</h2>
 
-    <div class="item">
-			<button class="button button-block button-positive icon-left ion-ios7-camera" ng-click="photo()">{{message.editProfilePhoto}}</button>
-		</div>
+        <span class="success-container" ng-if="Success">
+          <p class="success">
+           <i class="ion-information-circled"></i>
+           {{ msgSuccess }}
+         </p>
+        </span>
 
-    <form ng-submit="onSubmit()" ng-init="onLoad()">
-      <div class="list">
+        <span class="error-container" ng-if="error">
+          <p class="error">
+           <i class="ion-information-circled"></i>
+           {{ msgError }}
+         </p>
+        </span>
 
-        <label class="item item-input item-floating-label label-input">
-          <span class="input-label label-input label-login-heigth">{{ message.editProfileName }}</span>
-          <input type="text"
-                 maxlength="500"
-                 class="placeholder-input"
-                 placeholder="{{ message.editProfileName }}"
-                 name="name"
-                 ng-model="data.name">
-        </label>
+        <span class="error-container" ng-if="!online">
+          <p class="error">
+           <i class="ion-information-circled"></i>
+           {{ message.online }}
+         </p>
+        </span>
+      </figcaption>
 
-        <label class="item item-input item-floating-label label-input">
-          <span class="input-label label-input label-login-heigth">{{ message.editProfileNickname }}</span>
-          <input type="text"
-                 maxlength="20"
-                 class="placeholder-input"
-                 placeholder="{{ message.editProfileNickname }}"
-                 name="nickname"
-                 ng-model="data.nickname">
-        </label>
+      <form ng-submit="onSubmit()">
+        <div class="list">
 
-        <label class="item item-input item-floating-label label-input">
-          <span class="input-label label-input label-login-heigth">{{ message.editProfileBirthday }}</span>
-          <input type="date"
-                 maxlength="10"
-                 class="placeholder-input"
-                 placeholder="{{ message.editProfileBirthday }}"
-                 name="birthday"
-                 ng-model="data.birthday">
-        </label>
+          <label class="item item-input item-floating-label label-input-prof">
+            <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileName }}</span>
+            <input type="text"
+                   maxlength="500"
+                   class="placeholder-input-prof"
+                   placeholder="{{ message.editProfileName }}"
+                   name="name"
+                   ng-model="data.name">
+          </label>
 
-        <label class="item item-input item-floating-label label-input">
-          <span class="input-label label-input label-login-heigth">{{ message.editProfileEmail }}</span>
-          <input type="text"
-                 maxlength="200"
-                 class="placeholder-input"
-                 placeholder="{{ message.editProfileEmail }}"
-                 name="birthday"
-                 ng-model="data.email">
-        </label>
+          <label class="item item-input item-floating-label label-input-prof">
+            <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileNickname }}</span>
+            <input type="text"
+                   maxlength="20"
+                   class="placeholder-input-prof"
+                   placeholder="{{ message.editProfileNickname }}"
+                   name="nickname"
+                   ng-model="data.nickname">
+          </label>
 
-        <button class="button button-block button-login"
-                type="submit">{{ message.editProfileSend }}</button>
+          <label class="item item-input item-floating-label label-input-prof">
+            <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileBirthday }}</span>
+            <input type="date"
+                   maxlength="10"
+                   class="placeholder-input-prof"
+                   placeholder="{{ message.editProfileBirthday }}"
+                   name="birthday"
+                   ng-model="data.birthday">
+          </label>
 
-      </div>
-    </form>
+          <label class="item item-input item-floating-label label-input-prof">
+            <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileEmail }}</span>
+            <input type="text"
+                   maxlength="200"
+                   class="placeholder-input-prof"
+                   placeholder="{{ message.editProfileEmail }}"
+                   name="birthday"
+                   ng-model="data.email">
+          </label>
+
+          <button class="button button-block button-login"
+                  type="submit">{{ message.editProfileSend }}</button>
+
+        </div>
+      </form>
+    </figure>
+
   </ion-content>
 </ion-modal-view>

@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.editProfileController', []);
 
 // Controller da pagina de criar usuario
-app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource, UploadUserResource) {
+app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource) {
 
   // Form data
   $scope.data = {};
@@ -17,12 +17,14 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
 
   // Inicio onload
   $scope.onLoad = function() {
+    console.log(token);
     // acessando o recurso de API
    FindUserResource.get({ token: token })
     .$promise
       .then(function(data) {
           $scope.data = data;
           $scope.data.birthday = new Date($scope.data.birthday);
+          console.log(data.name);
       },
       function(error) {
         $scope.error = true;

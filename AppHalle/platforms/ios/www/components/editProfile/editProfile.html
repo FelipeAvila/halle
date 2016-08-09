@@ -1,5 +1,6 @@
 <ion-modal-view>
   <ion-content>
+    <br/><br/>
     <span class="success-container" ng-if="Success">
       <p class="success">
        <i class="ion-information-circled"></i>
@@ -20,50 +21,61 @@
        {{ message.online }}
      </p>
     </span>
-<figure class="snip1336">
-  <img src="background\fundo1.jpg" alt="sample87" />
-  <figcaption>
-    <img src="avatar\128-7.jpg" class="profile" ng-click="photo()" />
-    <h2 class="h2-menu" >{{item.name}}</h2>
-  </figcaption>
+
+    <div class="row" >
+      <div class="col-10 ">&nbsp;</div>
+      <div class="col-80  item-avatar-left align-avatar-photo" ng-if="data.photo == null">
+        <img src="avatar\pomba-da-paz.jpg">
+      </div>
+      <div class="col-80  item-avatar-left align-avatar-photo" ng-if="data.photo != null">
+        <img ng-src="data:image/JPEG;base64,{{data.photo}}">
+      </div>
+
+      <div class="col-10 avatar-align"></div>
+    </div>
+
+    <div class="item">
+			<button class="button button-block button-positive icon-left ion-ios7-camera" ng-click="photo()">{{message.editProfilePhoto}}</button>
+		</div>
+
     <form ng-submit="onSubmit()" ng-init="onLoad()">
       <div class="list">
 
-        <label class="item item-input item-floating-label label-input-prof">
-          <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileName }}</span>
+        <label class="item item-input item-floating-label label-input">
+          <span class="input-label label-input label-login-heigth">{{ message.editProfileName }}</span>
           <input type="text"
                  maxlength="500"
-                 class="placeholder-input-prof"
+                 class="placeholder-input"
                  placeholder="{{ message.editProfileName }}"
                  name="name"
                  ng-model="data.name">
         </label>
 
-        <label class="item item-input item-floating-label label-input-prof">
-          <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileNickname }}</span>
+        <label class="item item-input item-floating-label label-input">
+          <span class="input-label label-input label-login-heigth">{{ message.editProfileNickname }}</span>
           <input type="text"
                  maxlength="20"
-                 class="placeholder-input-prof"
+                 class="placeholder-input"
                  placeholder="{{ message.editProfileNickname }}"
                  name="nickname"
                  ng-model="data.nickname">
         </label>
 
-        <label class="item item-input item-floating-label label-input-prof">
-          <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileBirthday }}</span>
+        <label class="item item-input item-floating-label label-input">
+          <span class="input-label label-input label-login-heigth">{{ message.editProfileBirthday }}</span>
           <input type="date"
                  maxlength="10"
-                 class="placeholder-input-prof"
+                 class="placeholder-input"
                  placeholder="{{ message.editProfileBirthday }}"
                  name="birthday"
                  ng-model="data.birthday">
         </label>
 
-        <label class="item item-input item-floating-label label-input-prof">
-          <span class="input-label label-input-prof label-login-heigth-prof">{{ message.editProfileEmail }}</span>
+        <label class="item item-input item-floating-label label-input">
+          <span class="input-label label-input label-login-heigth">{{ message.editProfileEmail }}</span>
           <input type="text"
                  maxlength="200"
-                 class="placeholder-input-prof"
+                 class="placeholder-input"
                  placeholder="{{ message.editProfileEmail }}"
                  name="birthday"
                  ng-model="data.email">
@@ -74,7 +86,5 @@
 
       </div>
     </form>
-
-</figure>
   </ion-content>
 </ion-modal-view>

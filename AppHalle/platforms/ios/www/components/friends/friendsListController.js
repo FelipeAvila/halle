@@ -14,8 +14,6 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
   $scope.friendslist = {};
   // Total de mensagens recebidas
   $scope.amountMessage = 0;
-  // Filter
-  $scope.search = '';
 
   // Inicio INIT
   $scope.init = function() {

@@ -2,8 +2,8 @@ var app = angular.module('halleApp.resources', ['ngResource']);
 
 /****************Constantes ***********************/
 app.constant('ApiEndpoint', {
-  url: 'http://192.241.158.95/HalleWEB/service'
-  //url: 'http://localhost:8080/HalleWEB/service'
+  //url: 'http://192.241.158.95/HalleWEB/service'
+  url: 'http://localhost:8080/HalleWEB/service'
 });
 
 /*****************Recursos*****************************/
@@ -64,6 +64,17 @@ app.factory('EditUserResource', function ($resource, ApiEndpoint) {
                          );
     return data;
 });
+
+app.factory('UploadUserResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/user/:token',
+                                      {token: '@token' },
+                                      {save:   {method:'POST',
+                                                headers: [{enctype:'multipart/form-data'}]
+                                      }}
+                         );
+    return data;
+});
+
 
 app.factory('ValidTokenResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/valid/:token',

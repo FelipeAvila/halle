@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.editProfileController', []);
 
 // Controller da pagina de criar usuario
-app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource, UploadUserResource) {
+app.controller('editProfileController', function($scope, $rootScope, $state, FindUserResource, EditUserResource) {
 
   // Form data
   $scope.data = {};
@@ -45,7 +45,6 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
     var nickname = $scope.data.nickname;
     var birthday = $scope.data.birthday;
     var email = $scope.data.email;
-    var photo = $scope.data.photo;
 
     // Validação
     if ($scope.data.$valid) {
@@ -56,7 +55,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
       $scope.error = true;
     }
     else {
-      var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': birthday, 'email': email, 'photo': photo};
+      var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': birthday, 'email': email};
       // acessando o recurso de API
      EditUserResource.save({}, info)
       .$promise
@@ -79,24 +78,9 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
 
   // inicio upload
   $scope.photo = function() {
-    var options = {
-        quality: 60,
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 250,
-        targetHeight: 250,
-        popoverOptions: CameraPopoverOptions,
-        saveToPhotoAlbum: false
-    };
 
-    $cordovaCamera.getPicture(options).then(function(imageData) {
-       //var srcImage = "data:image/jpeg;base64," + imageData;
-       $scope.data.photo = imageData;
-    }, function(err) {
-        // error
-    });
+
+
   }
   // final upload
 
