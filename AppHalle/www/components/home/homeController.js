@@ -27,13 +27,13 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
     $scope.phoneContacts = [];
     function onSuccess(contacts) {
-      alert('onSucess');
-      alert(contacts.length);
-      alert(contacts);
+      alert('Passo 1 - onSucess');
+      alert('Passo 2 - ' + contacts.length);
+      alert('Passo 3 - ' + contacts);
       for (var i = 0; i < contacts.length; i++) {
+        alert('Passo 4 - ' + contacts[i]);
         var item = contacts[i];
-        alert(item);
-        alert(item.displayName + ' - ' + item.phoneNumbers)
+        alert('Passo 5 - ' + item.displayName + ' - ' + item.phoneNumbers)
         if (item.displayName != null && item.phoneNumbers != null) {
           var p = item.phoneNumbers[0].value.replace(/ /g,'');
           var p1 = p.replace(/-/g,'');
