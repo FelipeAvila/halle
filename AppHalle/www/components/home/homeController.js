@@ -29,8 +29,10 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
     function onSuccess(contacts) {
       alert('onSucess');
       alert(contacts.length);
+      alert(contacts);
       for (var i = 0; i < contacts.length; i++) {
         var item = contacts[i];
+        alert(item);
         alert(item.displayName + ' - ' + item.phoneNumbers)
         if (item.displayName != null && item.phoneNumbers != null) {
           var p = item.phoneNumbers[0].value.replace(/ /g,'');
