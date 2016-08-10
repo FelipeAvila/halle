@@ -31,6 +31,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
       alert(contacts.length);
       for (var i = 0; i < contacts.length; i++) {
         var item = contacts[i];
+        alert(item.displayName + ' - ' + item.phoneNumbers)
         if (item.displayName != null && item.phoneNumbers != null) {
           var p = item.phoneNumbers[0].value.replace(/ /g,'');
           var p1 = p.replace(/-/g,'');
@@ -45,9 +46,11 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
               .then(function(data) {
                 $scope.Success = true;
                 $scope.msgSuccess =  data.message;
+                alert('Importado - ' + nameFriend + ' - ' + phoneFriend);
             },
             function(error) {
               $scope.msgError =  error.data.message;
+              alert('Erro na importação - ' + error);
             });
           }
         }
