@@ -39,6 +39,10 @@
                         {
                             "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -48,6 +52,24 @@
                     "NSLocationWhenInUseUsageDescription": [
                         {
                             "xml": "<string />",
+                            "count": 1
+                        }
+                    ],
+                    "UIBackgroundModes": [
+                        {
+                            "xml": "<array><string>remote-notification</string></array>",
+                            "count": 1
+                        }
+                    ],
+                    "GCM_SENDER_ID": [
+                        {
+                            "xml": "<string>471393976592</string>",
+                            "count": 1
+                        }
+                    ],
+                    "IS_GCM_ENABLED": [
+                        {
+                            "xml": "<true />",
                             "count": 1
                         }
                     ]
@@ -81,6 +103,10 @@
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
         "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "471393976592",
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },
@@ -424,6 +450,14 @@
             "clobbers": [
                 "CameraPopoverHandle"
             ]
+        },
+        {
+            "file": "plugins/phonegap-plugin-push/www/push.js",
+            "id": "phonegap-plugin-push.PushNotification",
+            "pluginId": "phonegap-plugin-push",
+            "clobbers": [
+                "PushNotification"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -435,6 +469,7 @@
         "ionic-plugin-keyboard": "2.2.1",
         "cordova-plugin-file": "4.2.0",
         "cordova-plugin-file-transfer": "1.5.1",
-        "cordova-plugin-camera": "2.2.0"
+        "cordova-plugin-camera": "2.2.0",
+        "phonegap-plugin-push": "1.8.1"
     }
 }

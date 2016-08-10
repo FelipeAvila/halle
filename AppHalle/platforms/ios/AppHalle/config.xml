@@ -41,6 +41,9 @@
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
     </feature>
+    <feature name="PushNotification">
+        <param name="ios-package" value="PushPlugin" />
+    </feature>
     <name>AppHalle</name>
     <description>
         An Ionic Framework and Cordova project.

@@ -22,7 +22,14 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-x-socialsharing"
+    "cordova-plugin-x-socialsharing",
+    {
+      "variables": {
+        "SENDER_ID": "471393976592"
+      },
+      "locator": "phonegap-plugin-push",
+      "id": "phonegap-plugin-push"
+    }
   ],
   "cordovaPlatforms": [
     "android",

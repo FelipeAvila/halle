@@ -25,14 +25,48 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
     var name = "";
     var phoneFriend = "";
 
-      var opts = { //search options
-          filter: '', // 'Name'
-          multiple: true, // Yes, return any contact that matches criteria
-          fields: ['displayName', 'name']
-      };
+    $scope.phoneContacts = [];
+    function onSuccess(contacts) {
+      alert('onSucess');
+      alert(contacts.length);
+      for (var i = 0; i < contacts.length; i++) {
+        var item = contacts[i];
+        if (item.displayName != null && item.phoneNumbers != null) {
+          var p = item.phoneNumbers[0].value.replace(/ /g,'');
+          var p1 = p.replace(/-/g,'');
+
+          if (p1.startsWith('+')) {
+            nameFriend = item.displayName;
+            phoneFriend = p1;
+
+            // acessando o recurso de API
+            InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
+            .$promise
+              .then(function(data) {
+                $scope.Success = true;
+                $scope.msgSuccess =  data.message;
+            },
+            function(error) {
+              $scope.msgError =  error.data.message;
+            });
+          }
+        }
+      }
+    };
+    function onError(contactError) {
+      alert(contactError);
+    };
+    var options = {};
+    options.multiple = true;
+    $cordovaContacts.find(options).then(onSuccess, onError);
+
+
+     /*
 
       $cordovaContacts.find(opts).then(function(allContacts) {
           $scope.contacts = allContacts;
+
+          alert(allContacts.length);
           angular.forEach(allContacts, function(item, index){
 
             if (item.displayName != null && item.phoneNumbers != null) {
@@ -59,7 +93,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
             }
           });
       });
-
+      */
   };
   // FINAL getAllContacts
 
