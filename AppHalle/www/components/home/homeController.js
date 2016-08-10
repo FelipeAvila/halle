@@ -24,22 +24,39 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
     var name = "";
     var phoneFriend = "";
+    var nameFriend = "";
 
     $scope.phoneContacts = [];
     function onSuccess(contacts) {
       alert('Passo 1 - onSucess');
       alert('Passo 2 - ' + contacts.length);
-      alert('Passo 3 - ' + contacts);
       for (var i = 0; i < contacts.length; i++) {
-        alert('Passo 4 - ' + contacts[i]);
+        //alert('Passo 4 - ' + JSON.stringify(contacts[i]));
         var item = contacts[i];
-        alert('Passo 5 - ' + item.displayName + ' - ' + item.phoneNumbers)
-        if (item.displayName != null && item.phoneNumbers != null) {
+        // carregando o nome.
+        nameFriend = "";
+        if (item.displayName != null) {
+          nameFriend = item.displayName;
+        } else if (item.nickname != null) {
+          nameFriend = item.nickname;
+        } else if (item.name.givenName) {
+          nameFriend = item.name.givenName;
+        } else {
+          nameFriend = item.name.formatted;
+        }
+
+        if (nameFriend != null && item.phoneNumbers != null) {
+
           var p = item.phoneNumbers[0].value.replace(/ /g,'');
           var p1 = p.replace(/-/g,'');
 
+          if (!p1.startsWith('+')) {
+            alert('Passo 3 - (TELEFONE INVALIDO) - ' + nameFriend + ' - ' + p1);
+          }
+
           if (p1.startsWith('+')) {
-            nameFriend = item.displayName;
+            alert('Passo 4 - (TELEFONE VALIDO) - ' + nameFriend + ' - ' + p1);
+
             phoneFriend = p1;
 
             // acessando o recurso de API
