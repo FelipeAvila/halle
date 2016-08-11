@@ -46,7 +46,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
 
   // onLoad
   $scope.onLoad = function() {
-
+    
     $interval(function(){
       $scope.init();
     }, 5000);
