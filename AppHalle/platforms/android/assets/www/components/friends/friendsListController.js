@@ -20,6 +20,19 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
     // get Token
     var token = storage.get();
 
+    if ($rootScope.phone == null) {
+     FindUserResource.get({ token: token })
+      .$promise
+        .then(function(data) {
+            $scope.data = data;
+            $rootScope.phone = $scope.data.phone;
+        },
+        function(error) {
+          $scope.error = true;
+          $scope.msgError =  error.data.message;
+        });
+    }
+
      // acessando o recurso de API
     MessageReceiveResource.get({ token: token })
      .$promise
@@ -49,7 +62,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
 
     $interval(function(){
       $scope.init();
-    }, 5000);
+    }, 30000);
 
     $scope.init();
   }

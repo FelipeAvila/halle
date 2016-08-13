@@ -28,11 +28,9 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
     $scope.phoneContacts = [];
     function onSuccess(contacts) {
-      alert('Passo 1 - onSucess');
-      alert('Passo 2 - ' + contacts.length);
       for (var i = 0; i < contacts.length; i++) {
-        //alert('Passo 4 - ' + JSON.stringify(contacts[i]));
         var item = contacts[i];
+
         // carregando o nome.
         nameFriend = "";
         if (item.displayName != null) {
@@ -47,78 +45,84 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $stat
 
         if (nameFriend != null && item.phoneNumbers != null) {
 
-          var p = item.phoneNumbers[0].value.replace(/ /g,'');
-          var p1 = p.replace(/-/g,'');
+          var phoneFriend = Validar(item.phoneNumbers[0].value);
 
-          if (!p1.startsWith('+')) {
-            alert('Passo 3 - (TELEFONE INVALIDO) - ' + nameFriend + ' - ' + p1);
-          }
-
-          if (p1.startsWith('+')) {
-            alert('Passo 4 - (TELEFONE VALIDO) - ' + nameFriend + ' - ' + p1);
-
-            phoneFriend = p1;
-
-            // acessando o recurso de API
-            InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
-            .$promise
-              .then(function(data) {
-                $scope.Success = true;
-                $scope.msgSuccess =  data.message;
-                alert('Importado - ' + nameFriend + ' - ' + phoneFriend);
-            },
-            function(error) {
-              $scope.msgError =  error.data.message;
-              alert('Erro na importação - ' + error);
-            });
-          }
+          // acessando o recurso de API
+          InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
+          .$promise
+            .then(function(data) {
+              $scope.Success = true;
+              $scope.msgSuccess =  data.message;
+          },
+          function(error) {
+            $scope.msgError =  error.data.message;
+          });
         }
       }
     };
     function onError(contactError) {
-      alert(contactError);
     };
     var options = {};
     options.multiple = true;
     $cordovaContacts.find(options).then(onSuccess, onError);
-
-
-     /*
-
-      $cordovaContacts.find(opts).then(function(allContacts) {
-          $scope.contacts = allContacts;
-
-          alert(allContacts.length);
-          angular.forEach(allContacts, function(item, index){
-
-            if (item.displayName != null && item.phoneNumbers != null) {
-              var p = item.phoneNumbers[0].value.replace(/ /g,'');
-              var p1 = p.replace(/-/g,'');
-              if (p1.startsWith('+')) {
-
-                nameFriend = item.displayName;
-                phoneFriend = p1;
-
-                // acessando o recurso de API
-                InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
-                .$promise
-                  .then(function(data) {
-                    $scope.Success = true;
-                    $scope.msgSuccess =  data.message;
-                  },
-                  function(error) {
-                    $scope.msgError =  error.data.message;
-                  });
-
-              }
-
-            }
-          });
-      });
-      */
   };
   // FINAL getAllContacts
 
+  function Validar(Contato) {
+    var dddOrigem = $rootScope.phone.substring(3,5);;
+    var retorno = ContatoPadrao(dddOrigem,Contato);
+    return retorno;
+  }
+
+  function ContatoPadrao(dddPadrao,numContato){
+    var ddd ="";
+    var ddi = $rootScope.phone.substring(0,3);
+    var cel = "";
+    var contato="";
+    if (numContato.substring(0,1) == "+"){
+        ddi =numContato.substring(0,3);
+        numContato=numContato.substring(3,100);
+    }
+    contato= limparContato(numContato);
+
+    if (contato.length <= 9){
+      cel = contato;
+      ddd = dddPadrao;
+    }
+
+    if (contato.length == 10 || contato.length == 13 ){
+      cel = contato.slice(-8);
+      ddd = contato.slice(-10,-8);
+    }
+
+    if ( contato.length == 12 || contato.length == 14){
+      cel = contato.slice(-9);
+      ddd = contato.slice(-11,-9);
+    }
+
+    if (contato.length == 11  ){
+      if (contato.substring(0,1) == "0"){
+        cel = contato.slice(-8);
+        ddd = contato.slice(-10,-8);
+      }else{
+        cel = contato.slice(-9);
+        ddd = contato.slice(-11,-9);
+      }
+    }
+    return ddi+ddd+cel;
+   }
+
+   function limparContato(str){
+    var pos;
+    var saida="";
+    for (i = 0; i < str.length; i++) {
+      pos= str.substring(i,i+1);
+      if (!isNaN(pos) && pos!=" "){
+        saida = saida + pos;
+      }
+    }
+    return saida;
+   }
 
 
  // INIT DELETE PHONE - A confirm dialog
