@@ -1,6 +1,6 @@
 <ion-view >
   <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <button menu-toggle="left" style="color:white !important;" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header" ng-init="onLoad()">
 
@@ -9,13 +9,14 @@
       on-refresh="onLoad()">
     </ion-refresher>
 
+<!--
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
       <input type="text"
              placeholder="{{message.friendFilter}}"
              ng-model="search">
     </label>
-
+-->
     <span ng-if="amountMessage > 0">
       <div class="card">
         <p>{{ amountMessage }}</p>
@@ -33,11 +34,12 @@
                   <span  ng-if="item.photoFriend != null">
                     <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photoFriend}}" >
                   </span>
-                  <strong>{{item.name}}</strong>
+                    <strong>{{item.name}}</strong>
                   <div class="card-footer text-right">
-                      <i class="icon ion-chatbubbles positive"></i> 6
+                      <i class="icon ion-android-download positive"></i> {{ item.messageReceive }}
+                      <i class="icon ion-android-upload positive"></i> {{ item.messageSent }}
                       <div class="pull-left">
-                          <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}')">&nbsp;&nbsp;Enviar</i>
+                          <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
                       </div>
                   </div>
               </div>

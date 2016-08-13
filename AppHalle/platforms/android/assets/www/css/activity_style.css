@@ -4,13 +4,15 @@
 
 .card-item.item {
   border: none;
-  padding-bottom: 4px;
-  padding-top: 4px;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 .card .item.item-avatar {
   min-height: 88px;
-  padding-left: 88px; }
+  padding-left: 88px; 
+  text-align: left;
+}
 
 .card .card-footer {
   font-size: 90%;

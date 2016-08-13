@@ -10,7 +10,9 @@
 
 .card .item.item-avatar {
   min-height: 88px;
-  padding-left: 88px; }
+  padding-left: 88px; 
+  text-align: left;
+}
 
 .card .card-footer {
   font-size: 90%;

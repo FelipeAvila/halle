@@ -120,6 +120,7 @@
 
   "friendMessageReceive" : "Mensagens Recebidas",
   "friendFilter" : "Buscar amigos...",
+  "friendSend": "Enviar",
 
   "messageReply": "Responder",
   "messageAdd": "Adicionar amigo",
