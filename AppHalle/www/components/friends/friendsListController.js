@@ -49,7 +49,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
 
     $interval(function(){
       $scope.init();
-    }, 5000);
+    }, 30000);
 
     $scope.init();
   }
