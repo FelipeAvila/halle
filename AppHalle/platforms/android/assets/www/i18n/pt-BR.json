@@ -118,9 +118,11 @@
   "deletePhone" : "Remover conta do Halle",
   "deleteError": "Não foi possível remover a sua conta",
 
-  "friendMessageReceive" : "Mensagens Recebidas",
+  "friendMessageReceive" : "Mensagem Recebida",
+  "friendMessageReceive2" : "Mensagens Recebidas",
   "friendFilter" : "Buscar amigos...",
   "friendSend": "Enviar",
+  "friendInvite": "Convidar",
 
   "messageReply": "Responder",
   "messageAdd": "Adicionar amigo",

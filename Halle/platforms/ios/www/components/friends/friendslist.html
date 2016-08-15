@@ -1,0 +1,60 @@
+<ion-view >
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" style="color:white !important;" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" ng-init="onLoad()">
+
+    <ion-refresher
+      pulling-text={{message.refresh}}
+      on-refresh="onLoad()">
+    </ion-refresher>
+
+<!--
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text"
+             placeholder="{{message.friendFilter}}"
+             ng-model="search">
+    </label>
+-->
+    <span ng-if="amountMessage > 0">
+      <div class="card">
+        <p>{{ amountMessage }}</p>
+          <span ng-if="amountMessage > 1">
+            <p><a href="#/home/message">{{ message.friendMessageReceive2 }}</a></p>
+          </span>
+          <span ng-if="amountMessage == 1">
+            <p><a href="#/home/message">{{ message.friendMessageReceive }}</a></p>
+          </span>
+      </div>
+    </span>
+
+    <ion-list>
+      <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist"> <!--  | filter: {name: search} -->
+          <div class="card stable-bg ink ink-dark">
+              <div class="item item-avatar">
+                  <span  ng-if="item.photoFriend == null">
+                    <img  class="avatar" src="avatar\pomba-da-paz.jpg">
+                  </span>
+                  <span  ng-if="item.photoFriend != null">
+                    <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photoFriend}}" >
+                  </span>
+                    <strong>{{item.name}}</strong>
+                  <div class="card-footer text-right">
+                      <i class="icon ion-android-download positive"></i> {{ item.messageReceive }}
+                      <i class="icon ion-android-upload positive"></i> {{ item.messageSent }}
+                      <div class="pull-left" ng-if="item.hasHalle == '1'">
+                          <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
+                      </div>
+                      <div class="pull-left" ng-if="item.hasHalle == '0'">
+                          <i class="icon ion-email-unread" ng-click="invite('{{item.phoneFriend}}')">&nbsp;&nbsp;{{message.friendInvite}}</i>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

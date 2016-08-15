@@ -62,7 +62,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
 
     $interval(function(){
       $scope.init();
-    }, 30000);
+    }, 5000);
 
     $scope.init();
   }
@@ -105,7 +105,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
          $scope.Success = true;
          $scope.msgSuccess =  data.message;
 
-         $scope.share();
+         //$scope.share();
 
          $ionicPopup.alert({
            title: $rootScope.message.title,
@@ -121,9 +121,10 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
        $state.go("home.friendslist");
   }
 
-  $scope.share = function() {
+  $scope.invite = function() {
     var token = storage.get();
-    $cordovaSocialSharing.share($scope.data.name + $rootScope.message.messagePaz, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
+    $cordovaSocialSharing.share($rootScope.message.inviteFriendMessage, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
+    //$cordovaSocialSharing.share($scope.data.name + $rootScope.message.messagePaz, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
   }
 
 });
