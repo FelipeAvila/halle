@@ -11,7 +11,20 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $in
   var storage = new getLocalStorage();
 
   // Lista de amigos
-  $scope.friendslist = {};
+  $scope.friendslist =
+    [{
+        "message": [],
+        "id": 0,
+        "phone": null,
+        "phoneFriend": null,
+        "name": null,
+        "photoFriend": null,
+        "messageSent": 0,
+        "messageReceive": 0,
+        "hasHalle": 0,
+        "status": 0,
+        "register": null
+    }];
   // Total de mensagens recebidas
   $scope.amountMessage = 0;
 

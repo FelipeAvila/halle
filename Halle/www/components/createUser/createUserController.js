@@ -64,7 +64,7 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
     }
     else {
        // acessando o recurso de API
-      CreateUserResource.save({ login: login, phone: phone, password: password })
+      CreateUserResource.save({ login: login, phone: phone, password: password, tokenpush: $rootScope.tokenpush })
        .$promise
        .then(function(data) {
          storage.save(data.token);

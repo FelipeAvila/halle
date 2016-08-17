@@ -9,14 +9,13 @@
       on-refresh="onLoad()">
     </ion-refresher>
 
-<!--
     <label class="item item-input">
       <i class="icon ion-search placeholder-icon"></i>
       <input type="text"
              placeholder="{{message.friendFilter}}"
              ng-model="search">
     </label>
--->
+
     <span ng-if="amountMessage > 0">
       <div class="card">
         <p>{{ amountMessage }}</p>
@@ -30,7 +29,7 @@
     </span>
 
     <ion-list>
-      <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist"> <!--  | filter: {name: search} -->
+      <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:search | orderBy: '-hasHalle'"> <!--  | filter: {name: search} -->
           <div class="card stable-bg ink ink-dark">
               <div class="item item-avatar">
                   <span  ng-if="item.photoFriend == null">

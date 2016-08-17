@@ -10,6 +10,7 @@
   "ok": "OK",
   "messageSend" : "Enviado via halle",
   "messagePaz" : ", deseja a PAZ do SENHOR.",
+  "messagePush": "Você recebeu a Paz do Senhor.",
 
   "online": "Você não esta online!",
   "messageSendSuccess": "A PAZ do SENHOR foi enviada!",

@@ -16,8 +16,8 @@ app.factory('AuthResource', function ($resource, ApiEndpoint) {
 });
 
 app.factory('CreateUserResource', function ($resource, ApiEndpoint) {
-    var data =  $resource(ApiEndpoint.url +'/user/:login/:phone/:password',
-                                      {login: '@login', phone: '@phone', password: '@password' },
+    var data =  $resource(ApiEndpoint.url +'/user/:login/:phone/:password/:tokenpush',
+                                      {login: '@login', phone: '@phone', password: '@password', tokenpush: '@tokenpush' },
                                       {save:   {method:'POST'}}
                          );
     return data;
@@ -120,5 +120,14 @@ app.factory('MessageUpdateResource', function ($resource, ApiEndpoint) {
                                         {token: '@token', messageid : '@messageid' },
                                         {save:   {method:'POST'}}
                                     );
+    return data;
+});
+
+app.factory('MessageSendResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/message/',
+                                      {save:   {method:'POST',
+                                                headers: [{'Content-Type': 'application/json'}]
+                                      }}
+                         );
     return data;
 });

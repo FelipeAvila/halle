@@ -127,6 +127,19 @@ app.run(function($ionicPlatform) {
   });
 });
 
+app.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    var push = new Ionic.Push({
+      "debug": true
+    });
+
+    push.register(function(token) {
+      console.log("My Device token:",token.token);
+      push.saveToken(token);  // persist the token in the Ionic Platform
+    });
+  });
+})
+
 // verificando a conectividade
 app.run(function($window, $rootScope) {
       $rootScope.online = navigator.onLine;
