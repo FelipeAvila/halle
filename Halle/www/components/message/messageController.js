@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService) {
 
   // Form data
   $scope.data = {};
@@ -51,7 +51,6 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
               });
         }
 
-
       }, function(error) {
       });
 
@@ -60,7 +59,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   //FINAL LOAD
 
   // INICIO REPLY
-  $scope.reply = function(phone, messageTypeId) {
+  $scope.reply = function(phone, messageTypeId, tokenPush) {
       var token = storage.get();
 
       var info = {'token': token, 'phoneFriend': phone, 'messageTypeId': messageTypeId};
@@ -70,6 +69,10 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
         .then(function(data) {
           $scope.Success = true;
           $scope.msgSuccess =  data.message;
+
+          if (tokenpush != null) {
+              PushNotificationService.push(tokenpush);
+          }
 
           $ionicPopup.alert({
             title: $rootScope.message.title,

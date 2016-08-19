@@ -4,8 +4,41 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Badge\"><param name=\"ios-package\" value=\"APPBadge\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
-    "installed_plugins": {},
-    "dependent_plugins": {}
+    "installed_plugins": {
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-badge.Badge",
+            "file": "plugins/cordova-plugin-badge/www/badge.js",
+            "pluginId": "cordova-plugin-badge",
+            "clobbers": [
+                "plugin.notification.badge",
+                "cordova.plugins.notification.badge"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-app-event": "1.2.0",
+        "cordova-plugin-badge": "0.7.2"
+    }
 }

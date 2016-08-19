@@ -65,6 +65,10 @@
 		39A91FA3E7014FEA8BA6271D /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F23902CD08944718E11EB14 /* libProtocolBuffers.a */; };
 		29FA81E8175F4EB48B8D1C70 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DF09349D36214304A09E4CB8 /* libsqlite3.tbd */; };
 		A0516CB64C114C6E8DE6E7DE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E5357FF9724F89BA2F7661 /* libz.tbd */; };
+		5C9B2C581F6B43458EDCF8A0 /* AppDelegate+APPAppEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D526800258141ADBF650EC9 /* AppDelegate+APPAppEvent.m */; };
+		33C76BFC72794E6AAC258905 /* CDVPlugin+APPAppEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C58DC79AC44784966A05E6 /* CDVPlugin+APPAppEvent.m */; };
+		0A76441931454362B880C95B /* APPBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C32F5E6D284834BF1A1369 /* APPBadge.m */; };
+		ED3FBDE0FC0D4695BA4DADCF /* UIApplication+APPBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7C7560FF01408F88B65012 /* UIApplication+APPBadge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +189,15 @@
 		D71630DA0F4C49EEBF692D87 /* GoogleCloudMessaging.h */ = {isa = PBXFileReference; name = "GoogleCloudMessaging.h"; path = "phonegap-plugin-push/GCM/Headers/GoogleCloudMessaging.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		DF09349D36214304A09E4CB8 /* libsqlite3.tbd */ = {isa = PBXFileReference; name = "libsqlite3.tbd"; path = "usr/lib/libsqlite3.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		79E5357FF9724F89BA2F7661 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		6D526800258141ADBF650EC9 /* AppDelegate+APPAppEvent.m */ = {isa = PBXFileReference; name = "AppDelegate+APPAppEvent.m"; path = "cordova-plugin-app-event/AppDelegate+APPAppEvent.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E4C58DC79AC44784966A05E6 /* CDVPlugin+APPAppEvent.m */ = {isa = PBXFileReference; name = "CDVPlugin+APPAppEvent.m"; path = "cordova-plugin-app-event/CDVPlugin+APPAppEvent.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		CDAB6104724C4CADB7E3C928 /* AppDelegate+APPAppEvent.h */ = {isa = PBXFileReference; name = "AppDelegate+APPAppEvent.h"; path = "cordova-plugin-app-event/AppDelegate+APPAppEvent.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		5DB6CA7FFD5C4B769F196EAB /* CDVPlugin+APPAppEvent.h */ = {isa = PBXFileReference; name = "CDVPlugin+APPAppEvent.h"; path = "cordova-plugin-app-event/CDVPlugin+APPAppEvent.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		AB5C6ECD01854634BC5C7B2F /* APPAppEventDelegate.h */ = {isa = PBXFileReference; name = "APPAppEventDelegate.h"; path = "cordova-plugin-app-event/APPAppEventDelegate.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		C3C32F5E6D284834BF1A1369 /* APPBadge.m */ = {isa = PBXFileReference; name = "APPBadge.m"; path = "cordova-plugin-badge/APPBadge.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		DC7C7560FF01408F88B65012 /* UIApplication+APPBadge.m */ = {isa = PBXFileReference; name = "UIApplication+APPBadge.m"; path = "cordova-plugin-badge/UIApplication+APPBadge.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1831BD60C85040539F5B5AF8 /* APPBadge.h */ = {isa = PBXFileReference; name = "APPBadge.h"; path = "cordova-plugin-badge/APPBadge.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		92A552555CD0452CA6919769 /* UIApplication+APPBadge.h */ = {isa = PBXFileReference; name = "UIApplication+APPBadge.h"; path = "cordova-plugin-badge/UIApplication+APPBadge.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +416,15 @@
 				764FD08CD2F045DC98729C7D /* GCMReceiverDelegate.h */,
 				D89D7C224CA24B3C99042F4C /* GCMService.h */,
 				D71630DA0F4C49EEBF692D87 /* GoogleCloudMessaging.h */,
+				6D526800258141ADBF650EC9 /* AppDelegate+APPAppEvent.m */,
+				E4C58DC79AC44784966A05E6 /* CDVPlugin+APPAppEvent.m */,
+				CDAB6104724C4CADB7E3C928 /* AppDelegate+APPAppEvent.h */,
+				5DB6CA7FFD5C4B769F196EAB /* CDVPlugin+APPAppEvent.h */,
+				AB5C6ECD01854634BC5C7B2F /* APPAppEventDelegate.h */,
+				C3C32F5E6D284834BF1A1369 /* APPBadge.m */,
+				DC7C7560FF01408F88B65012 /* UIApplication+APPBadge.m */,
+				1831BD60C85040539F5B5AF8 /* APPBadge.h */,
+				92A552555CD0452CA6919769 /* UIApplication+APPBadge.h */,
 			);
 			name = Plugins;
 			path = "Halle/Plugins";
@@ -529,6 +551,10 @@
 				113C086229294CD9ACB59681 /* IonicKeyboard.m in Sources */,
 				DA51E6E85AFC4105B08F95E2 /* AppDelegate+notification.m in Sources */,
 				FA8BB7FC8B06457F9E110631 /* PushPlugin.m in Sources */,
+				5C9B2C581F6B43458EDCF8A0 /* AppDelegate+APPAppEvent.m in Sources */,
+				33C76BFC72794E6AAC258905 /* CDVPlugin+APPAppEvent.m in Sources */,
+				0A76441931454362B880C95B /* APPBadge.m in Sources */,
+				ED3FBDE0FC0D4695BA4DADCF /* UIApplication+APPBadge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

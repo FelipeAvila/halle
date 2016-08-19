@@ -211,7 +211,7 @@ body {
 /******************* SLIDE ****************************/
 .slider {
   margin: 0 auto;
-  height: 400px;
+  height: 500px;
   width: 350px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -237,6 +237,28 @@ body {
   text-align: center;
   font-family:Helvetica Neue;
 }
+
+.img-message {
+  height: 95%;
+  width: 95%;
+}
+
+.hr-line {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+.footer-message {
+  font-size:15px;
+  color:#2b98d5;
+  text-align: center;
+  font-family:Helvetica Neue;
+}
+
 
 /********************MESSAGE ERROR/SUCCESS*****************************/
 .error-container {

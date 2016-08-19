@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $state, $http, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource, EditUserResource) {
+app.controller('friendsListController', function($scope, $rootScope, $state, $http, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource, EditUserResource, PushNotificationService, BadgeService) {
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -67,6 +67,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
        if (data != null) {
          $scope.Success = true;
          $scope.amountMessage = data.length;
+         BadgeService.set($scope.amountMessage);
        }
      }, function(error) {
      });
@@ -115,9 +116,8 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
             else {
               $scope.send(token, phoneFriend, messageTypeId);
               if (tokenpush != null) {
-                  $scope.push(tokenpush);
+                  PushNotificationService.push(tokenpush);
               }
-
             }
 
         },
@@ -125,59 +125,6 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
         });
   }
   // END SEND message
-
-  $scope.push = function(tokenpush) {
-    var req = {
-      method: 'POST',
-      url: 'https://api.ionic.io/push/notifications',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1MjNmOWQwNi1lMzYyLTRiNDQtOTgxNS1kZTdiNzJlMGNlMGYifQ.m8V5tWwKblAi2EJwRgCmJoWD1i4Jmd8uCo8Vi1Az2k8'
-      },
-      data: {
-        "tokens": tokenpush,
-        "profile": 'halle',
-        "notification": {
-          "message": $rootScope.message.messagePush,
-          "android": {
-            "message": $rootScope.message.messagePush
-          },
-          "ios": {
-            "message": $rootScope.message.messagePush
-          }
-        }
-      }
-    };
-
-    // Make the API call
-    $http(req).success(function(resp){
-      // Handle success
-      console.log("Ionic Push: Push success", resp);
-    }).error(function(error){
-      // Handle error
-      console.log("Ionic Push: Push error", error);
-    });
-
-    /*
-    var info =
-    {
-        'tokens': '['+ tokenpush +']',
-        'profile': 'halle',
-        'notification': {
-            'message': 'Você recebeu a Paz do Senhor.'
-        }
-    };
-
-    console.log(info);
-     // acessando o recurso de API
-    PushNotificationResource.save({}, info)
-     .$promise
-       .then(function(data) {
-       },
-       function(error) {
-       });
-       */
-  }
 
   $scope.send = function(token, phoneFriend, messageTypeId) {
     // acessando o recurso de API

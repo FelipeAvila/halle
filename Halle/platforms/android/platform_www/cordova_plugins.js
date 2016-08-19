@@ -330,6 +330,15 @@ module.exports = [
         "clobbers": [
             "PushNotification"
         ]
+    },
+    {
+        "id": "cordova-plugin-badge.Badge",
+        "file": "plugins/cordova-plugin-badge/www/badge.js",
+        "pluginId": "cordova-plugin-badge",
+        "clobbers": [
+            "plugin.notification.badge",
+            "cordova.plugins.notification.badge"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -344,7 +353,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.1",
     "ionic-plugin-keyboard": "2.2.1",
-    "phonegap-plugin-push": "1.8.1"
+    "phonegap-plugin-push": "1.8.1",
+    "cordova-plugin-app-event": "1.2.0",
+    "cordova-plugin-badge": "0.7.2"
 };
 // BOTTOM OF METADATA
 });

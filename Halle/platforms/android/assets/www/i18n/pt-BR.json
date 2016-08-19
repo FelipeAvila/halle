@@ -5,17 +5,18 @@
 
   "exit" : "Sair",
   "cancel": "Cancelar",
+  "confirm": "Confirmar",
+
   "exitMessage": "Tem certeza que desaja sair?",
   "refresh" : "Atualizando...",
   "ok": "OK",
   "messageSend" : "Enviado via halle",
-  "messagePaz" : ", deseja a PAZ do SENHOR.",
+  "messagePaz" : ", deseja a Paz do Senhor.",
   "messagePush": "Você recebeu a Paz do Senhor.",
 
   "online": "Você não esta online!",
-  "messageSendSuccess": "A PAZ do SENHOR foi enviada!",
-  "messageSendError": "Você precisa completar o cadastro para compartilhar a PAZ do SENHOR.",
-
+  "messageSendSuccess": "A Paz do Senhor foi enviada!",
+  "messageSendError": "Você precisa completar o cadastro para compartilhar a Paz do Senhor.",
 
   "login" : "Login",
   "loginCreate": "Faça Parte",
@@ -125,7 +126,7 @@
   "friendSend": "Enviar",
   "friendInvite": "Convidar",
 
-  "messageReply": "Responder",
+  "messageReply": "Retribuir",
   "messageAdd": "Adicionar amigo",
   "messageFriend": "como amigo",
   "messageInviteSuccess" : "Amigo incluído!",
@@ -141,5 +142,7 @@
   "inviteFriendFacabook" : "Facebook",
   "inviteFriendMessage" : "Este é um convite para você participar do Halle o aplicativo que está espalhando a Paz do Senhor pelo mundo! É só clicar aqui para baixar na Google play, aqui para iOS ou aqui para o site.",
   "inviteFriendSubject" : "Você recebeu uma indicação para espalhar a Paz do Senhor pelo mundo!",
-  "inviteFriendFriend" : "AMIGOS"
+  "inviteFriendFriend" : "AMIGOS",
+
+  "importContacts" : "Confirme a importação dos contatos da sua agenda?"
 }

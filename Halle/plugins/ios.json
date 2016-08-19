@@ -34,10 +34,16 @@
         "phonegap-plugin-push": {
             "SENDER_ID": "471393976592",
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
+        "cordova-plugin-app-event": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     }
