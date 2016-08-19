@@ -52,7 +52,8 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
   // Perform the inviteFacebook
   $scope.inviteFacebook = function() {
     $cordovaSocialSharing
-      .shareViaFacebook($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net')
+      //.shareViaFacebook
+      .shareViaFacebookWithPasteMessageHint($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendMessage)
       .then(function(result) {
       }, function(err) {
       });

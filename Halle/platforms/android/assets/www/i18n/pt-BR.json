@@ -128,11 +128,12 @@
   "friendInvite": "Convidar",
 
   "messageReply": "Retribuir",
-  "messageAdd": "Adicionar amigo",
+  "messageAdd": "Adicionar",
   "messageFriend": "como amigo",
   "messageInviteSuccess" : "Amigo incluído!",
   "messageFriendName" : "Confirme o nome do amigo",
-  "messageFriendReturn" : "",
+  "messageFriendReturn" : "Recebi a Paz do Senhor do(a) ",
+  "messageFrendShare" : "Compartilhar",
 
   "inviteFriendTitle" : "Indicar Amigos",
   "inviteFriendSubTitle" : "Gostou do halle?",

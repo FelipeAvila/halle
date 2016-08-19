@@ -252,6 +252,14 @@ body {
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
 }
 
+.title-message {
+  font-size: 1.4rem;
+  color:#2b98d5;
+  text-align: center;
+  font-family:Helvetica Neue;
+}
+
+
 .footer-message {
   font-size:15px;
   color:#2b98d5;
