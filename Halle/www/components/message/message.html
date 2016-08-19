@@ -2,7 +2,6 @@
   <ion-content scroll="false">
     <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)">
       <ion-slide ng-repeat="item in messagelist">
-
         <div class="row">
           <div  ng-if="item.photo == null">
             <img class="avatar" src="avatar\pomba-da-paz.jpg">
@@ -30,7 +29,16 @@
                     close-menu>
                       <i class="icon ion-android-favorite"></i> {{message.messageReply}}
                 </a>
+                &nbsp;
+                <a
+                    href="javascript:;"
+                    style="text-decoration: none"
+                    ng-click="shareWhatsApp(item.nickname, item.messageType.image)"
+                    close-menu>
+                      <i class="icon ion-social-whatsapp"></i> {{message.messageReply}}
+                </a>
               </div>
+
             </div>
             <div class="col col-50" ng-if="item.isFriend == 0">
               <div class="footer-message text-right">
@@ -44,7 +52,6 @@
               </div>
             </div>
         </div>
-
       </ion-slide>
     </ion-slide-box>
   </ion-content>

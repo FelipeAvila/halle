@@ -131,7 +131,8 @@
   "messageAdd": "Adicionar amigo",
   "messageFriend": "como amigo",
   "messageInviteSuccess" : "Amigo incluído!",
-  "messageFriendName" : "Confirme o nome do irmão",
+  "messageFriendName" : "Confirme o nome do amigo",
+  "messageFriendReturn" : "",
 
   "inviteFriendTitle" : "Indicar Amigos",
   "inviteFriendSubTitle" : "Gostou do halle?",

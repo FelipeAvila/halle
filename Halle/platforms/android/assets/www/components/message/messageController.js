@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService) {
 
   // Form data
   $scope.data = {};
@@ -128,6 +128,18 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
       ]
     });
     // FINAL INVITE
-
   }
+
+  // Perform the inviteWhatsApp
+  $scope.shareWhatsApp = function(nickname, image) {
+    console.log('shareWhatsApp');
+    var imageSrc = "data:image/jpeg;base64," + image;
+    var message = nickname + $rootScope.message.messageFriendReturn;
+    $cordovaSocialSharing
+    .shareViaWhatsApp(message, imageSrc, 'http://www.halleapp.net')
+    .then(function(result) {
+    }, function(err) {
+    });
+  }
+
 });

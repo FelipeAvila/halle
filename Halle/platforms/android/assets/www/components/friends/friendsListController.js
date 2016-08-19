@@ -135,8 +135,6 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
          $scope.Success = true;
          $scope.msgSuccess =  data.message;
 
-         //$scope.share();
-
          $ionicPopup.alert({
            title: $rootScope.message.title,
            content: $rootScope.message.messageSendSuccess
