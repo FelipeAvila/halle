@@ -26,7 +26,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
         "register": null
     }];
   // Total de mensagens recebidas
-  $scope.amountMessage = 0;
+  $rootScope.amountMessage = 0;
 
   // Inicio INIT
   $scope.init = function() {
@@ -66,8 +66,8 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
        $scope.messagelist = data;
        if (data != null) {
          $scope.Success = true;
-         $scope.amountMessage = data.length;
-         BadgeService.set($scope.amountMessage);
+         $rootScope.amountMessage = data.length;
+         BadgeService.set($rootScope.amountMessage);
        }
      }, function(error) {
      });

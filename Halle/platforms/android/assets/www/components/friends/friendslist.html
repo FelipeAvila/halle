@@ -16,6 +16,7 @@
              ng-model="search">
     </label>
 
+    <!--
     <span ng-if="amountMessage > 0">
       <div class="card">
         <p>{{ amountMessage }}</p>
@@ -27,7 +28,8 @@
           </span>
       </div>
     </span>
-
+    -->
+    
     <ion-list>
       <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:search | orderBy: '-hasHalle'"> <!--  | filter: {name: search} -->
         <span ng-if="item.id > 1">

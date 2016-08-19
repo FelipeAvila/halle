@@ -259,7 +259,6 @@ body {
   font-family:Helvetica Neue;
 }
 
-
 /********************MESSAGE ERROR/SUCCESS*****************************/
 .error-container {
   margin: 5px 0;
@@ -303,4 +302,12 @@ body {
 }
 .last-error-container > .error {
   padding: 10px 16px 0;
+}
+
+/*************** badge ********************/
+.badge {
+  position:absolute;
+  top:-2px;
+  left:25px;
+  font-size:16px !important
 }

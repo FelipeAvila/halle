@@ -19,6 +19,22 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
   }
   // FINAL home
 
+  // INIT
+  $scope.goMessage = function() {
+    if ($rootScope.amountMessage > 0) {
+      $state.go("home.message");
+    }
+    else {
+      $ionicPopup.alert({
+        title: $rootScope.message.title,
+        content: $rootScope.message.messageAmount
+      }).then(function(res) {
+        return;
+      });
+    }
+  }
+  // FINAL
+
 
   // INIT getAllContacts
   $scope.getAllContacts = function() {
@@ -87,12 +103,8 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
       }
     });
 
-
-
-
   };
   // FINAL getAllContacts
-
 
 
  // INIT DELETE PHONE - A confirm dialog

@@ -70,8 +70,8 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
           $scope.Success = true;
           $scope.msgSuccess =  data.message;
 
-          if (tokenpush != null) {
-              PushNotificationService.push(tokenpush);
+          if (tokenPush != null) {
+              PushNotificationService.push(tokenPush);
           }
 
           $ionicPopup.alert({

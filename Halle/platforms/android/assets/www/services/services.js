@@ -160,16 +160,15 @@ app.service('BadgeService', function($cordovaBadge) {
     console.log('BadgeService - ' + count);
     $cordovaBadge.hasPermission().then(function(yes) {
       // You have permission
-      console.log('BadgeService - ' + yes);
+      $cordovaBadge.set(count).then(function() {
+        // You have permission, badge set.
+      }, function(err) {
+        console.log('BadgeService - ' + err);
+      });
     }, function(no) {
       // You do not have permission
-      console.log('BadgeService - ' + no);
+      console.log('BadgeService hasPermission - ' + no);
     });
 
-    $cordovaBadge.set(count).then(function() {
-      // You have permission, badge set.
-    }, function(err) {
-      console.log('BadgeService - ' + err);
-    });
   };
 });
