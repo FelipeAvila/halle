@@ -109,7 +109,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
             $scope.data = data;
 
-            if ($scope.data.nickname == null) {
+            if ( $scope.data.nickname == null && $scope.data.name == null ) {
               $ionicPopup.alert({
                 title: $rootScope.message.title,
                 content: $rootScope.message.messageSendError
@@ -145,10 +145,12 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
        .then(function(data) {
          $scope.Success = true;
          $scope.msgSuccess =  data.message;
+         console.log('mensagem enviada com sucesso!');
        },
        function(error) {
          $scope.error = true;
          $scope.msgError =  error.data.message;
+         console.log('mensagem enviada com erro - ' + error);
        });
 
        //$state.go("home.friendslist");

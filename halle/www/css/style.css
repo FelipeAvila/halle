@@ -239,8 +239,11 @@ body {
 }
 
 .img-message {
-  height: 95%;
-  width: 95%;
+  height: 90%;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hr-line {
@@ -258,7 +261,6 @@ body {
   text-align: center;
   font-family:Helvetica Neue;
 }
-
 
 .footer-message {
   font-size:15px;

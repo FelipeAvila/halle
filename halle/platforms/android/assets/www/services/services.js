@@ -157,17 +157,20 @@ app.service('PhoneService', function() {
 app.service('BadgeService', function($cordovaBadge) {
   this.set = function(count) {
     console.log('BadgeService - ' + count);
-    $cordovaBadge.hasPermission().then(function(yes) {
-      // You have permission
-      $cordovaBadge.set(count).then(function() {
-        // You have permission, badge set.
-      }, function(err) {
-        console.log('BadgeService - ' + err);
-      });
-    }, function(no) {
-      // You do not have permission
-      console.log('BadgeService hasPermission - ' + no);
-    });
 
+    try {
+        $cordovaBadge.hasPermission().then(function(yes) {
+          // You have permission
+          $cordovaBadge.set(count).then(function() {
+            // You have permission, badge set.
+          }, function(err) {
+            console.log('BadgeService - ' + err);
+          });
+        }, function(no) {
+          // You do not have permission
+          console.log('BadgeService hasPermission - ' + no);
+        });
+    }
+    catch(e) {}
   };
 });
