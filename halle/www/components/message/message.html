@@ -4,14 +4,20 @@
       <ion-slide ng-repeat="item in messagelist">
         <div class="row">
           <div  ng-if="item.photo == null">
-            <img class="avatar" src="avatar\pomba-da-paz.jpg">
+            <img class="avatar" src="avatar\profile.svg">
           </div>
           <div ng-if="item.photo != null">
             <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photo}}">
           </div>
         </div>
         <div class="title-message">
-          {{item.nickname}}
+          <div class="row">
+              <div class="col col-10">
+              </div>
+              <div class="col col-90">
+                {{item.nickname}}
+              </div>
+          </div>
         <div>
         <div class='hr-line'></div>
 
