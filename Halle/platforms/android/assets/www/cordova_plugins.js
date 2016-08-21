@@ -1,6 +1,15 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "id": "cordova-plugin-badge.Badge",
+        "file": "plugins/cordova-plugin-badge/www/badge.js",
+        "pluginId": "cordova-plugin-badge",
+        "clobbers": [
+            "plugin.notification.badge",
+            "cordova.plugins.notification.badge"
+        ]
+    },
+    {
         "id": "cordova-plugin-camera.Camera",
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "pluginId": "cordova-plugin-camera",
@@ -330,20 +339,13 @@ module.exports = [
         "clobbers": [
             "PushNotification"
         ]
-    },
-    {
-        "id": "cordova-plugin-badge.Badge",
-        "file": "plugins/cordova-plugin-badge/www/badge.js",
-        "pluginId": "cordova-plugin-badge",
-        "clobbers": [
-            "plugin.notification.badge",
-            "cordova.plugins.notification.badge"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "cordova-plugin-app-event": "1.2.0",
+    "cordova-plugin-badge": "0.7.2",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-camera": "2.2.0",
     "cordova-plugin-contacts": "2.1.0",
@@ -353,9 +355,7 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.1",
     "ionic-plugin-keyboard": "2.2.1",
-    "phonegap-plugin-push": "1.8.1",
-    "cordova-plugin-app-event": "1.2.0",
-    "cordova-plugin-badge": "0.7.2"
+    "phonegap-plugin-push": "1.8.1"
 };
 // BOTTOM OF METADATA
 });

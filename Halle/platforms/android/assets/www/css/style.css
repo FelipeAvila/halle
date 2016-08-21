@@ -253,8 +253,7 @@ body {
 }
 
 .title-message {
-  overflow:hidden; text-overflow-multiline:ellipsis;
-  font-size: 6.9vw;
+  font-size: 1.4rem;
   color:#2b98d5;
   text-align: center;
   font-family:Helvetica Neue;
@@ -262,7 +261,7 @@ body {
 
 
 .footer-message {
-  font-size:14px;
+  font-size:15px;
   color:#2b98d5;
   text-align: center;
   font-family:Helvetica Neue;

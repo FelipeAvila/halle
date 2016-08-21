@@ -38,10 +38,8 @@
                     close-menu>
                       <i class="icon ion-social-facebook"></i> {{message.messageFrendShare}}
                 </a>
-              </div>
-              &nbsp;
-              <div class="footer-message text-right" ng-if="item.isFriend == 0">
-                <a
+                &nbsp;
+                <a ng-if="item.isFriend == 0"
                     href="javascript:;"
                     style="text-decoration: none"
                     ng-click="invite(item.nickname, item.phone)"

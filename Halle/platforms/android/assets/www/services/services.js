@@ -35,7 +35,6 @@ app.service('PushNotificationService', function($http, $rootScope) {
         "notification": {
           "message": $rootScope.message.messagePush,
           "android": {
-            "icon": "ic_logo",
             "message": $rootScope.message.messagePush
           },
           "ios": {

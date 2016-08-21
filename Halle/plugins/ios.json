@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
@@ -34,16 +37,13 @@
         "phonegap-plugin-push": {
             "SENDER_ID": "471393976592",
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
-        },
-        "cordova-plugin-badge": {
-            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },
     "dependent_plugins": {
-        "cordova-plugin-compat": {
+        "cordova-plugin-app-event": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
-        "cordova-plugin-app-event": {
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     }

@@ -29,14 +29,14 @@
       </div>
     </span>
     -->
-    
+
     <ion-list>
       <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:search | orderBy: '-hasHalle'"> <!--  | filter: {name: search} -->
         <span ng-if="item.id > 1">
           <div class="card stable-bg ink ink-dark">
               <div class="item item-avatar">
                   <span  ng-if="item.photoFriend == null">
-                    <img  class="avatar" src="avatar\pomba-da-paz.jpg">
+                    <img  class="avatar" src="avatar\profile.svg">
                   </span>
                   <span  ng-if="item.photoFriend != null">
                     <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photoFriend}}" >

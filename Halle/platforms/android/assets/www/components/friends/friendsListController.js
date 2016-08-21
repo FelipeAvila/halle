@@ -41,7 +41,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
             $rootScope.phone = $scope.data.phone;
 
             // Atualiza o tokenpush
-            if ($scope.data.tokenpush == null && $rootScope.tokenpush != null) {
+            if (($scope.data.tokenpush == null && $rootScope.tokenpush != null) || ($scope.data.tokenpush != $rootScope.tokenpush && $rootScope.tokenpush != null)) {
                var info = {'token': token, 'name': $scope.data.name, 'nickname': $scope.data.nickname, 'birthday': $scope.data.birthday, 'email': $scope.data.email, 'photo': $scope.data.photo, 'tokenpush': $rootScope.tokenpush };
 
                 // acessando o recurso de API
@@ -77,6 +77,10 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
      .$promise
      .then(function(data) {
        $scope.friendslist = data;
+       console.log('Total de contatos - ' + $scope.friendslist.length);
+       if ($scope.friendslist.length == 0) {
+         $scope.getAllContacts();
+       }
      }, function(error) {
      });
      $scope.$broadcast('scroll.refreshComplete');
@@ -127,6 +131,13 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
   // END SEND message
 
   $scope.send = function(token, phoneFriend, messageTypeId) {
+    // Send message
+    $ionicPopup.alert({
+      title: $rootScope.message.title,
+      content: $rootScope.message.messageSendSuccess
+    }).then(function(res) {
+    });
+
     // acessando o recurso de API
     var info = {'token': token, 'phoneFriend': phoneFriend, 'messageTypeId': messageTypeId};
     MessageSendResource.save({}, info)
@@ -134,19 +145,13 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
        .then(function(data) {
          $scope.Success = true;
          $scope.msgSuccess =  data.message;
-
-         $ionicPopup.alert({
-           title: $rootScope.message.title,
-           content: $rootScope.message.messageSendSuccess
-         }).then(function(res) {
-         });
        },
        function(error) {
          $scope.error = true;
          $scope.msgError =  error.data.message;
        });
 
-       $state.go("home.friendslist");
+       //$state.go("home.friendslist");
   }
 
   $scope.invite = function() {
