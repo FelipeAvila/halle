@@ -77,7 +77,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
      .$promise
      .then(function(data) {
        $scope.friendslist = data;
-       console.log('Total de contatos - ' + $scope.friendslist.length);
+
        if ($scope.friendslist.length == 0) {
          $scope.getAllContacts();
        }
