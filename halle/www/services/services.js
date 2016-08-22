@@ -156,8 +156,6 @@ app.service('PhoneService', function() {
 
 app.service('BadgeService', function($cordovaBadge) {
   this.set = function(count) {
-    console.log('BadgeService - ' + count);
-
     try {
         $cordovaBadge.hasPermission().then(function(yes) {
           // You have permission
