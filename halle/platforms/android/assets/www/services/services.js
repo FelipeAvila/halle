@@ -33,11 +33,16 @@ app.service('PushNotificationService', function($http, $rootScope) {
         "tokens": tokenpush,
         "profile": 'halle',
         "notification": {
+          "title": "halle",
           "message": $rootScope.message.messagePush,
           "android": {
+            "title": "halle",
+            "priority": "high",
             "message": $rootScope.message.messagePush
           },
           "ios": {
+            "title": "halle",
+            "priority": 10,             
             "message": $rootScope.message.messagePush
           }
         }
