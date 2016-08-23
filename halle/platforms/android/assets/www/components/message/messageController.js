@@ -134,7 +134,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   $scope.shareWhatsApp = function(nickname, image) {
     console.log('shareWhatsApp');
     var imageSrc = "data:image/jpeg;base64," + image;
-    var message = nickname + $rootScope.message.messageFriendReturn;
+    var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     $cordovaSocialSharing
     .shareViaWhatsApp(message, imageSrc, 'http://www.halleapp.net')
     .then(function(result) {
@@ -146,7 +146,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   $scope.shareFacebook = function(nickname, image) {
     console.log('shareWhatsApp');
     var imageSrc = "data:image/jpeg;base64," + image;
-    var message = $rootScope.message.messageFriendReturn + nickname;
+    var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     console.log(message);
     $cordovaSocialSharing
     .shareViaFacebookWithPasteMessageHint(message, imageSrc, 'http://www.halleapp.net', message)
