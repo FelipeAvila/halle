@@ -147,7 +147,6 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
     console.log('shareWhatsApp');
     var imageSrc = "data:image/jpeg;base64," + image;
     var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
-    console.log(message);
     $cordovaSocialSharing
     .shareViaFacebookWithPasteMessageHint(message, imageSrc, 'http://www.halleapp.net', message)
     .then(function(result) {

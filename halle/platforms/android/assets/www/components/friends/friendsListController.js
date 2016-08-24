@@ -68,7 +68,6 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
   //INICIO messageReceive
   $scope.initMessageReceive = function() {
-    console.log('initMessageReceive');
     // Se as informações do telefone não fora carregadas
     if ($rootScope.phone == null) {
       $scope.init();
@@ -90,11 +89,9 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
         $scope.Success = true;
         $rootScope.amountMessage = data.length;
         BadgeService.set($rootScope.amountMessage);
-        cosole.log('MessageReceiveResource - ' + $rootScope.amountMessage);
-
       }
     }, function(error) {
-      cosole.log('MessageReceiveResource - ' + error);
+      console.log('MessageReceiveResource - ' + error);
 
     });
 
