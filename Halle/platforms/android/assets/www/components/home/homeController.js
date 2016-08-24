@@ -38,8 +38,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
 
   // INIT getAllContacts
   $scope.getAllContacts = function() {
-    console.log('getAllContacts');
-
     var name = "";
     var phoneFriend = "";
     var nameFriend = "";

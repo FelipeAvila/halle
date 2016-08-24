@@ -1,22 +1,27 @@
-<ion-modal-view  ng-init="onLoad()">
+<ion-modal-view ng-init="onLoad()">
   <ion-content scroll="false">
     <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)">
       <ion-slide ng-repeat="item in messagelist">
         <div class="row">
           <div  ng-if="item.photo == null">
-            <img class="avatar" src="avatar\pomba-da-paz.jpg">
+            <img class="avatar" src="avatar\profile.svg">
           </div>
           <div ng-if="item.photo != null">
             <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photo}}">
           </div>
         </div>
         <div class="title-message">
-          {{item.nickname}}
+          <div class="row">
+              <div class="col col-15">
+              </div>
+              <div class="col col-75">
+                <p style="font-size:93%;">{{item.nickname}}</p>
+              </div>
+          </div>
         <div>
         <div class='hr-line'></div>
 
         <div class="row">
-            <!--{{item.nickname}}{{item.messageType.description}} -->
             <img class='img-message' ng-src="data:image/JPEG;base64,{{item.messageType.image}}" >
         </div>
         <div class='hr-line'></div>

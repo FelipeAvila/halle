@@ -115,9 +115,7 @@ body {
    color: #2b98d5;"
 }
 .button-white{
-
     color: #fff;"
-
 }
 
 /****************** LINK **********************/
@@ -128,7 +126,7 @@ body {
     vertical-align: middle;
     display: block;
     position: absolute;
-    }
+}
 
 /*******************LOADING************************/
 .loading-container .loading {
@@ -239,8 +237,11 @@ body {
 }
 
 .img-message {
-  height: 95%;
-  width: 95%;
+  height: 90%;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hr-line {
@@ -258,7 +259,6 @@ body {
   text-align: center;
   font-family:Helvetica Neue;
 }
-
 
 .footer-message {
   font-size:15px;
@@ -311,6 +311,14 @@ body {
 .last-error-container > .error {
   padding: 10px 16px 0;
 }
+.error-message {
+  padding: 10px 55px;
+  font-family: "helvetica Neue";
+  font-size: 16px;
+  color: #2b98d5;
+  vertical-align: middle;
+}
+
 
 /*************** badge ********************/
 .badge {
@@ -318,4 +326,11 @@ body {
   top:-2px;
   left:25px;
   font-size:16px !important
+}
+
+/**************INVITE ********************/
+.item-invite {
+  color:#2b98d5;
+  text-align: left;
+  font-family:Helvetica Neue;
 }

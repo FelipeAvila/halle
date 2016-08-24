@@ -27,17 +27,23 @@ app.service('PushNotificationService', function($http, $rootScope) {
       url: 'https://api.ionic.io/push/notifications',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1MjNmOWQwNi1lMzYyLTRiNDQtOTgxNS1kZTdiNzJlMGNlMGYifQ.m8V5tWwKblAi2EJwRgCmJoWD1i4Jmd8uCo8Vi1Az2k8'
+        //'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1MjNmOWQwNi1lMzYyLTRiNDQtOTgxNS1kZTdiNzJlMGNlMGYifQ.m8V5tWwKblAi2EJwRgCmJoWD1i4Jmd8uCo8Vi1Az2k8'
+          'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MjNmOWQwNi1lMzYyLTRiNDQtOTgxNS1kZTdiNzJlMGNlMGYifQ.6HWqpiBgq1Y4GoPMWs4Qeq498ll_bvtg-3YCz75ukf0'
       },
       data: {
         "tokens": tokenpush,
         "profile": 'halle',
         "notification": {
+          "title": "halle",
           "message": $rootScope.message.messagePush,
           "android": {
+            "title": "halle",
+            "priority": "high",
             "message": $rootScope.message.messagePush
           },
           "ios": {
+            "title": "halle",
+            "priority": 10,
             "message": $rootScope.message.messagePush
           }
         }
@@ -47,7 +53,7 @@ app.service('PushNotificationService', function($http, $rootScope) {
     // Make the API call
     $http(req).success(function(resp){
       // Handle success
-      //console.log("Ionic Push: Push success", resp);
+      console.log("Ionic Push: Push success", resp);
     }).error(function(error){
       // Handle error
       console.log("Ionic Push: Push error", error);
@@ -156,18 +162,19 @@ app.service('PhoneService', function() {
 
 app.service('BadgeService', function($cordovaBadge) {
   this.set = function(count) {
-    console.log('BadgeService - ' + count);
-    $cordovaBadge.hasPermission().then(function(yes) {
-      // You have permission
-      $cordovaBadge.set(count).then(function() {
-        // You have permission, badge set.
-      }, function(err) {
-        console.log('BadgeService - ' + err);
-      });
-    }, function(no) {
-      // You do not have permission
-      console.log('BadgeService hasPermission - ' + no);
-    });
-
+    try {
+        $cordovaBadge.hasPermission().then(function(yes) {
+          // You have permission
+          $cordovaBadge.set(count).then(function() {
+            // You have permission, badge set.
+          }, function(err) {
+            console.log('BadgeService - ' + err);
+          });
+        }, function(no) {
+          // You do not have permission
+          console.log('BadgeService hasPermission - ' + no);
+        });
+    }
+    catch(e) {}
   };
 });

@@ -9,6 +9,11 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
   $scope.msgSuccess = "";
   // Acessando o storage local
   var storage = new getLocalStorage();
+  // iniciando valores
+  $rootScope.phone = null;
+  $scope.friendslist = 0;
+  $scope.dataFindUser = {};
+  var interval = 2000;
 
   // Lista de amigos
   $scope.friendslist =
@@ -30,6 +35,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
   // Inicio INIT
   $scope.init = function() {
+    console.log('init');
     // get Token
     var token = storage.get();
 
@@ -37,12 +43,12 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
      FindUserResource.get({ token: token })
       .$promise
         .then(function(data) {
-            $scope.data = data;
-            $rootScope.phone = $scope.data.phone;
+            $scope.dataFindUser = data;
+            $rootScope.phone = $scope.dataFindUser.phone;
 
             // Atualiza o tokenpush
-            if (($scope.data.tokenpush == null && $rootScope.tokenpush != null) || ($scope.data.tokenpush != $rootScope.tokenpush && $rootScope.tokenpush != null)) {
-               var info = {'token': token, 'name': $scope.data.name, 'nickname': $scope.data.nickname, 'birthday': $scope.data.birthday, 'email': $scope.data.email, 'photo': $scope.data.photo, 'tokenpush': $rootScope.tokenpush };
+            if (($scope.dataFindUser.tokenpush == null && $rootScope.tokenpush != null) || ($scope.dataFindUser.tokenpush != $rootScope.tokenpush && $rootScope.tokenpush != null)) {
+               var info = {'token': token, 'name': $scope.dataFindUser.name, 'nickname': $scope.dataFindUser.nickname, 'birthday': $scope.dataFindUser.birthday, 'email': $scope.dataFindUser.email, 'photo': $scope.dataFindUser.photo, 'tokenpush': $rootScope.tokenpush };
 
                 // acessando o recurso de API
                EditUserResource.save({}, info)
@@ -58,75 +64,101 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
           $scope.msgError =  error.data.message;
         });
     }
-
-     // acessando o recurso de API
-    MessageReceiveResource.get({ token: token })
-     .$promise
-     .then(function(data) {
-       $scope.messagelist = data;
-       if (data != null) {
-         $scope.Success = true;
-         $rootScope.amountMessage = data.length;
-         BadgeService.set($rootScope.amountMessage);
-       }
-     }, function(error) {
-     });
-
-     // acessando o recurso de API
-    FriendsListResource.get({ token: token })
-     .$promise
-     .then(function(data) {
-       $scope.friendslist = data;
-       console.log('Total de contatos - ' + $scope.friendslist.length);
-       if ($scope.friendslist.length == 0) {
-         $scope.getAllContacts();
-       }
-     }, function(error) {
-     });
-     $scope.$broadcast('scroll.refreshComplete');
-
   }
   //FINAL INIT
+
+  //INICIO messageReceive
+  $scope.initMessageReceive = function() {
+    console.log('interval - ' + interval);
+    // Se as informações do telefone não fora carregadas
+    if ($rootScope.phone == null) {
+      $scope.init();
+    }
+
+    // Se os contatos não foram carregados, carregar a cada atualização.
+    if ($scope.friendslist == null || $scope.friendslist.length == 0){
+      $scope.initFriendList();
+    }
+
+    // get Token
+    var token = storage.get();
+    // acessando o recurso de API
+   MessageReceiveResource.get({ token: token })
+    .$promise
+    .then(function(data) {
+      $scope.messagelist = data;
+      if (data != null) {
+        interval = 5000;
+        $scope.Success = true;
+        $rootScope.amountMessage = data.length;
+        BadgeService.set($rootScope.amountMessage);
+      }
+    }, function(error) {
+      interval = interval * 2;
+      console.log('friendsListController - MessageReceiveResource - ERROR: ' + error);
+    });
+
+  }
+  /// FINAL  messageReceive
+
+  // INICIO Load friendslist
+  $scope.initFriendList = function() {
+    console.log('initFriendList');
+
+    // get Token
+    var token = storage.get();
+
+    // acessando o recurso de API
+   FriendsListResource.get({ token: token })
+    .$promise
+    .then(function(data) {
+      $scope.friendslist = data;
+
+      if ($scope.friendslist.length == 0) {
+        $scope.getAllContacts();
+      }
+    }, function(error) {
+    });
+    $scope.$broadcast('scroll.refreshComplete');
+
+  }
+  // FINAL load  friendslist
 
   // onLoad
   $scope.onLoad = function() {
 
     $interval(function(){
-      $scope.init();
-    }, 15000);
+      $scope.initMessageReceive();
+    }, interval);
+
+    $interval(function(){
+      $scope.initFriendList();
+    }, 300000); // 5 minutos
 
     $scope.init();
+    $scope.initFriendList();
+    $scope.initMessageReceive();
   }
 
   // INIT SEND message
   $scope.sendMessage = function(phoneFriend, tokenpush) {
      var messageTypeId = 0;
      var token = storage.get();
-      // acessando o recurso de API
-     FindUserResource.get({ token: token })
-      .$promise
-        .then(function(data) {
 
-            $scope.data = data;
-
-            if ($scope.data.nickname == null) {
-              $ionicPopup.alert({
-                title: $rootScope.message.title,
-                content: $rootScope.message.messageSendError
-              }).then(function(res) {
-                return;
-              });
-            }
-            else {
-              $scope.send(token, phoneFriend, messageTypeId);
-              if (tokenpush != null) {
-                  PushNotificationService.push(tokenpush);
-              }
-            }
-
-        },
-        function(error) {
-        });
+     if ( $scope.dataFindUser.nickname == null && $scope.dataFindUser.name == null ) {
+       $ionicPopup.alert({
+         title: $rootScope.message.title,
+         content: $rootScope.message.messageSendError
+       }).then(function(res) {
+         return;
+       });
+     }
+     else {
+       $scope.send(token, phoneFriend, messageTypeId);
+       if (tokenpush != null) {
+           PushNotificationService.push(tokenpush);
+       }
+     }
   }
   // END SEND message
 
@@ -145,10 +177,12 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
        .then(function(data) {
          $scope.Success = true;
          $scope.msgSuccess =  data.message;
+         console.log('mensagem enviada com sucesso!');
        },
        function(error) {
          $scope.error = true;
          $scope.msgError =  error.data.message;
+         console.log('mensagem enviada com erro - ' + error);
        });
 
        //$state.go("home.friendslist");
