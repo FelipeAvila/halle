@@ -33,6 +33,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // INICIO LOAD
   $scope.onLoad = function() {
+     console.log('onLoad MessageController');
       // acessando o recurso de API
      MessageReceiveResource.get({ token: token })
       .$promise
@@ -52,8 +53,9 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
         }
 
       }, function(error) {
+        console.log('MessageController - MessageReceiveResource - ' + error);
+        $state.go("home.errorMessage");
       });
-
 
   };
   //FINAL LOAD

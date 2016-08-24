@@ -13,6 +13,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
   $rootScope.phone = null;
   $scope.friendslist = 0;
   $scope.dataFindUser = {};
+  var interval = 2000;
 
   // Lista de amigos
   $scope.friendslist =
@@ -68,6 +69,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
   //INICIO messageReceive
   $scope.initMessageReceive = function() {
+    console.log('interval - ' + interval);
     // Se as informações do telefone não fora carregadas
     if ($rootScope.phone == null) {
       $scope.init();
@@ -86,13 +88,14 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
     .then(function(data) {
       $scope.messagelist = data;
       if (data != null) {
+        interval = 5000;
         $scope.Success = true;
         $rootScope.amountMessage = data.length;
         BadgeService.set($rootScope.amountMessage);
       }
     }, function(error) {
-      console.log('MessageReceiveResource - ' + error);
-
+      interval = interval * 2;
+      console.log('friendsListController - MessageReceiveResource - ERROR: ' + error);
     });
 
   }
@@ -126,11 +129,11 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
     $interval(function(){
       $scope.initMessageReceive();
-    }, 5000);
+    }, interval);
 
     $interval(function(){
       $scope.initFriendList();
-    }, 1800000); // 30 minutos
+    }, 300000); // 5 minutos
 
     $scope.init();
     $scope.initFriendList();
