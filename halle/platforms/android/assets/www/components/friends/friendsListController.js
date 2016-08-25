@@ -40,6 +40,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
     var token = storage.get();
 
     if ($rootScope.phone == null) {
+
      FindUserResource.get({ token: token })
       .$promise
         .then(function(data) {

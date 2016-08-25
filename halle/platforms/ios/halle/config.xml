@@ -77,4 +77,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
     <preference name="StatusBarStyle" value="default" />
+    <feature name="PushNotification">
+        <param name="ios-package" value="PushPlugin" />
+    </feature>
 </widget>

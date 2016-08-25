@@ -71,16 +71,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "phonegap-plugin-push": {
-        "source": {
-            "type": "registry",
-            "id": "phonegap-plugin-push"
-        },
-        "is_top_level": true,
-        "variables": {
-            "SENDER_ID": "471393976592"
-        }
-    },
     "cordova-plugin-badge": {
         "source": {
             "type": "git",
@@ -97,5 +87,15 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "phonegap-plugin-push": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-push"
+        },
+        "is_top_level": true,
+        "variables": {
+            "SENDER_ID": "471393976592"
+        }
     }
 }
