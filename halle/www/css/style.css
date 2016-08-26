@@ -118,7 +118,13 @@ body {
     color: #fff;"
 }
 
-/****************** LINK **********************/
+/****************** HEADER **********************/
+.header-title {
+  color:red;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 24px;
+}
 
 /****************** FOOTER LOGIN **********************/
 .bar-footer-login {

@@ -4017,7 +4017,7 @@ a.subdued {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 44px; }
     .bar .title.title-left {
@@ -6320,8 +6320,8 @@ button.item.item-button-right {
   .item-avatar-left .item-content > img:first-child,
   .item-avatar-left .item-content .item-image {
     margin-left: auto;
-    margin-right: auto; 
-    text-align: center;  
+    margin-right: auto;
+    text-align: center;
     top: 16px;
     left: 0px;
     max-width: 60px;
@@ -6329,7 +6329,7 @@ button.item.item-button-right {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px solid #2b98d5; 
+    border: 3px solid #2b98d5;
 }
 
 .item-avatar-right,
