@@ -133,9 +133,15 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   }
 
   // Perform the shareWhatsApp
-  $scope.shareWhatsApp = function(nickname, image) {
-    console.log('shareWhatsApp');
-    var imageSrc = "data:image/jpeg;base64," + image;
+  $scope.shareWhatsApp = function(nickname, image, content) {
+    var imageSrc = "";
+    if (content == null) {
+      imageSrc = "data:image/jpeg;base64," + image;
+    }
+    else {
+        var imageSrc = content;
+    }
+
     var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     $cordovaSocialSharing
     .shareViaWhatsApp(message, imageSrc, 'http://www.halleapp.net')
@@ -145,9 +151,16 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   }
 
   // Perform the shareFacebook
-  $scope.shareFacebook = function(nickname, image) {
-    console.log('shareWhatsApp');
-    var imageSrc = "data:image/jpeg;base64," + image;
+  $scope.shareFacebook = function(nickname, image, content) {
+console.log('shareFacebook - ' + content);
+
+    var imageSrc = "";
+    if (content == null) {
+      imageSrc = "data:image/jpeg;base64," + image;
+    }
+    else {
+        var imageSrc = content;
+    }
     var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     $cordovaSocialSharing
     .shareViaFacebookWithPasteMessageHint(message, imageSrc, 'http://www.halleapp.net', message)

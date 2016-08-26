@@ -88,7 +88,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
     .then(function(data) {
       $scope.messagelist = data;
       if (data != null) {
-        interval = 10000;
+        interval = 15000;
         $scope.Success = true;
         $rootScope.amountMessage = data.length;
         BadgeService.set($rootScope.amountMessage);
