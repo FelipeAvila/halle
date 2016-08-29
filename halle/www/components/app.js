@@ -154,7 +154,7 @@ app.run(function($ionicPlatform) {
 app.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
-      "debug": false
+      "debug": true
     });
 
     push.register(function(token) {
