@@ -3,6 +3,11 @@ var app = angular.module('halleApp.inviteFriendController', []);
 // Controller da pagina de criar usuario
 app.controller('inviteFriendController', function($scope, $rootScope, $state, $cordovaSocialSharing, $ionicPopup) {
 
+  //Analytics
+  if(typeof analytics !== undefined) {
+      analytics.trackView("inviteFriendController");
+  }
+
   // Acessando o storage local
   var storage = new getLocalStorage();
   var token = storage.get();

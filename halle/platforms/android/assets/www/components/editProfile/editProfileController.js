@@ -3,6 +3,11 @@ var app = angular.module('halleApp.editProfileController', []);
 // Controller da pagina de criar usuario
 app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource) {
 
+  //Analytics
+  if(typeof analytics !== undefined) {
+      analytics.trackView("editProfileController");
+  }
+
   // Form data
   $scope.data = {};
   // mensagem de erro

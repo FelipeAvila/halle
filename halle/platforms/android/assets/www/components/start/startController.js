@@ -2,6 +2,12 @@ var app = angular.module('halleApp.startController', []);
 
 // Controler da pagina de start
 app.controller('startController', function($scope, $rootScope, $timeout, $ionicLoading, $state, $location, ValidTokenResource) {
+
+  //Analytics
+  if(typeof analytics !== undefined) {
+      analytics.trackView("startController");
+  }
+
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

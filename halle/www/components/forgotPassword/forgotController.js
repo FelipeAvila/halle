@@ -3,6 +3,11 @@ var app = angular.module('halleApp.forgotController', []);
 // Controller da pagina de criar usuario
 app.controller('forgotController', function($scope, $rootScope, $state, $ionicPopup, ForgotResource) {
 
+  //Analytics
+  if(typeof analytics !== undefined) {
+      analytics.trackView("forgotController");
+  }
+
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

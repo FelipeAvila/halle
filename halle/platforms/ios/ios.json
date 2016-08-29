@@ -4,8 +4,37 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
-    "installed_plugins": {},
-    "dependent_plugins": {}
+    "installed_plugins": {
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+            "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+            "pluginId": "cordova-plugin-google-analytics",
+            "clobbers": [
+                "analytics",
+                "ga"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-google-analytics": "1.5.6"
+    }
 }

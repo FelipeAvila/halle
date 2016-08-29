@@ -2,6 +2,12 @@ var app = angular.module('halleApp.loginController', []);
 
 // Controller da pagina de login
 app.controller('loginController', function($ionicSideMenuDelegate, $scope, $state, $rootScope, AuthResource) {
+
+  //Analytics
+  if(typeof analytics !== undefined) {
+      analytics.trackView("loginController");
+  }
+
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
