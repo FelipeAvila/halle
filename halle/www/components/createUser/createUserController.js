@@ -2,12 +2,11 @@ var app = angular.module('halleApp.createUserController', []);
 
 // Controller da pagina de criar usuario
 app.controller('createUserController', function($scope, $rootScope, $state, CreateUserResource) {
-  /*
+
   //Analytics
   if(typeof analytics !== undefined) {
       analytics.trackView("createUserController");
   }
-  */
 
   // mensagem de erro
   $scope.error = false;

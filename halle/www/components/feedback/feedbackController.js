@@ -3,12 +3,10 @@ var app = angular.module('halleApp.feedbackController', []);
 // Controller da pagina de criar usuario
 app.controller('feedbackController', function($scope, $rootScope, $state, $http, FeedbackResource) {
 
-  /*
   //Analytics
   if(typeof analytics !== undefined) {
       analytics.trackView("feedbackController");
   }
-  */
 
   // Form data
   $scope.data = {};

@@ -154,17 +154,18 @@ app.run(function($ionicPlatform) {
 app.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
-      "debug": true
+      "debug": false
     });
 
     push.register(function(token) {
       console.log("My Device token:",token.token);
+      console.log("My Device token (TOKEN):",token);
       $rootScope.tokenpush = token.token;
       push.saveToken(token);  // persist the token in the Ionic Platform
     });
   });
 })
-/*
+
 //ANALYTICS
 app.run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
@@ -176,7 +177,7 @@ app.run(function($ionicPlatform, $ionicPopup) {
       }
   });
 });
-*/
+
 // verificando a conectividade
 app.run(function($window, $rootScope) {
       $rootScope.online = navigator.onLine;
