@@ -2,12 +2,11 @@ var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
 app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService) {
-  /*
+
   //Analytics
   if(typeof analytics !== undefined) {
       analytics.trackView("messageController");
   }
-  */
 
   // Form data
   $scope.data = {};
