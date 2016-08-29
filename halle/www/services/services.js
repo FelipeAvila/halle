@@ -22,16 +22,17 @@ app.service('PushNotificationService', function($http, $rootScope) {
   var token = storage.get();
 
   this.push = function(tokenpush) {
+    //'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.E0pu79GgUCqxuE3K5o1deptmlZtYl_dHd9bHB6WdQz4'
     var req = {
       method: 'POST',
       url: 'https://api.ionic.io/push/notifications',
       headers: {
         'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.E0pu79GgUCqxuE3K5o1deptmlZtYl_dHd9bHB6WdQz4'
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.Jau9agLgBEF7Is9Ap8psadEqtFOVkUzLmsb5FueIhH8'
       },
       data: {
         "tokens": tokenpush,
-        "profile": 'halle',
+        "profile": 'halle_prd',
         "notification": {
           "title": "halle",
           "message": $rootScope.message.messagePush,

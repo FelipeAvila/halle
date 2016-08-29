@@ -4015,9 +4015,11 @@ a.subdued {
     min-width: 30px;
     height: 43px;
     text-align: center;
+    font-weight: bold;
+    font-family: Helvetica Neue!important;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
     line-height: 44px; }
     .bar .title.title-left {
