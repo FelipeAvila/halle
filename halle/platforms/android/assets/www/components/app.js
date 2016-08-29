@@ -154,7 +154,7 @@ app.run(function($ionicPlatform) {
 app.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
-      "debug": false
+      "debug": true
     });
 
     push.register(function(token) {
@@ -164,19 +164,19 @@ app.run(function($ionicPlatform, $rootScope) {
     });
   });
 })
-
+/*
 //ANALYTICS
 app.run(function($ionicPlatform, $ionicPopup) {
-    $ionicPlatform.ready(function() {
-        if(typeof analytics !== undefined) {
-            console.log("Google Analytics disponível");
-            analytics.startTrackerWithId("UA-83331611-1");
-        } else {
-            console.log("Google Analytics indisponível");
-        }
-    });
+  $ionicPlatform.ready(function() {
+      if(typeof analytics !== undefined) {
+          console.log("Google Analytics disponível");
+          analytics.startTrackerWithId("UA-83331611-1");
+      } else {
+          console.log("Google Analytics indisponível");
+      }
+  });
 });
-
+*/
 // verificando a conectividade
 app.run(function($window, $rootScope) {
       $rootScope.online = navigator.onLine;

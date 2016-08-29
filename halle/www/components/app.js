@@ -164,7 +164,7 @@ app.run(function($ionicPlatform, $rootScope) {
     });
   });
 })
-
+/*
 //ANALYTICS
 app.run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
@@ -176,7 +176,7 @@ app.run(function($ionicPlatform, $ionicPopup) {
       }
   });
 });
-
+*/
 // verificando a conectividade
 app.run(function($window, $rootScope) {
       $rootScope.online = navigator.onLine;
