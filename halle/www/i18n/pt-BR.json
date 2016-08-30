@@ -76,13 +76,13 @@
   "homeMenuFeedback" : "Feedback",
   "homeMenuSair" : "Sair",
 
-  "inviteContacts" : "Adicionar irmão",
-  "inviteContactsName" : "Nome do irmão",
+  "inviteContacts" : "Adicionar amigo",
+  "inviteContactsName" : "Nome do amigo",
   "inviteContactsPhone" : "Telefone",
   "inviteContactsSendInvite" : "Enviar",
   "inviteContactsInvalid": "Telefone inválido!",
   "inviteContactsName": "Você precisa informar um nome.",
-  "inviteContactsError": "Ocorreu um erro ao enviar o convite.",
+  "inviteContactsError": "Ocorreu um erro ao adicionar o contato.",
   "inviteContactsSend" : "Adicionar",
 
   "changePassword" : "Trocar a Senha",
@@ -126,6 +126,7 @@
   "friendFilter" : "Buscar amigos...",
   "friendSend": "Enviar",
   "friendInvite": "Convidar",
+  "friendInviteZap" : "Escolha o contato ou o grupo do WhatsApp que deseja convidar para o halle",
 
   "messageReply": "Retribuir",
   "messageAdd": "Adicionar",
