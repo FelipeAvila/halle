@@ -1,8 +1,4 @@
 // Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
@@ -165,18 +161,6 @@ app.run(function($ionicPlatform, $rootScope) {
     });
   });
 })
-
-//ANALYTICS
-app.run(function($ionicPlatform, $ionicPopup) {
-  $ionicPlatform.ready(function() {
-      if(typeof analytics !== undefined) {
-          console.log("Google Analytics disponível");
-          analytics.startTrackerWithId("UA-83331611-1");
-      } else {
-          console.log("Google Analytics indisponível");
-      }
-  });
-});
 
 // verificando a conectividade
 app.run(function($window, $rootScope) {

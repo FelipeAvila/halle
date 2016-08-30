@@ -1,12 +1,10 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService) {
 
-  //Analytics
-  if(typeof analytics !== undefined) {
-      analytics.trackView("homeController");
-  }
+  // Registrar Analytics
+  AnalyticsService.add('homeController');
 
   $scope.contacts = {};
   // mensagem de erro

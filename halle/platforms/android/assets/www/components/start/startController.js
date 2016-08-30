@@ -1,12 +1,10 @@
 var app = angular.module('halleApp.startController', []);
 
 // Controler da pagina de start
-app.controller('startController', function($scope, $rootScope, $timeout, $ionicLoading, $state, $location, ValidTokenResource) {
+app.controller('startController', function($scope, $rootScope, $timeout, $ionicLoading, $state, $location, ValidTokenResource, AnalyticsService) {
 
-  //Analytics
-  if(typeof analytics !== undefined) {
-      analytics.trackView("startController");
-  }
+  // Registrar Analytics
+  AnalyticsService.add('startController');
 
   // mensagem de erro
   $scope.error = false;

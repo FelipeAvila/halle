@@ -193,3 +193,18 @@ app.service('BadgeService', function($cordovaBadge) {
     catch(e) {}
   };
 });
+
+app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
+  this.add = function(page) {
+    if(typeof analytics !== 'undefined'){
+      console.log("Google Analytics disponivel");
+      $cordovaGoogleAnalytics.debugMode();
+      $cordovaGoogleAnalytics.startTrackerWithId('UA-83331611-1');
+      $cordovaGoogleAnalytics.trackView(page);
+    }
+    else {
+      console.log("Google Analytics indisponivel");
+    }
+
+  };
+});

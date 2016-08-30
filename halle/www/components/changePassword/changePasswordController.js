@@ -1,12 +1,10 @@
 var app = angular.module('halleApp.changePasswordController', []);
 
 // Controller da pagina de criar usuario
-app.controller('changePasswordController', function($scope, $rootScope, $state, $http, ChangePasswordResource) {
+app.controller('changePasswordController', function($scope, $rootScope, $state, $http, ChangePasswordResource, AnalyticsService) {
 
-  //Analytics
-  if(typeof analytics !== undefined) {
-      analytics.trackView("changePasswordController");
-  }
+  // Registrar Analytics
+  AnalyticsService.add('changePasswordController');
 
   // Form data
   $scope.data = {};

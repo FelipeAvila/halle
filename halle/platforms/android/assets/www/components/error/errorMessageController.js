@@ -1,12 +1,10 @@
 var app = angular.module('halleApp.errorMessageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('errorMessageController', function($scope, $rootScope, $state) {
+app.controller('errorMessageController', function($scope, $rootScope, $state, AnalyticsService) {
 
-  //Analytics
-  if(typeof analytics !== undefined) {
-      analytics.trackView("errorMessageController");
-  }
+  // Registrar Analytics
+  AnalyticsService.add('errorMessageController');
 
   // mensagem de erro
   $scope.error = false;

@@ -100,8 +100,9 @@
     },
     "cordova-plugin-google-analytics": {
         "source": {
-            "type": "registry",
-            "id": "cordova-plugin-google-analytics"
+            "type": "git",
+            "url": "https://github.com/danwilson/google-analytics-plugin.git",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}

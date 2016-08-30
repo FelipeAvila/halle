@@ -1,12 +1,10 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService) {
 
-  //Analytics
-  if(typeof analytics !== undefined) {
-      analytics.trackView("messageController");
-  }
+  // Registrar Analytics
+  AnalyticsService.add('messageController');
 
   // Form data
   $scope.data = {};
@@ -168,7 +166,7 @@ console.log('shareFacebook - ' + content);
     }
     var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     $cordovaSocialSharing
-    .shareViaFacebookWithPasteMessageHint($rootScope.message.messageFriendPaste, imageSrc, 'http://www.halleapp.net', message)
+    .shareViaFacebookWithPasteMessageHint(message, imageSrc, 'http://www.halleapp.net', $rootScope.message.messageFriendPaste)
     .then(function(result) {
       console.log('shareFacebook - ' + result);
     }, function(err) {

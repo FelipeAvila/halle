@@ -11,6 +11,10 @@
   <access origin="*"/>
   <allow-intent href="*"/>
   <allow-navigation href="*"/>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>fb</string>
+  </array>
   <preference name="android-targetSdkVersion" value="20"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>

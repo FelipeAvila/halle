@@ -3,11 +3,6 @@ var app = angular.module('halleApp.invitePhoneController', []);
 // Controller da pagina de criar usuario
 app.controller('invitePhoneController', function($scope, $rootScope, $state, $http, InvitePhoneNumberResource) {
 
-  //Analytics
-  if(typeof analytics !== undefined) {
-      analytics.trackView("invitePhoneController");
-  }
-
   // Form data
   $scope.data = {};
   // mensagem de erro
