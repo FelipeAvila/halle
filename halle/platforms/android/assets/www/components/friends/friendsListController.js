@@ -194,7 +194,10 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
   $scope.invite = function() {
     var token = storage.get();
-    $cordovaSocialSharing.share($rootScope.message.inviteFriendMessage, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
+    //$cordovaSocialSharing.share($rootScope.message.inviteFriendMessage, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
+    $cordovaSocialSharing.shareViaWhatsApp($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net')
+
+
     //$cordovaSocialSharing.share($scope.data.name + $rootScope.message.messagePaz, $rootScope.message.messageSend, null, 'http://www.halleapp.net');
   }
 

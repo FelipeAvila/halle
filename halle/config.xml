@@ -11,11 +11,6 @@
   <access origin="*"/>
   <allow-intent href="*"/>
   <allow-navigation href="*"/>
-  <allow-navigation href="fb://*/*" />
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>fb</string>
-  </array>
   <preference name="android-targetSdkVersion" value="20"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
@@ -44,6 +39,13 @@
     <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
   </feature>
   <platform name="ios">
+    <!-- add this entry -->
+    <config-file platform="ios" target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+        <array>
+            <string>fb</string>
+        </array>
+    </config-file>
+
     <splash src="resources\ios\splash\Default-568h@2x~iphone.png" width="640" height="1136"/>
     <splash src="resources\ios\splash\Default-667h.png" width="750" height="1334"/>
     <splash src="resources\ios\splash\Default-736h.png" width="1242" height="2208"/>

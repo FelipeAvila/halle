@@ -185,3 +185,14 @@ app.run(function($http, $rootScope) {
         $rootScope.message = data;
   });
 });
+/*
+app.run(function($ionicScrollDelegate, $ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    if (window.cordova && ionic.Platform.isIOS()) {
+      window.addEventListener("statusTap", function() {
+        $ionicScrollDelegate.scrollTop(true);
+      });
+    }
+  });
+})
+*/
