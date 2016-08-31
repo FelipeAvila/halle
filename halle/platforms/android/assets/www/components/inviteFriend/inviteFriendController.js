@@ -5,7 +5,7 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
 
   // Registrar Analytics
   AnalyticsService.add('inviteFriendController');
-
+  
   // Acessando o storage local
   var storage = new getLocalStorage();
   var token = storage.get();

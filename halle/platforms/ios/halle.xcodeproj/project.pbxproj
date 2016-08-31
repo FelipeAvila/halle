@@ -77,6 +77,7 @@
 		7626CBBB83BC42D7A15AB69B /* UniversalAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B94382C35443A9B5A3F591 /* UniversalAnalyticsPlugin.m */; };
 		E265F9F61D824440AEA9463E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA584E97CE504AEDAD6B39F7 /* libGoogleAnalyticsServices.a */; };
 		C136CCA5A1F947618D013198 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EE7C9F3FE445A797389652 /* libAdIdAccess.a */; };
+		8DC4F1F4D3A84768A07AAC88 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB7F0855DC14A8592D3A71C /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,8 @@
 		F274E982CE8B455DBF40906F /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; name = "GAIEcommerceProduct.h"; path = "cordova-plugin-google-analytics/GAIEcommerceProduct.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		A27C997D03CD4E9DB0BA458A /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; name = "GAIEcommerceProductAction.h"; path = "cordova-plugin-google-analytics/GAIEcommerceProductAction.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		33A611430280449FB0130822 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; name = "GAIEcommercePromotion.h"; path = "cordova-plugin-google-analytics/GAIEcommercePromotion.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BAB7F0855DC14A8592D3A71C /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		2E865DBD4F204C89802FE076 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +481,8 @@
 				F274E982CE8B455DBF40906F /* GAIEcommerceProduct.h */,
 				A27C997D03CD4E9DB0BA458A /* GAIEcommerceProductAction.h */,
 				33A611430280449FB0130822 /* GAIEcommercePromotion.h */,
+				BAB7F0855DC14A8592D3A71C /* CDVStatusBar.m */,
+				2E865DBD4F204C89802FE076 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "halle/Plugins";
@@ -609,6 +614,7 @@
 				A74079A463B04BCBA7F7D02A /* AppDelegate+notification.m in Sources */,
 				0DB6A43D8F9C4B18802B97B3 /* PushPlugin.m in Sources */,
 				7626CBBB83BC42D7A15AB69B /* UniversalAnalyticsPlugin.m in Sources */,
+				8DC4F1F4D3A84768A07AAC88 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

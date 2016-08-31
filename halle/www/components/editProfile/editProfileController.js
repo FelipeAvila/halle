@@ -5,7 +5,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
 
   // Registrar Analytics
   AnalyticsService.add('editProfileController');
-
+  
   // Form data
   $scope.data = {};
   // mensagem de erro

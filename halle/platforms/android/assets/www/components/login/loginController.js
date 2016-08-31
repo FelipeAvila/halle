@@ -15,7 +15,6 @@ app.controller('loginController', function($ionicSideMenuDelegate, $scope, $stat
   // Acessando o storage local
   var storage = new getLocalStorage();
 
-
   // Ação criar
   $scope.create = function() {
       $state.go("createUser");

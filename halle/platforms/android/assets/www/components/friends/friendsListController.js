@@ -4,7 +4,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
   // Registrar Analytics
   AnalyticsService.add('friendsListController');
-
+    
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

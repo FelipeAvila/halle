@@ -5,7 +5,7 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
 
   // Registrar Analytics
   AnalyticsService.add('createUserController');
-
+  
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

@@ -5,7 +5,7 @@ app.controller('errorMessageController', function($scope, $rootScope, $state, An
 
   // Registrar Analytics
   AnalyticsService.add('errorMessageController');
-
+  
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

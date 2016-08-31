@@ -5,7 +5,7 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
 
   // Registrar Analytics
   AnalyticsService.add('forgotController');
-
+  
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

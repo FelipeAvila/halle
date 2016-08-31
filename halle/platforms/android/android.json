@@ -51,6 +51,10 @@
                         {
                             "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" value=\"com.adobe.phonegap.push.PushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -208,6 +212,9 @@
         },
         "phonegap-plugin-push": {
             "SENDER_ID": "471393976592",
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },
@@ -561,6 +568,14 @@
             "clobbers": [
                 "PushNotification"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -576,6 +591,7 @@
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-x-socialsharing": "5.1.1",
         "ionic-plugin-keyboard": "2.2.1",
-        "phonegap-plugin-push": "1.8.1"
+        "phonegap-plugin-push": "1.8.1",
+        "cordova-plugin-statusbar": "2.1.3"
     }
 }

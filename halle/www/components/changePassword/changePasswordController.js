@@ -5,7 +5,7 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
 
   // Registrar Analytics
   AnalyticsService.add('changePasswordController');
-
+  
   // Form data
   $scope.data = {};
   // mensagem de erro

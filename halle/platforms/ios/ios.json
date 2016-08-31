@@ -11,6 +11,18 @@
                         {
                             "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -19,6 +31,9 @@
     },
     "installed_plugins": {
         "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },
@@ -32,9 +47,18 @@
                 "analytics",
                 "ga"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-google-analytics": "1.5.6"
+        "cordova-plugin-google-analytics": "1.5.6",
+        "cordova-plugin-statusbar": "2.1.3"
     }
 }

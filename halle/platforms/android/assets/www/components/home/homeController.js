@@ -5,7 +5,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
 
   // Registrar Analytics
   AnalyticsService.add('homeController');
-
+  
   $scope.contacts = {};
   // mensagem de erro
   $scope.error = false;

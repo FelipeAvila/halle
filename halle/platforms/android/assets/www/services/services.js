@@ -1,5 +1,6 @@
 var app = angular.module('halleApp.services', ['ngResource']);
 
+
 /*****************Serviços *********************************/
 app.service('AuthService', function($q, AuthResource) {
   var item = "";
