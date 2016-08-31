@@ -2,9 +2,9 @@
 <widget id="com.ionicframework.apphalle775885" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>halle</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Baixe o aplicativo e espalhe a Paz do Senhor.
     </description>
-  <author email="leonardobaiao@gmail.com" href="http://example.com.com/">
+  <author email="leonardobaiao@gmail.com" href="http://www.halleapp.net/">
       Leonardo Baiao
     </author>
   <content src="index.html"/>

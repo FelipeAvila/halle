@@ -316,6 +316,15 @@ module.exports = [
         ]
     },
     {
+        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+        "pluginId": "cordova-plugin-google-analytics",
+        "clobbers": [
+            "analytics",
+            "ga"
+        ]
+    },
+    {
         "id": "cordova-plugin-x-socialsharing.SocialSharing",
         "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
         "pluginId": "cordova-plugin-x-socialsharing",
@@ -339,15 +348,6 @@ module.exports = [
         "clobbers": [
             "PushNotification"
         ]
-    },
-    {
-        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
-        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
-        "pluginId": "cordova-plugin-google-analytics",
-        "clobbers": [
-            "analytics",
-            "ga"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -361,11 +361,11 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.2",
     "cordova-plugin-file": "4.2.0",
     "cordova-plugin-file-transfer": "1.5.1",
+    "cordova-plugin-google-analytics": "1.5.6",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.1",
     "ionic-plugin-keyboard": "2.2.1",
-    "phonegap-plugin-push": "1.8.1",
-    "cordova-plugin-google-analytics": "1.5.6"
+    "phonegap-plugin-push": "1.8.1"
 };
 // BOTTOM OF METADATA
 });

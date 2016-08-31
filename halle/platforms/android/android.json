@@ -33,6 +33,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
@@ -46,10 +50,6 @@
                         },
                         {
                             "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" value=\"com.adobe.phonegap.push.PushPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"android-package\" value=\"com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -83,6 +83,48 @@
                             "count": 1
                         }
                     ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<receiver android:enabled=\"true\" android:name=\"com.google.android.gms.analytics.AnalyticsReceiver\"><intent-filter><action android:name=\"com.google.android.gms.analytics.ANALYTICS_DISPATCH\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.analytics.AnalyticsService\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:enabled=\"true\" android:exported=\"true\" android:name=\"com.google.android.gms.analytics.CampaignTrackingReceiver\"><intent-filter><action android:name=\"com.android.vending.INSTALL_REFERRER\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.analytics.CampaignTrackingService\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"true\" android:name=\"com.adobe.phonegap.push.PushHandlerActivity\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"com.adobe.phonegap.push.BackgroundActionButtonHandler\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"true\" android:name=\"com.google.android.gms.gcm.GcmReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><category android:name=\"${applicationId}\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.GCMIntentService\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /></intent-filter></service>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.PushInstanceIDListenerService\"><intent-filter><action android:name=\"com.google.android.gms.iid.InstanceID\" /></intent-filter></service>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.RegistrationIntentService\" />",
+                            "count": 1
+                        }
+                    ],
                     "/manifest": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
@@ -110,48 +152,6 @@
                         },
                         {
                             "xml": "<permission android:name=\"${applicationId}.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest/application": [
-                        {
-                            "xml": "<activity android:exported=\"true\" android:name=\"com.adobe.phonegap.push.PushHandlerActivity\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<receiver android:name=\"com.adobe.phonegap.push.BackgroundActionButtonHandler\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<receiver android:exported=\"true\" android:name=\"com.google.android.gms.gcm.GcmReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><category android:name=\"${applicationId}\" /></intent-filter></receiver>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.GCMIntentService\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /></intent-filter></service>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.PushInstanceIDListenerService\"><intent-filter><action android:name=\"com.google.android.gms.iid.InstanceID\" /></intent-filter></service>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:exported=\"false\" android:name=\"com.adobe.phonegap.push.RegistrationIntentService\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<receiver android:enabled=\"true\" android:name=\"com.google.android.gms.analytics.AnalyticsReceiver\"><intent-filter><action android:name=\"com.google.android.gms.analytics.ANALYTICS_DISPATCH\" /></intent-filter></receiver>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.analytics.AnalyticsService\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<receiver android:enabled=\"true\" android:exported=\"true\" android:name=\"com.google.android.gms.analytics.CampaignTrackingReceiver\"><intent-filter><action android:name=\"com.android.vending.INSTALL_REFERRER\" /></intent-filter></receiver>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.analytics.CampaignTrackingService\" />",
                             "count": 1
                         }
                     ]
@@ -194,6 +194,9 @@
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
@@ -205,9 +208,6 @@
         },
         "phonegap-plugin-push": {
             "SENDER_ID": "471393976592",
-            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
-        },
-        "cordova-plugin-google-analytics": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },
@@ -529,6 +529,15 @@
             ]
         },
         {
+            "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+            "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+            "pluginId": "cordova-plugin-google-analytics",
+            "clobbers": [
+                "analytics",
+                "ga"
+            ]
+        },
+        {
             "id": "cordova-plugin-x-socialsharing.SocialSharing",
             "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
             "pluginId": "cordova-plugin-x-socialsharing",
@@ -552,15 +561,6 @@
             "clobbers": [
                 "PushNotification"
             ]
-        },
-        {
-            "id": "cordova-plugin-google-analytics.UniversalAnalytics",
-            "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
-            "pluginId": "cordova-plugin-google-analytics",
-            "clobbers": [
-                "analytics",
-                "ga"
-            ]
         }
     ],
     "plugin_metadata": {
@@ -572,10 +572,10 @@
         "cordova-plugin-device": "1.1.2",
         "cordova-plugin-file": "4.2.0",
         "cordova-plugin-file-transfer": "1.5.1",
+        "cordova-plugin-google-analytics": "1.5.6",
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-x-socialsharing": "5.1.1",
         "ionic-plugin-keyboard": "2.2.1",
-        "phonegap-plugin-push": "1.8.1",
-        "cordova-plugin-google-analytics": "1.5.6"
+        "phonegap-plugin-push": "1.8.1"
     }
 }
