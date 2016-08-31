@@ -4,7 +4,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
 
   // Registrar Analytics
   AnalyticsService.add('friendsListController');
-    
+
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -36,6 +36,15 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
     }];
   // Total de mensagens recebidas
   $rootScope.amountMessage = 0;
+
+  $scope.input = {
+     searchAll : ''
+   };
+
+  $scope.clearSearch = function() {
+    console.log('search - ' + $scope.input.searchAll);
+    $scope.input.searchAll='';
+  };
 
   // Inicio INIT
   $scope.init = function() {

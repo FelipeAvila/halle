@@ -4017,7 +4017,7 @@ a.subdued {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-family:Helvetica Neue;
+    font-family: Helvetica Neue !important;
     font-size: 30px !important;
     font-weight: 700;
     line-height: 44px; }

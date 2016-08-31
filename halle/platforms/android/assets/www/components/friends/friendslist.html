@@ -1,4 +1,4 @@
-<ion-view >
+<ion-view>
   <ion-nav-buttons side="left">
     <button menu-toggle="left" style="color:white !important;" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
@@ -9,15 +9,18 @@
       on-refresh="onLoad()">
     </ion-refresher>
 
-    <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text"
-             placeholder="{{message.friendFilter}}"
-             ng-model="search">
-    </label>
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input id="searchAll" type="search" placeholder="{{message.friendFilter}}" ng-model="input.searchAll">
+      </label>
+      <button class="button button-clear button-positive" ng-if="input.searchAll.length" ng-click="clearSearch();">
+        {{message.clean}}
+      </button>
+    </div>
 
     <ion-list>
-      <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:search | orderBy: ['-hasHalle', 'name']"> <!--  | filter: {name: search} -->
+      <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:input.searchAll | orderBy: ['-hasHalle', 'name']"> <!--  | filter: {name: search} -->
         <span ng-if="item.id > 1">
           <div class="card stable-bg ink ink-dark">
               <div class="item item-avatar">

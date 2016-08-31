@@ -6,6 +6,7 @@
   "exit" : "Sair",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
+  "clean": "X",
 
   "exitMessage": "Tem certeza que desaja sair?",
   "refresh" : "Atualizando...",
@@ -149,6 +150,7 @@
   "inviteFriendMessage" : "Este é um convite para você participar do hallə. O aplicativo onde você deseja a Paz do Senhor para as pessoas que você mais gosta. Baixe na sua loja de aplicativos ou acesse o nosso site http://halleapp.net.",
   "inviteFriendSubject" : "Você recebeu uma indicação para espalhar a Paz do Senhor pelo mundo!",
   "inviteFriendFriend" : "AMIGOS",
+  "inviteFriendPaste" : "A mensagem do seu convite foi enviada para a área de transferência, pressione para colar a mensagem.",
 
   "importContacts" : "Confirme a importação dos contatos da sua agenda?",
 

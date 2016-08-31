@@ -43,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       controller: 'homeController'
     })
     .state('home.friendslist', {
-      cache: true,
+      cache: false,
       url: '/friendslist',
       views: {
         'menuContent' :{

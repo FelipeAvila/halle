@@ -5,7 +5,7 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
 
   // Registrar Analytics
   AnalyticsService.add('inviteFriendController');
-  
+
   // Acessando o storage local
   var storage = new getLocalStorage();
   var token = storage.get();
@@ -56,7 +56,7 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
   $scope.inviteFacebook = function() {
     $cordovaSocialSharing
       //.shareViaFacebook
-      .shareViaFacebookWithPasteMessageHint($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendMessage)
+      .shareViaFacebookWithPasteMessageHint($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendPaste)
       .then(function(result) {
       }, function(err) {
       });
