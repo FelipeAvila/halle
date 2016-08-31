@@ -8,6 +8,7 @@ app.constant('ApiEndpoint', {
   url: 'https://api.halleapp.net/HalleWEB/service'
 });
 
+
 /*****************Recursos*****************************/
 app.factory('AuthResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/auth/:login/:password',
