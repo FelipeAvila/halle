@@ -1,7 +1,13 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService) {
+
+  // Registrar Analytics
+  AnalyticsService.add('homeController');
+
+  $scope.searchValue="";
+
   $scope.contacts = {};
   // mensagem de erro
   $scope.error = false;
@@ -38,7 +44,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
 
   // INIT getAllContacts
   $scope.getAllContacts = function() {
-
     var name = "";
     var phoneFriend = "";
     var nameFriend = "";
@@ -86,6 +91,15 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
     function onError(contactError) {
     };
 
+    var options = {};
+    options.multiple = true;
+    $cordovaContacts.find(options).then(onSuccess, onError);
+
+  };
+  // FINAL getAllContacts
+
+  // Inicio importação de contatos
+  $scope.importContacts = function() {
     var confirmPopup = $ionicPopup.confirm({
       title: '<b>' + $rootScope.message.title + '</b>',
       template: $rootScope.message.importContacts,
@@ -97,15 +111,12 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
       // Tudo ok vamos iniciar a troca da senha
 
       if(res) {
-        var options = {};
-        options.multiple = true;
-        $cordovaContacts.find(options).then(onSuccess, onError);
+        $scope.getAllContacts();
       }
     });
 
-  };
-  // FINAL getAllContacts
-
+  }
+  // final importação de contatos
 
  // INIT DELETE PHONE - A confirm dialog
  $scope.showDelete = function() {

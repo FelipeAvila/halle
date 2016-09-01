@@ -1,7 +1,10 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService) {
+
+  // Registrar Analytics
+  AnalyticsService.add('messageController');
 
   // Form data
   $scope.data = {};
@@ -33,6 +36,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // INICIO LOAD
   $scope.onLoad = function() {
+     console.log('onLoad MessageController');
       // acessando o recurso de API
      MessageReceiveResource.get({ token: token })
       .$promise
@@ -52,8 +56,9 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
         }
 
       }, function(error) {
+        console.log('MessageController - MessageReceiveResource - ' + error);
+        $state.go("home.errorMessage");
       });
-
 
   };
   //FINAL LOAD
@@ -131,10 +136,16 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   }
 
   // Perform the shareWhatsApp
-  $scope.shareWhatsApp = function(nickname, image) {
-    console.log('shareWhatsApp');
-    var imageSrc = "data:image/jpeg;base64," + image;
-    var message = nickname + $rootScope.message.messageFriendReturn;
+  $scope.shareWhatsApp = function(nickname, image, content) {
+    var imageSrc = "";
+    if (content == null) {
+      imageSrc = "data:image/jpeg;base64," + image;
+    }
+    else {
+        var imageSrc = content;
+    }
+
+    var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     $cordovaSocialSharing
     .shareViaWhatsApp(message, imageSrc, 'http://www.halleapp.net')
     .then(function(result) {
@@ -143,13 +154,19 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   }
 
   // Perform the shareFacebook
-  $scope.shareFacebook = function(nickname, image) {
-    console.log('shareWhatsApp');
-    var imageSrc = "data:image/jpeg;base64," + image;
-    var message = $rootScope.message.messageFriendReturn + nickname;
-    console.log(message);
+  $scope.shareFacebook = function(nickname, image, content) {
+console.log('shareFacebook - ' + content);
+
+    var imageSrc = "";
+    if (content == null) {
+      imageSrc = "data:image/jpeg;base64," + image;
+    }
+    else {
+        var imageSrc = content;
+    }
+    var message = $rootScope.message.messageFriendReturn + nickname + $rootScope.message.messageFriendReturn2;
     $cordovaSocialSharing
-    .shareViaFacebookWithPasteMessageHint(message, imageSrc, 'http://www.halleapp.net', message)
+    .shareViaFacebookWithPasteMessageHint(message, imageSrc, 'http://www.halleapp.net', $rootScope.message.messageFriendPaste)
     .then(function(result) {
       console.log('shareFacebook - ' + result);
     }, function(err) {

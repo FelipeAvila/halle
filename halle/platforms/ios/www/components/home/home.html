@@ -5,13 +5,13 @@
                     <button class="button-base button-white ion-chatbox" ng-click="goMessage()">&nbsp;</button>
                     <span class="badge badge-assertive" ng-click="goMessage()">{{ amountMessage }}</span>
                     &nbsp;&nbsp;
-                    <button class="button-base button-white ion-refresh" ng-click="getAllContacts()"></button>
+                    <button class="button-base button-white ion-refresh" ng-click="importContacts()"></button>
                     <button class="button-base button-white ion-home" ng-click="goHome()"></button>
                 </ion-nav-buttons>
             </ion-nav-bar>
             <ion-nav-view   name="menuContent" animation="slide-left-right">  <!-- menu esquerdo -->
                 <div class="bar bar-header bar-positive">
-                    <h1 class="title"> {{message.title}}</h1>
+                    <h1 class="title">{{message.title}}</h1>
                 </div>
             </ion-nav-view>
       </ion-pane>

@@ -1,7 +1,10 @@
 var app = angular.module('halleApp.feedbackController', []);
 
 // Controller da pagina de criar usuario
-app.controller('feedbackController', function($scope, $rootScope, $state, $http, FeedbackResource) {
+app.controller('feedbackController', function($scope, $rootScope, $state, $http, FeedbackResource, AnalyticsService) {
+
+  // Registrar Analytics
+  AnalyticsService.add('feedbackController');
 
   // Form data
   $scope.data = {};

@@ -1,9 +1,5 @@
 // Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -11,36 +7,43 @@ app.config(function($stateProvider, $urlRouterProvider){
 
   $stateProvider
     .state('index', {
+      cache: true,
       url: '/',
       templateUrl: 'index.html'
     })
     .state('start', {
+      cache: true,
       url: '/start',
       templateUrl: 'components/start/start.html',
       controller: 'startController'
     })
     .state('login', {
+      cache: true,
       url: '/login',
       templateUrl: 'components/login/login.html',
       controller: 'loginController'
     })
     .state('createUser', {
+      cache: true,
       url: '/createUser',
       templateUrl: 'components/createUser/createUser.html',
       controller: 'createUserController'
     })
     .state('forgot', {
+      cache: true,
       url: '/forgot',
       templateUrl: 'components/forgotPassword/forgot.html',
       controller: 'forgotController'
     })
     .state('home', {
+      cache: true,
       url: '/home',
       abstract: true,
       templateUrl: 'components/home/home.html',
       controller: 'homeController'
     })
     .state('home.friendslist', {
+      cache: false,
       url: '/friendslist',
       views: {
         'menuContent' :{
@@ -50,6 +53,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     .state('home.invitePhone', {
+      cache: true,
       url: '/invitePhone',
       views: {
         'menuContent' :{
@@ -59,6 +63,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     .state('home.changePassword', {
+      cache: true,
       url: '/changePassword',
       views: {
         'menuContent' :{
@@ -68,6 +73,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     .state('home.feedback', {
+      cache: true,
       url: '/feedback',
       views: {
         'menuContent' :{
@@ -77,6 +83,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     .state('home.editProfile', {
+      cache: true,
       url: '/editProfile',
       views: {
         'menuContent' :{
@@ -86,6 +93,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     .state('home.message', {
+      cache: false,
       url: '/message',
       views: {
         'menuContent' :{
@@ -95,11 +103,22 @@ app.config(function($stateProvider, $urlRouterProvider){
       }
     })
     .state('home.inviteFriend', {
+      cache: true,
       url: '/inviteFriend',
       views: {
         'menuContent' :{
           templateUrl: 'components/inviteFriend/inviteFriend.html',
           controller: 'inviteFriendController'
+        }
+      }
+    })
+    .state('home.errorMessage', {
+      cache: true,
+      url: '/errorMessage',
+      views: {
+        'menuContent' :{
+          templateUrl: 'components/error/errorMessage.html',
+          controller: 'errorMessageController'
         }
       }
     })
@@ -127,6 +146,7 @@ app.run(function($ionicPlatform) {
   });
 });
 
+//PUSH
 app.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
@@ -135,6 +155,7 @@ app.run(function($ionicPlatform, $rootScope) {
 
     push.register(function(token) {
       console.log("My Device token:",token.token);
+      console.log("My Device token (TOKEN):",token);
       $rootScope.tokenpush = token.token;
       push.saveToken(token);  // persist the token in the Ionic Platform
     });
@@ -164,3 +185,14 @@ app.run(function($http, $rootScope) {
         $rootScope.message = data;
   });
 });
+/*
+app.run(function($ionicScrollDelegate, $ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    if (window.cordova && ionic.Platform.isIOS()) {
+      window.addEventListener("statusTap", function() {
+        $ionicScrollDelegate.scrollTop(true);
+      });
+    }
+  });
+})
+*/

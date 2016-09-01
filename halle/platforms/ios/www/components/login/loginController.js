@@ -1,7 +1,11 @@
 var app = angular.module('halleApp.loginController', []);
 
 // Controller da pagina de login
-app.controller('loginController', function($ionicSideMenuDelegate, $scope, $state, $rootScope, AuthResource) {
+app.controller('loginController', function($ionicSideMenuDelegate, $scope, $state, $rootScope, AuthResource, AnalyticsService) {
+
+  // Registrar Analytics
+  AnalyticsService.add('loginController');
+
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -10,7 +14,6 @@ app.controller('loginController', function($ionicSideMenuDelegate, $scope, $stat
   $scope.msgSuccess = "";
   // Acessando o storage local
   var storage = new getLocalStorage();
-
 
   // Ação criar
   $scope.create = function() {

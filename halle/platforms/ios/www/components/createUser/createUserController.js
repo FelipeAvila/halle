@@ -1,8 +1,11 @@
 var app = angular.module('halleApp.createUserController', []);
 
 // Controller da pagina de criar usuario
-app.controller('createUserController', function($scope, $rootScope, $state, CreateUserResource) {
+app.controller('createUserController', function($scope, $rootScope, $state, CreateUserResource, AnalyticsService) {
 
+  // Registrar Analytics
+  AnalyticsService.add('createUserController');
+  
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";

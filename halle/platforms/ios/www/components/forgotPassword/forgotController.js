@@ -1,8 +1,11 @@
 var app = angular.module('halleApp.forgotController', []);
 
 // Controller da pagina de criar usuario
-app.controller('forgotController', function($scope, $rootScope, $state, $ionicPopup, ForgotResource) {
+app.controller('forgotController', function($scope, $rootScope, $state, $ionicPopup, ForgotResource, AnalyticsService) {
 
+  // Registrar Analytics
+  AnalyticsService.add('forgotController');
+  
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
