@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.ionicframework.apphalle775885;
+package net.apphalle.halle;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

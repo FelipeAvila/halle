@@ -5,7 +5,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
 
   // Registrar Analytics
   AnalyticsService.add('editProfileController');
-  
+
   // Form data
   $scope.data = {};
   // mensagem de erro
@@ -69,7 +69,10 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
         },
         function(error) {
           $scope.error = true;
-          if (error.data) {
+          if (error.status == '404') {
+            $scope.msgError = $rootScope.message.error404;
+          }
+          else if (error.data) {
             $scope.msgError =  error.data.message;
           }
           else {

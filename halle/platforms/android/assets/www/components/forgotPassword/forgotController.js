@@ -5,7 +5,7 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
 
   // Registrar Analytics
   AnalyticsService.add('forgotController');
-  
+
   // mensagem de erro
   $scope.error = false;
   $scope.msgError = "";
@@ -56,8 +56,10 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
 
        }, function(error) {
          $scope.error = true;
-
-         if (error.data === null) {
+         if (error.status == '404') {
+           $scope.msgError = $rootScope.message.error404;
+         }
+         else if (error.data === null) {
            $scope.msgError = $rootScope.message.forgotError;
          }
          else {

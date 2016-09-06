@@ -5,7 +5,7 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
 
   // Registrar Analytics
   AnalyticsService.add('changePasswordController');
-  
+
   // Form data
   $scope.data = {};
   // mensagem de erro
@@ -80,7 +80,12 @@ app.controller('changePasswordController', function($scope, $rootScope, $state, 
         },
         function(error) {
           $scope.error = true;
-          $scope.msgError =  error.data.message;
+          if (error.status == '404') {
+            $scope.msgError = $rootScope.message.error404;
+          }
+          else {
+            $scope.msgError =  error.data.message;
+          }
         });
 
      }

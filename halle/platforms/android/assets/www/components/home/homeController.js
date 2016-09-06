@@ -93,6 +93,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
 
     var options = {};
     options.multiple = true;
+    options.hasPhoneNumber = true;
     $cordovaContacts.find(options).then(onSuccess, onError);
 
   };
