@@ -12,5 +12,6 @@
     "Social.framework": 1,
     "MessageUI.framework": 1,
     "libsqlite3.tbd": 1,
-    "libz.tbd": 1
+    "libz.tbd": 1,
+    "QuartzCore.framework": 1
 }

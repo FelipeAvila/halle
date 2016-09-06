@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		03E956A28A044A26AD612DB9 /* libGTM_NSData+zlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C1D901AC484AFB95F0DC30 /* libGTM_NSData+zlib.a */; };
@@ -79,6 +78,7 @@
 		FA3E03917C254C6790D7288B /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9883C5C0B84511A110AEC2 /* NSString+URLEncoding.m */; };
 		FB0733FA09E049FA84A933DE /* libGTM_SystemVersion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4C0F45ACC49E1955DA9A5 /* libGTM_SystemVersion.a */; };
 		FB1E9066D7764E10A62D9E69 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03DFA72BE934305A68E5902 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		583C5556198B4F6F80F4C680 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8D07D9032F4B389E519EC9 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +229,7 @@
 		F1FFD097C90B45C1B720587C /* libGTM_RoundedRectPath.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; name = libGTM_RoundedRectPath.a; path = "halle/Plugins/phonegap-plugin-push/GCM/Libraries/libGTM_RoundedRectPath.a"; sourceTree = "<group>"; };
 		F65690B024D846698635ACAB /* CDVFileTransfer.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = halle/config.xml; sourceTree = "<group>"; };
+		FB8D07D9032F4B389E519EC9 /* QuartzCore.framework */ = {isa = PBXFileReference; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +280,7 @@
 				1BC3CB727AA44213982439D8 /* libProtocolBuffers.a in Frameworks */,
 				829D33202AC04E4BB689D082 /* libsqlite3.tbd in Frameworks */,
 				D2F5AD8B34E649428E62F98F /* libz.tbd in Frameworks */,
+				583C5556198B4F6F80F4C680 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +392,7 @@
 				C885A65262C94137A5A5D24B /* libProtocolBuffers.a */,
 				1B183AFB723B4A9DA41F46F7 /* libsqlite3.tbd */,
 				BA932D1BE43B4B16A079D4EE /* libz.tbd */,
+				FB8D07D9032F4B389E519EC9 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

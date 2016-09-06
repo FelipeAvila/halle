@@ -1,16 +1,16 @@
 {
   "title" : "Hallə",
-
   "back" : "Voltar",
-
   "exit" : "Sair",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
   "clean": "X",
-
   "exitMessage": "Tem certeza que desaja sair?",
   "refresh" : "Atualizando...",
   "ok": "OK",
+  "welcome" : "Bem vindo ao Hallə, a nossa equipe envia a Paz do Senhor. Em alguns instantes os seus contatos serão importados.",
+  "error404": "Encontramos um erro na sua conexão, tente mais tarde!",
+
   "messageSend" : "Enviado via hallə",
   "messagePaz" : ", deseja a Paz do Senhor.",
   "messagePush": "Você recebeu a Paz do Senhor.",
@@ -128,6 +128,8 @@
   "friendSend": "Enviar",
   "friendInvite": "Convidar",
   "friendInviteZap" : "Escolha o contato ou o grupo do WhatsApp que deseja convidar para o hallə",
+  "friendContacts": "Contatos",
+  "friendsFriends": "Amigos",
 
   "messageReply": "Retribuir",
   "messageAdd": "Adicionar",

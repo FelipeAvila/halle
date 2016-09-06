@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $state, $http, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource, EditUserResource, PushNotificationService, BadgeService, AnalyticsService) {
+app.controller('friendsListController', function($scope, $rootScope, $state, $http, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource, EditUserResource, PushNotificationService, BadgeService, AnalyticsService, MessageToastService) {
 
   // Registrar Analytics
   AnalyticsService.add('friendsListController');
@@ -128,6 +128,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
       $scope.friendslist = data;
 
       if ($scope.friendslist.length == 0) {
+        MessageToastService.show($rootScope.message.welcome, 'long', 'center');
         $scope.getAllContacts();
       }
     }, function(error) {
@@ -147,6 +148,8 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
     $interval(function(){
       $scope.initFriendList();
     }, 300000); // 5 minutos
+
+    MessageToastService.show($rootScope.message.welcome, 'long', 'center');
 
     $scope.init();
     $scope.initFriendList();

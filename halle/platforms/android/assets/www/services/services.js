@@ -204,6 +204,5 @@ app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
     else {
       console.log("Google Analytics indisponivel");
     }
-
   };
 });

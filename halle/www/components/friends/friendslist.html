@@ -1,52 +1,106 @@
-<ion-view>
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" style="color:white !important;" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
-  <ion-content class="has-header" ng-init="onLoad()">
+<ion-view view-title="friendslist">
+   <ion-tabs class="tabs-icon-top">
 
-    <ion-refresher
-      pulling-text={{message.refresh}}
-      on-refresh="onLoad()">
-    </ion-refresher>
+     <ion-tab title="{{message.friendsFriends}}" icon="ion-ios-people">
 
-    <div class="bar bar-header item-input-inset">
-      <label class="item-input-wrapper">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input id="searchAll" type="search" placeholder="{{message.friendFilter}}" ng-model="input.searchAll">
-      </label>
-      <button class="button button-clear button-positive" ng-if="input.searchAll.length" ng-click="clearSearch();">
-        {{message.clean}}
-      </button>
-    </div>
+       <ion-nav-bar>
+       </ion-nav-bar>
+       <ion-content class="has-header" ng-init="onLoad()">
+         <ion-refresher
+           pulling-text={{message.refresh}}
+           on-refresh="onLoad()">
+         </ion-refresher>
 
-    <ion-list>
-      <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:input.searchAll | orderBy: ['-hasHalle', 'name']"> <!--  | filter: {name: search} -->
-        <span ng-if="item.id > 1">
-          <div class="card stable-bg ink ink-dark">
-              <div class="item item-avatar">
-                  <span  ng-if="item.photoFriend == null">
-                    <img  class="avatar" src="avatar\profile.svg">
-                  </span>
-                  <span  ng-if="item.photoFriend != null">
-                    <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photoFriend}}" >
-                  </span>
-                    <strong>{{item.name}}</strong>
-                  <div class="card-footer text-right">
-                      <i class="icon ion-android-download positive"></i> {{ item.messageReceive }}
-                      <i class="icon ion-android-upload positive"></i> {{ item.messageSent }}
-                      <div class="pull-left" ng-if="item.hasHalle == '1'">
-                          <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}', '{{item.tokenPush}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
-                      </div>
-                      <div class="pull-left" ng-if="item.hasHalle == '0'">
-                          <i class="icon ion-social-whatsapp" ng-click="invite('{{item.phoneFriend}}')">&nbsp;&nbsp;{{message.friendInvite}}</i>
-                      </div>
+         <div class="bar bar-header item-input-inset">
+           <label class="item-input-wrapper">
+             <i class="icon ion-search placeholder-icon"></i>
+             <input id="searchAll" type="search" placeholder="{{message.friendFilter}}" ng-model="input.searchAll">
+           </label>
+           <button class="button button-clear button-positive" ng-if="input.searchAll.length" ng-click="clearSearch();">
+             {{message.clean}}
+           </button>
+         </div>
+         <ion-list>
+           <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:{name:input.searchAll, hasHalle:'1'} | orderBy: ['-hasHalle', 'name']">
+             <span ng-if="item.id > 1">
+               <div class="card stable-bg ink ink-dark">
+                   <div class="item item-avatar">
+                       <span  ng-if="item.photoFriend == null">
+                         <img  class="avatar" src="avatar\profile.svg">
+                       </span>
+                       <span  ng-if="item.photoFriend != null">
+                         <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photoFriend}}" >
+                       </span>
+                         <strong>{{item.name}}</strong>
+                       <div class="card-footer text-right">
+                           <i class="icon ion-android-download positive"></i> {{ item.messageReceive }}
+                           <i class="icon ion-android-upload positive"></i> {{ item.messageSent }}
+                           <div class="pull-left" ng-if="item.hasHalle == '1'">
+                               <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}', '{{item.tokenPush}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
+                           </div>
+                           <div class="pull-left" ng-if="item.hasHalle == '0'">
+                               <i class="icon ion-social-whatsapp" ng-click="invite('{{item.phoneFriend}}')">&nbsp;&nbsp;{{message.friendInvite}}</i>
+                           </div>
 
-                  </div>
-              </div>
-          </div>
-        </div>
-      </ion-item>
-    </ion-list>
+                       </div>
+                   </div>
+               </div>
+             </div>
+           </ion-item>
+         </ion-list>
+       </ion-content>
+     </ion-tab>
 
-  </ion-content>
+     <ion-tab title="{{message.friendContacts}}" icon="ion-ios-world">
+       <ion-nav-bar>
+       </ion-nav-bar>
+
+       <ion-content has-header="true" class="has-header" ng-init="onLoad()">
+           <ion-refresher
+             pulling-text={{message.refresh}}
+             on-refresh="onLoad()">
+           </ion-refresher>
+
+           <div class="bar bar-header item-input-inset">
+             <label class="item-input-wrapper">
+               <i class="icon ion-search placeholder-icon"></i>
+               <input id="searchAll" type="search" placeholder="{{message.friendFilter}}" ng-model="input.searchAll">
+             </label>
+             <button class="button button-clear button-positive" ng-if="input.searchAll.length" ng-click="clearSearch();">
+               {{message.clean}}
+             </button>
+           </div>
+
+           <ion-list>
+             <ion-item class="item card-item item-borderless" auto-list-divider auto-list-divider-value="{{item.name}}" ng-repeat="item in friendslist | filter:{name:input.searchAll, hasHalle:'0'} | orderBy: ['-hasHalle', 'name']">
+               <span ng-if="item.id > 1">
+                 <div class="card stable-bg ink ink-dark">
+                     <div class="item item-avatar">
+                         <span  ng-if="item.photoFriend == null">
+                           <img  class="avatar" src="avatar\profile.svg">
+                         </span>
+                         <span  ng-if="item.photoFriend != null">
+                           <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photoFriend}}" >
+                         </span>
+                           <strong>{{item.name}}</strong>
+                         <div class="card-footer text-right">
+                             <i class="icon ion-android-download positive"></i> {{ item.messageReceive }}
+                             <i class="icon ion-android-upload positive"></i> {{ item.messageSent }}
+                             <div class="pull-left" ng-if="item.hasHalle == '1'">
+                                 <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}', '{{item.tokenPush}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
+                             </div>
+                             <div class="pull-left" ng-if="item.hasHalle == '0'">
+                                 <i class="icon ion-social-whatsapp" ng-click="invite('{{item.phoneFriend}}')">&nbsp;&nbsp;{{message.friendInvite}}</i>
+                             </div>
+
+                         </div>
+                     </div>
+                 </div>
+               </div>
+             </ion-item>
+           </ion-list>
+         </ion-content>
+     </ion-tab>
+
+   </ion-tabs>
 </ion-view>

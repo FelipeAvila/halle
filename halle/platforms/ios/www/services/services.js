@@ -204,6 +204,15 @@ app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
     else {
       console.log("Google Analytics indisponivel");
     }
-
   };
+});
+
+app.service('MessageToastService', function($cordovaToast) {
+  this.show = function(message, duration, location) {
+    $cordovaToast.show(message, duration, location).then(function(success) {
+        console.log("The toast was shown");
+    }, function (error) {
+        console.log("The toast was not shown due to " + error);
+    });
+  }
 });

@@ -28,6 +28,9 @@
         "cordova-plugin-google-analytics": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         },
@@ -39,9 +42,6 @@
         },
         "phonegap-plugin-push": {
             "SENDER_ID": "471393976592",
-            "PACKAGE_NAME": "com.ionicframework.apphalle775885"
-        },
-        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.apphalle775885"
         }
     },

@@ -37,6 +37,8 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
   // Total de mensagens recebidas
   $rootScope.amountMessage = 0;
 
+  var initVal = 0;
+
   $scope.input = {
      searchAll : ''
    };
@@ -127,7 +129,14 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $ht
     .then(function(data) {
       $scope.friendslist = data;
 
-      if ($scope.friendslist.length == 0) {
+      if ($scope.friendslist.length == 0 && initVal == 0) {
+        initVal = 1;
+        $ionicPopup.alert({
+          title: $rootScope.message.title,
+          content: $rootScope.message.welcome
+        }).then(function(res) {
+        });
+
         $scope.getAllContacts();
       }
     }, function(error) {
