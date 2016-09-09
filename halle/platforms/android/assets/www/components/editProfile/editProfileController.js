@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.editProfileController', []);
 
 // Controller da pagina de criar usuario
-app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource, AnalyticsService) {
+app.controller('editProfileController', function($scope, $rootScope, $state, $timeout, $ionicActionSheet, $cordovaCamera, FindUserResource, EditUserResource, AnalyticsService) {
 
   // Registrar Analytics
   AnalyticsService.add('editProfileController');
@@ -25,7 +25,12 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
     .$promise
       .then(function(data) {
           $scope.data = data;
-          $scope.data.birthday = new Date($scope.data.birthday);
+          if ($scope.data.birthday != null) {
+            $scope.data.birthday = new Date($scope.data.birthday);
+          }
+          else {
+            $scope.data.birthday = new Date();
+          }
       },
       function(error) {
         $scope.error = true;
@@ -45,8 +50,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
 
     // atributos
     var name = $scope.data.name;
-    var nickname = $scope.data.nickname;
-    var birthday = $scope.data.birthday;
+    var nickname = $scope.data.name; //$scope.data.nickname;
+    var birthday = new Date(); //$scope.data.birthday;
     var email = $scope.data.email;
     var photo = $scope.data.photo;
 
@@ -83,10 +88,10 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
   }
   // final onSubmit
 
-  // inicio upload
+  // inicio foto
   $scope.photo = function() {
     var options = {
-        quality: 60,
+        quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
@@ -104,6 +109,66 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
         // error
     });
   }
+  // final foto
+
+  // inicio upload
+  $scope.upload = function() {
+    var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 250,
+        targetHeight: 250,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+    };
+
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+       //var srcImage = "data:image/jpeg;base64," + imageData;
+       $scope.data.photo = imageData;
+    }, function(err) {
+        // error
+    });
+  }
   // final upload
+
+  // Triggered on a button click, or some other target
+  $scope.show = function() {
+
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: '<i class="icon ion-android-camera halle"></i>' + $rootScope.message.editProfilePhoto },
+        { text: '<i class="icon ion-share halle"></i>' + $rootScope.message.editProfileUpload }
+      ],
+      titleText: '<b>' + $scope.data.photo == null?$rootScope.message.editProfileAddPhoto:$rootScope.message.editProfileChagePhoto + '</b>',
+      destructiveText: $rootScope.message.cancel,
+      cancelText: $rootScope.message.cancel,
+      cancel: function() {
+           // add cancel code..
+         },
+      buttonClicked: function(index) {
+        console.log('BUTTON CLICKED', index);
+        if (index == 0) {
+          $scope.photo();
+        }
+        else {
+          $scope.upload();
+        }
+        return true;
+      },
+      destructiveButtonClicked: function() {
+        console.log('DESTRUCT');
+        return true;
+      }
+    });
+
+    $timeout(function() {
+      hideSheet();
+    }, 9000);
+
+  };
 
 });

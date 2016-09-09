@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService, FeedbackResource) {
 
   // Registrar Analytics
   AnalyticsService.add('homeController');
@@ -91,10 +91,14 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
     function onError(contactError) {
     };
 
-    var options = {};
-    options.multiple = true;
-    options.hasPhoneNumber = true;
-    $cordovaContacts.find(options).then(onSuccess, onError);
+    try {
+      var options = {};
+      options.multiple = true;
+      options.hasPhoneNumber = true;
+      $cordovaContacts.find(options).then(onSuccess, onError);
+    }
+    catch(e) {
+    }
 
   };
   // FINAL getAllContacts

@@ -6,10 +6,20 @@
 
       <figcaption>
         <div ng-if="data.photo == null">
-          <img src="avatar\profile.svg" class="profile" ng-click="photo()">
+          <img src="avatar\profile.svg" class="profile" ng-click="show()">
+          <span class="edit-photo-content">
+            <span class="change-photo-msg" ng-click="show()">
+              <i class="ion-android-camera"></i>  {{message.editProfileAddPhoto}}</span>
+          </span>
+
         </div>
+
         <div ng-if="data.photo != null">
-          <img ng-src="data:image/JPEG;base64,{{data.photo}}" class="profile" ng-click="photo()">
+          <img ng-src="data:image/JPEG;base64,{{data.photo}}" class="profile" ng-click="show()">
+          <span class="edit-photo-content">
+            <span class="change-photo-msg" ng-click="show()">
+              <i class="ion-android-camera"></i>  {{message.editProfileChagePhoto}}</span>
+          </span>
         </div>
 
         <h2 class="h2-menu">{{data.name}}</h2>
@@ -40,26 +50,6 @@
                    placeholder="{{ message.editProfileName }}"
                    name="name"
                    ng-model="data.name">
-          </label>
-
-          <label class="item item-input item-floating-label label-input">
-            <span class="input-label label-input label-login-heigth">{{ message.editProfileNickname }}</span>
-            <input type="text"
-                   maxlength="20"
-                   class="placeholder-input"
-                   placeholder="{{ message.editProfileNickname }}"
-                   name="nickname"
-                   ng-model="data.nickname">
-          </label>
-
-          <label class="item item-input item-floating-label label-input">
-            <span class="input-label label-input label-login-heigth">{{ message.editProfileBirthday }}</span>
-            <input type="date"
-                   maxlength="10"
-                   class="placeholder-input"
-                   placeholder="{{ message.editProfileBirthday }}"
-                   name="birthday"
-                   ng-model="data.birthday">
           </label>
 
           <label class="item item-input item-floating-label label-input">

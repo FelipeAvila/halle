@@ -1,6 +1,11 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $state, $http, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource, EditUserResource, PushNotificationService, BadgeService, AnalyticsService) {
+app.controller('friendsListController', function($scope, $rootScope, $ionicTabsDelegate, $timeout, $state, $http, $interval, $ionicPopup, $cordovaSocialSharing, FriendsListResource, MessageSendResource, MessageReceiveResource, FindUserResource, EditUserResource, PushNotificationService, BadgeService, AnalyticsService) {
+
+  $timeout(function(){
+    $ionicTabsDelegate.select(1);
+  },0);
+
 
   // Registrar Analytics
   AnalyticsService.add('friendsListController');

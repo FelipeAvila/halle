@@ -1,11 +1,11 @@
 var app = angular.module('halleApp.editProfileController', []);
 
 // Controller da pagina de criar usuario
-app.controller('editProfileController', function($scope, $rootScope, $state, $cordovaCamera, FindUserResource, EditUserResource, AnalyticsService) {
+app.controller('editProfileController', function($scope, $rootScope, $state, $timeout, $ionicActionSheet, $cordovaCamera, FindUserResource, EditUserResource, AnalyticsService) {
 
   // Registrar Analytics
   AnalyticsService.add('editProfileController');
-  
+
   // Form data
   $scope.data = {};
   // mensagem de erro
@@ -25,7 +25,12 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
     .$promise
       .then(function(data) {
           $scope.data = data;
-          $scope.data.birthday = new Date($scope.data.birthday);
+          if ($scope.data.birthday != null) {
+            $scope.data.birthday = new Date($scope.data.birthday);
+          }
+          else {
+            $scope.data.birthday = new Date();
+          }
       },
       function(error) {
         $scope.error = true;
@@ -45,8 +50,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
 
     // atributos
     var name = $scope.data.name;
-    var nickname = $scope.data.nickname;
-    var birthday = $scope.data.birthday;
+    var nickname = $scope.data.name; //$scope.data.nickname;
+    var birthday = new Date(); //$scope.data.birthday;
     var email = $scope.data.email;
     var photo = $scope.data.photo;
 
@@ -69,7 +74,10 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
         },
         function(error) {
           $scope.error = true;
-          if (error.data) {
+          if (error.status == '404') {
+            $scope.msgError = $rootScope.message.error404;
+          }
+          else if (error.data) {
             $scope.msgError =  error.data.message;
           }
           else {
@@ -102,5 +110,35 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $co
     });
   }
   // final upload
+
+  // Triggered on a button click, or some other target
+  $scope.show = function() {
+
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: $rootScope.message.editProfilePhoto },
+        { text: $rootScope.message.editProfileUpload }
+      ],
+      titleText: '<b>' + $scope.data.photo == null?$rootScope.message.editProfileAddPhoto:$rootScope.message.editProfileChagePhoto + '</b>',
+      cancelText: $rootScope.message.cancel,
+      cancel: function() {
+           // add cancel code..
+         },
+      buttonClicked: function(index) {
+        console.log('BUTTON CLICKED', index);
+        if (index == 0) {
+          $scope.photo();
+        }
+
+        return true;
+      }
+    });
+
+    $timeout(function() {
+      hideSheet();
+    }, 2000);
+
+  };
 
 });

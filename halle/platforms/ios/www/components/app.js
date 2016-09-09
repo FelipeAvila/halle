@@ -1,9 +1,11 @@
 // Ionic Starter App
-var app = angular.module('halleApp', ['ionic', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
-app.config(function($stateProvider, $urlRouterProvider){
+app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
+
+  $ionicConfigProvider.tabs.position('bottom');
 
   $stateProvider
     .state('index', {
@@ -35,7 +37,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       templateUrl: 'components/forgotPassword/forgot.html',
       controller: 'forgotController'
     })
-    .state('home', {
+/*    .state('home', {
       cache: true,
       url: '/home',
       abstract: true,
@@ -52,6 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider){
         }
       }
     })
+*/
     .state('home.invitePhone', {
       cache: true,
       url: '/invitePhone',
@@ -122,7 +125,21 @@ app.config(function($stateProvider, $urlRouterProvider){
         }
       }
     })
-
+    .state('home', {
+      url: "/home",
+      abstract: true,
+      templateUrl: 'components/home/home.html',
+      controller: 'homeController'
+    })
+    .state('home.friendslist', {
+      url: "/friendslist",
+      views: {
+        'menuContent': {
+          templateUrl: 'components/friends/friendslist.html',
+          controller: 'friendsListController'
+        }
+      }
+    })
 
     $urlRouterProvider.otherwise('/start');
 });
@@ -162,21 +179,6 @@ app.run(function($ionicPlatform, $rootScope) {
   });
 })
 
-// verificando a conectividade
-app.run(function($window, $rootScope) {
-      $rootScope.online = navigator.onLine;
-      $window.addEventListener("offline", function() {
-        $rootScope.$apply(function() {
-          $rootScope.online = false;
-        });
-      }, false);
-
-      $window.addEventListener("online", function() {
-        $rootScope.$apply(function() {
-          $rootScope.online = true;
-        });
-      }, false);
-});
 
 // Carregando o resource bundle
 app.run(function($http, $rootScope) {

@@ -65,7 +65,10 @@ app.controller('loginController', function($ionicSideMenuDelegate, $scope, $stat
            $state.go("home.friendslist");
          }, function(error) {
            $scope.error = true;
-           if (error.data === null) {
+           if (error.status == '404') {
+             $scope.msgError = $rootScope.message.error404;
+           }
+           else if (error.data === null) {
              $scope.msgError = $rootScope.message.loginError;
            }
            else {

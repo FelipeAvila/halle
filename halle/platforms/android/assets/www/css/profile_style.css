@@ -144,3 +144,14 @@
     font-size: 20px;
     font-family: Helvetica Neue;
 }
+
+.edit-photo-content {
+  left: 5px;
+  z-index: 1;
+  position: relative;
+  top: -25px;
+}
+
+.change-photo-msg {
+  display: inline;
+}

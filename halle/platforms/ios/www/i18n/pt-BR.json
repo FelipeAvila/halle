@@ -8,7 +8,7 @@
   "exitMessage": "Tem certeza que desaja sair?",
   "refresh" : "Atualizando...",
   "ok": "OK",
-  "welcome" : "Bem vindo ao Hallə, a nossa equipe envia a Paz do Senhor.",
+  "welcome" : "Bem vindo ao Hallə, a nossa equipe envia a Paz do Senhor. Em alguns instantes os seus contatos serão importados.",
   "error404": "Encontramos um erro na sua conexão, tente mais tarde!",
 
   "messageSend" : "Enviado via hallə",
@@ -116,8 +116,10 @@
   "editProfileSend" : "Enviar",
   "editProfileInvalid": "Informações inválidas!",
   "editProfileError": "Erro ao efetuar a alteração do cadastro.",
-  "editProfileUpload": "Carrgar Imagem",
+  "editProfileUpload": "Carregar Imagem",
   "editProfilePhoto": "Foto",
+  "editProfileChagePhoto": "Alterar foto",
+  "editProfileAddPhoto": "Incluir foto",
 
   "deletePhone" : "Remover conta do hallə",
   "deleteError": "Não foi possível remover a sua conta",
@@ -128,6 +130,8 @@
   "friendSend": "Enviar",
   "friendInvite": "Convidar",
   "friendInviteZap" : "Escolha o contato ou o grupo do WhatsApp que deseja convidar para o hallə",
+  "friendContacts": "Contatos",
+  "friendsFriends": "Amigos",
 
   "messageReply": "Retribuir",
   "messageAdd": "Adicionar",
@@ -147,7 +151,7 @@
   "inviteFriendEmail" : "E-mail",
   "inviteFriendWhatsapp" : "Whatsapp",
   "inviteFriendFacabook" : "Facebook",
-  "inviteFriendMessage" : "Este é um convite para você participar do hallə. O aplicativo onde você deseja a Paz do Senhor para as pessoas que você mais gosta. Baixe na sua loja de aplicativos ou acesse o nosso site http://halleapp.net.",
+  "inviteFriendMessage" : "Este é um convite para você participar do hallə. O aplicativo onde você deseja a Paz do Senhor para as pessoas que você mais gosta. Baixe na sua loja de aplicativos ou acesse o nosso site.",
   "inviteFriendSubject" : "Você recebeu uma indicação para espalhar a Paz do Senhor pelo mundo!",
   "inviteFriendFriend" : "AMIGOS",
   "inviteFriendPaste" : "A mensagem do seu convite foi enviada para a área de transferência, pressione para colar a mensagem.",
