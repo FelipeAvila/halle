@@ -222,7 +222,7 @@ body {
 .slider {
   margin: 0 auto;
   min-height: 510px;
-  min-width: 350px;
+  min-width: 320px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px;
@@ -249,8 +249,9 @@ body {
 }
 
 .img-message {
-  height: 90%;
-  width: 90%;
+  height: 85%;
+  width: 85%;
+  text-align: center;
   display: block;
   margin-left: auto;
   margin-right: auto;

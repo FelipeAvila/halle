@@ -73,8 +73,6 @@ app.controller('friendsListController', function($scope, $rootScope, $ionicTabsD
                var nickname = $scope.dataFindUser.nickname == null ? $scope.dataFindUser.login : $scope.dataFindUser.nickname;
 
                var info = {'token': token, 'name': name, 'nickname': nickname, 'birthday': $scope.dataFindUser.birthday, 'email': $scope.dataFindUser.email, 'photo': $scope.dataFindUser.photo, 'tokenpush': $rootScope.tokenpush };
-               //console.log('Edit user - ' + JSON.stringify(info));
-
                 // acessando o recurso de API
                EditUserResource.save({}, info)
                 .$promise
