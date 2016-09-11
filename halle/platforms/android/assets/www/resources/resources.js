@@ -3,11 +3,11 @@ var app = angular.module('halleApp.resources', ['ngResource']);
 /****************Constantes ***********************/
 app.constant('ApiEndpoint', {
   //url: 'http://192.241.158.95/HalleWEB/service'
-  //url: 'https://apidev.halleapp.net/HalleWEB/service'
-  url: 'https://api.halleapp.net/HalleWEB/service'
+  url: 'https://apidev.halleapp.net/HalleWEB/service'
+  //url: 'https://api.halleapp.net/HalleWEB/service'
 });
 
-
+/////
 /*****************Recursos*****************************/
 app.factory('AuthResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/auth/:login/:password',

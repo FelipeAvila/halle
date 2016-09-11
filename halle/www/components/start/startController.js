@@ -59,6 +59,4 @@ app.controller('startController', function($scope, $rootScope, $timeout, $ionicL
       });
       // final
    }
-
-
 });

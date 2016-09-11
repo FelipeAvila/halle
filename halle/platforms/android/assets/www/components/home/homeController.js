@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.homeController', []);
 
 // Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService, FeedbackResource) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $ionicScrollDelegate, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService, FeedbackResource) {
 
   // Registrar Analytics
   AnalyticsService.add('homeController');
@@ -21,6 +21,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
 
   // INIT home
   $scope.goHome = function() {
+    $ionicScrollDelegate.scrollTop();
     $state.go("home.friendslist");
   }
   // FINAL home
@@ -54,6 +55,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
       for (var i = 0; i < contacts.length; i++) {
         var item = contacts[i];
 
+        //console.log('item - ' + JSON.stringify(item));
         // carregando o nome.
         nameFriend = "";
         if (item.displayName != null) {
@@ -72,6 +74,9 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
           var dddPadrao = $rootScope.phone.substring(3,5);;
 
           var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[0].value, ddiPadrao, dddPadrao);
+
+          //console.log('--> ' + item.phoneNumbers[0].value + ' - ' + phoneFriend);
+
           if (phoneFriend != "") {
               // acessando o recurso de API
               InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })

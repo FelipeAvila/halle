@@ -1,5 +1,5 @@
 // Ionic Starter App
-var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ng-walkthrough', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -37,24 +37,6 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
       templateUrl: 'components/forgotPassword/forgot.html',
       controller: 'forgotController'
     })
-/*    .state('home', {
-      cache: true,
-      url: '/home',
-      abstract: true,
-      templateUrl: 'components/home/home.html',
-      controller: 'homeController'
-    })
-    .state('home.friendslist', {
-      cache: false,
-      url: '/friendslist',
-      views: {
-        'menuContent' :{
-          templateUrl: 'components/friends/friendslist.html',
-          controller: 'friendsListController'
-        }
-      }
-    })
-*/
     .state('home.invitePhone', {
       cache: true,
       url: '/invitePhone',
@@ -187,14 +169,3 @@ app.run(function($http, $rootScope) {
         $rootScope.message = data;
   });
 });
-/*
-app.run(function($ionicScrollDelegate, $ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if (window.cordova && ionic.Platform.isIOS()) {
-      window.addEventListener("statusTap", function() {
-        $ionicScrollDelegate.scrollTop(true);
-      });
-    }
-  });
-})
-*/
