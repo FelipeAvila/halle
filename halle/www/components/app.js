@@ -1,5 +1,5 @@
 // Ionic Starter App
-var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ng-walkthrough', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.welcomeController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -30,6 +30,12 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
       url: '/createUser',
       templateUrl: 'components/createUser/createUser.html',
       controller: 'createUserController'
+    })
+    .state('welcome', {
+      cache: true,
+      url: '/welcome',
+      templateUrl: 'components/welcome/welcome.html',
+      controller: 'welcomeController'
     })
     .state('forgot', {
       cache: true,

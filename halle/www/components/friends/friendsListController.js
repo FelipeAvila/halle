@@ -230,11 +230,12 @@ app.controller('friendsListController', function($scope, $rootScope, $ionicTabsD
     $interval(function(){
       $scope.initFriendList();
     }, 300000); // 5 minutos
+
   }
 
   $scope.doRefresh = function() {
     try {
-      $scope.initFriendList();
+      //$scope.initFriendList();
       $scope.initMessageReceive();
     } finally {
       $scope.$broadcast('scroll.refreshComplete');
@@ -242,6 +243,7 @@ app.controller('friendsListController', function($scope, $rootScope, $ionicTabsD
   };
 
   // chamando o onload para iniciar o carregamento da interface
+  $scope.initFriendList();
   $scope.doRefresh();
   $scope.onLoad();
 

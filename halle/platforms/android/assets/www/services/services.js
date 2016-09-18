@@ -35,15 +35,15 @@ app.service('PushNotificationService', function($http, $rootScope) {
         "tokens": tokenpush,
         "profile": 'halle_prd',
         "notification": {
-          "title": "halle",
+          "title": "hallə",
           "message": $rootScope.message.messagePush,
           "android": {
-            "title": "halle",
+            "title": "hallə",
             "priority": "high",
             "message": $rootScope.message.messagePush
           },
           "ios": {
-            "title": "halle",
+            "title": "hallə",
             "priority": 10,
             "message": $rootScope.message.messagePush
           }
@@ -61,6 +61,52 @@ app.service('PushNotificationService', function($http, $rootScope) {
     });
   }
 });
+
+
+app.service('ForgotPassNotificationService', function($http, $rootScope) {
+
+  this.push = function(tokenpush, password) {
+    var req = {
+      method: 'POST',
+      url: 'https://api.ionic.io/push/notifications',
+      headers: {
+        'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.Jau9agLgBEF7Is9Ap8psadEqtFOVkUzLmsb5FueIhH8'
+      },
+      data: {
+        "tokens": tokenpush,
+        "profile": 'halle_prd',
+        "notification": {
+          "title": $rootScope.message.forgotTitlePush,
+          "message": $rootScope.message.forgotPushNewPass + password,
+          "android": {
+            "title": $rootScope.message.forgotTitlePush,
+            "priority": "high",
+            "message": $rootScope.message.forgotPushNewPass + password
+          },
+          "ios": {
+            "title": $rootScope.message.forgotTitlePush,
+            "priority": 10,
+            "message": $rootScope.message.forgotPushNewPass + password
+          }
+        }
+      }
+    };
+
+    // Make the API call
+    $http(req).success(function(resp){
+      // Handle success
+      console.log("Ionic Push: Push success", resp);
+    }).error(function(error){
+      // Handle error
+      console.log("Ionic Push: Push error", error);
+    });
+  }
+});
+
+
+
+
 
 app.service('PhoneService', function() {
 
@@ -84,7 +130,7 @@ app.service('PhoneService', function() {
   	if (PadraoDDD.length!== 2){
   		PadraoDDD = "21";
   	}
-    
+
   	// Variaveis
     var cel = '';
   	var ddi = '';

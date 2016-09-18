@@ -64,7 +64,9 @@
 
   "forgotRequired": "O telefone inválido.",
   "forgotError": "Ocorreu um problema, favor verificar a sua conexão.",
-  "forgotCopyPass" : "Anote a sua nova senha.",
+  "forgotNewPass" : "Em breve você receberá uma mensagem com a sua nova senha. Para sua segurança, recomendamos que altere esta senha por uma de sua escolha, acessando a funcionalidade “Trocar a senha” no aplicativo.",
+  "forgotPushNewPass": "Essa é a sua nova senha de acesso ao hallə: ",
+  "forgotTitlePush": "hallə - Nova Senha",
 
   "homeMenu" : "Menu",
   "homeMenuInvite" : "Adicionar amigos - contatos",
@@ -159,5 +161,8 @@
   "importContacts" : "Confirme a importação dos contatos da sua agenda?",
 
   "errorMessageInfo": "Desculpe, não foi possível carregar suas mensagens. Tente novamente...",
-  "errorMessageButton": "Tente Novamente"
+  "errorMessageButton": "Tente Novamente",
+
+  "welcomeTitle": "Bem vindo ao hallə",
+  "welcomeButton": "Continuar"
 }

@@ -52,6 +52,20 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
     $scope.phoneContacts = [];
 
     function onSuccess(contacts) {
+
+      // Importacao do usuário halle como amigo
+      // acessando o recurso de API
+      InvitePhoneNumberResource.save({ token: token, name: 'halle', phone: '+5521911111111' })
+      .$promise
+        .then(function(data) {
+          $scope.Success = true;
+          $scope.msgSuccess =  data.message;
+      },
+      function(error) {
+        $scope.msgError =  error.data.message;
+      });
+
+
       for (var i = 0; i < contacts.length; i++) {
         var item = contacts[i];
 
