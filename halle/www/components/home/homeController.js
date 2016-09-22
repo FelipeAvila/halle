@@ -9,12 +9,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
   $scope.searchValue="";
 
   $scope.contacts = {};
-  // mensagem de erro
-  $scope.error = false;
-  $scope.msgError = "";
-  // mensagem de OK
-  $scope.Success = false;
-  $scope.msgSuccess = "";
+
   // Acessando o storage local
   var storage = new getLocalStorage();
   var token = storage.get();
@@ -58,11 +53,8 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
       InvitePhoneNumberResource.save({ token: token, name: 'halle', phone: '+5521911111111' })
       .$promise
         .then(function(data) {
-          $scope.Success = true;
-          $scope.msgSuccess =  data.message;
       },
       function(error) {
-        $scope.msgError =  error.data.message;
       });
 
 
@@ -96,11 +88,8 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
               InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
               .$promise
                 .then(function(data) {
-                  $scope.Success = true;
-                  $scope.msgSuccess =  data.message;
               },
               function(error) {
-                $scope.msgError =  error.data.message;
               });
           }
         }
@@ -165,8 +154,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
           }
 
         }, function(error) {
-          $scope.error = true;
-
           if (error.data === null) {
             $scope.msgError = $rootScope.message.deleteError;
           }

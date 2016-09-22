@@ -110,6 +110,15 @@ app.factory('MessageReceiveResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
+app.factory('MessageReceiveAmountResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/message/amount/:token',
+                                      {token: '@token' },
+                                      {get:   {method:'GET', timeout: 3000}}
+                         );
+    return data;
+});
+
+
 app.factory('MessageSendResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/message/',
                                       {save:   {method:'POST',

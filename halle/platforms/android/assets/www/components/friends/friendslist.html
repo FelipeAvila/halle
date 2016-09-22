@@ -4,7 +4,7 @@
        <ion-nav-bar>
        </ion-nav-bar>
 
-       <ion-content has-header="true" class="has-header" >
+       <ion-content has-header="true" class="has-header" overflow-scroll='true'>
          <!--
          <ion-refresher
            pulling-text={{message.refresh}}
@@ -65,7 +65,7 @@
            </button>
          </div>
          <ion-list>
-           <ion-item class="item card-item item-borderless"  ng-repeat="item in friendslist | filter:{name:input.searchAll, hasHalle:'1'} | orderBy: ['-hasHalle', 'name']">
+           <ion-item class="item card-item item-borderless" ng-repeat="item in friendslist | filter:{name:input.searchAll, hasHalle:'1'} | orderBy: ['-hasHalle', 'name']">
                <div class="card stable-bg ink ink-dark">
                    <div class="item item-avatar">
                        <div ng-if="item.photoFriend == null">

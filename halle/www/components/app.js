@@ -167,6 +167,33 @@ app.run(function($ionicPlatform, $rootScope) {
   });
 })
 
+app.run(function($ionicPlatform, $interval, $rootScope) {
+  $ionicPlatform.ready(function() {
+
+      // Iniciar o carregamento das mensagem recebidas
+      $rootScope.promiseMessage = null;
+
+      document.addEventListener("pause", function() {
+          console.log("The application is pausing from the background");
+          loadMessageReceive();
+      }, false);
+
+      document.addEventListener("resume", function() {
+          console.log("The application is resuming from the background");
+          $interval.cancel($rootScope.promiseMessage);
+      }, false);
+
+      // Carregando as mensagens
+      this.loadMessageReceive = function() {
+        $rootScope.initFriendList();
+
+        $rootScope.promisseMessage = $interval(function(){
+          $rootScope.initFriendList();
+        }, 300000); // 5 minutos
+      }
+  });
+});
+
 
 // Carregando o resource bundle
 app.run(function($http, $rootScope) {

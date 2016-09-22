@@ -96,10 +96,11 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 250,
-        targetHeight: 250,
+        targetWidth: 150,
+        targetHeight: 150,
         popoverOptions: CameraPopoverOptions,
-        saveToPhotoAlbum: false
+        saveToPhotoAlbum: false,
+        correctOrientation: false
     };
 
     $cordovaCamera.getPicture(options).then(function(imageData) {
@@ -119,8 +120,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
         allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 250,
-        targetHeight: 250,
+        targetWidth: 150,
+        targetHeight: 150,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false
     };
@@ -150,7 +151,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
            // add cancel code..
          },
       buttonClicked: function(index) {
-        console.log('BUTTON CLICKED', index);
+        //console.log('BUTTON CLICKED', index);
         if (index == 0) {
           $scope.photo();
         }
@@ -160,7 +161,7 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
         return true;
       },
       destructiveButtonClicked: function() {
-        console.log('DESTRUCT');
+        //console.log('DESTRUCT');
         return true;
       }
     });

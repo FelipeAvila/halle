@@ -71,8 +71,8 @@ app.controller('createUserController', function($scope, $rootScope, $state, Crea
        .$promise
        .then(function(data) {
          storage.save(data.token);
-         $state.go("welcome");
-         //$state.go("home.friendslist");
+         //$state.go("welcome");
+         $state.go("home.friendslist");
        }, function(error) {
          $scope.error = true;
          if (error.status == '404') {
