@@ -42,6 +42,22 @@ app.factory('FriendsListResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
+app.factory('FriendsContactsListResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/friend/contacts/:token',
+                                      {token: '@token' },
+                                      {get:   {method:'GET', isArray: true, timeout: 5000}}
+                         );
+    return data;
+});
+
+app.factory('FriendsFriendsListResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/friend/friends/:token',
+                                      {token: '@token' },
+                                      {get:   {method:'GET', isArray: true, timeout: 5000}}
+                         );
+    return data;
+});
+
 app.factory('InvitePhoneNumberResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/invite/phone/:token/:name/:phone',
                                       {token: '@token', name : '@name', phone : '@phone' },

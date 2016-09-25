@@ -17,13 +17,7 @@ app.service('AuthService', function($q, AuthResource) {
 
 app.service('PushNotificationService', function($http, $rootScope) {
 
-  // Acessando o storage local
-  var storage = new getLocalStorage();
-  // get Token
-  var token = storage.get();
-
   this.push = function(tokenpush) {
-    //'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.E0pu79GgUCqxuE3K5o1deptmlZtYl_dHd9bHB6WdQz4'
     var req = {
       method: 'POST',
       url: 'https://api.ionic.io/push/notifications',
@@ -54,10 +48,10 @@ app.service('PushNotificationService', function($http, $rootScope) {
     // Make the API call
     $http(req).success(function(resp){
       // Handle success
-      console.log("Ionic Push: Push success", resp);
+      //console.log("Ionic Push: Push success", resp);
     }).error(function(error){
       // Handle error
-      console.log("Ionic Push: Push error", error);
+      //console.log("Ionic Push: Push error", error);
     });
   }
 });
@@ -96,29 +90,19 @@ app.service('ForgotPassNotificationService', function($http, $rootScope) {
     // Make the API call
     $http(req).success(function(resp){
       // Handle success
-      console.log("Ionic Push: Push success", resp);
+      //console.log("Ionic Push: Push success", resp);
     }).error(function(error){
       // Handle error
-      console.log("Ionic Push: Push error", error);
+      //console.log("Ionic Push: Push error", error);
     });
   }
 });
-
-
-
-
 
 app.service('PhoneService', function() {
 
   var contato = "";
 
   this.contactPattern = function(numContato, PadraoDDI, PadraoDDD) {
-
-    /* ------------------------------------------------------
-    ddi - DDI padrão dever seguir o seguinte exemplo "55" ( padrão da função 55 - Brasil)
-    ddd - DDD padrão dever seguir o seguinte exemplo "11" ( padrão da função 21 - Rio de janeiro)
-    numcontato - numero de telefone que será formatado
-    --------------------------------------------------------*/
 
   	"use strict";
   	// validar entrada
@@ -208,11 +192,11 @@ app.service('BadgeService', function($cordovaBadge) {
           $cordovaBadge.set(count).then(function() {
             // You have permission, badge set.
           }, function(err) {
-            console.log('BadgeService - ' + err);
+            //console.log('BadgeService - ' + err);
           });
         }, function(no) {
           // You do not have permission
-          console.log('BadgeService hasPermission - ' + no);
+          //console.log('BadgeService hasPermission - ' + no);
         });
     }
     catch(e) {}
@@ -231,4 +215,121 @@ app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
       //console.log("Google Analytics indisponivel - " + page);
     }
   };
+});
+
+app.service('GetAllContactsService', function($rootScope, $cordovaContacts, InvitePhoneNumberResource, LoadFriendsService, PhoneService) {
+
+    var phone = "";
+    this.run = function() {
+      console.log('GetAllContactsService - run');
+      var options = {};
+      options.multiple = true;
+      options.hasPhoneNumber = true;
+      try {
+        $cordovaContacts.find(options).then(onSuccess, onError).then(function(){
+          console.log('LoadFriendsService - cordovaContacts');
+          LoadFriendsService.run();
+        });
+      }
+      finally {
+
+      }
+
+      function onSuccess(contacts) {
+        console.log('GetAllContactsService - onSuccess');
+        var phoneContacts = [];
+        var phone = $rootScope.phone;
+        var storage = new getLocalStorage();
+        var token = storage.get();
+
+        // Importacao do usuário halle como amigo
+        // acessando o recurso de API
+        InvitePhoneNumberResource.save({ token: token, name: 'halle', phone: '+5521911111111' })
+        .$promise
+          .then(function(data) {
+        },
+        function(error) {});
+
+        for (var i = 0; i < contacts.length; i++) {
+          var item = contacts[i];
+
+          // carregando o nome.
+          var nameFriend = "";
+          if (item.displayName != null) {
+            nameFriend = item.displayName;
+          } else if (item.nickname != null) {
+            nameFriend = item.nickname;
+          } else if (item.name.givenName) {
+            nameFriend = item.name.givenName;
+          } else {
+            nameFriend = item.name.formatted;
+          }
+
+          if (nameFriend != null && item.phoneNumbers != null) {
+
+            var ddiPadrao = phone.substring(0,3);
+            var dddPadrao = phone.substring(3,5);;
+
+            var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[0].value, ddiPadrao, dddPadrao);
+
+            if (phoneFriend != "") {
+                // acessando o recurso de API
+                InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
+                .$promise
+                  .then(function(data) {
+                },
+                function(error) {});
+            }
+          }
+        }
+      };
+
+      function onError(contactError) {
+      };
+
+    };
+});
+
+app.service('LoadFriendsService', function($rootScope, FriendsFriendsListResource, FriendsContactsListResource) {
+  this.run = function() {
+    console.log('LoadFriendsService - onFriendList');
+    this.runContacts();
+    this.runFriends();
+  };
+
+  this.runContacts = function() {
+    console.log('runContacts');
+    var storage = new getLocalStorage();
+    var token = storage.get();
+
+    FriendsContactsListResource.get({ token: token })
+     .$promise
+     .then(function(data) {
+       console.log('FriendsContactsListResource - ' + data.length);
+       if (data != null && data.length > 0) {
+         storage.saveContactList(data);
+         $rootScope.contactslist = storage.getContactList();
+       }
+     },
+     function(error) {});
+  };
+
+  this.runFriends = function() {
+    console.log('runFriends');
+    var storage = new getLocalStorage();
+    var token = storage.get();
+
+    FriendsFriendsListResource.get({ token: token })
+     .$promise
+     .then(function(data) {
+       console.log('FriendsFriendsListResource - ' + data.length);
+       if (data != null && data.length > 0) {
+         storage.saveFriendList(data);
+         $rootScope.friendslist = storage.getFriendList();
+       }
+     },
+     function(error) {});
+  };
+
+
 });

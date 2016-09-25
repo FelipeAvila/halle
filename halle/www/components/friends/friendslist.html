@@ -23,7 +23,7 @@
 
 
            <ion-list>
-             <ion-item class="item card-item item-borderless" auto-list-divider auto-list-divider-value="{{item.name}}" ng-repeat="item in friendslist | filter:{name:input.searchAll, hasHalle:'0'} | orderBy: ['-hasHalle', 'name']">
+             <ion-item class="item card-item item-borderless" auto-list-divider auto-list-divider-value="{{item.name}}" ng-repeat="item in contactslist | filter:{name:input.searchAll} | orderBy: ['-hasHalle', 'name']">
                  <div class="card stable-bg ink ink-dark">
                      <div class="item item-avatar">
                          <span>
@@ -65,7 +65,7 @@
            </button>
          </div>
          <ion-list>
-           <ion-item class="item card-item item-borderless" ng-repeat="item in friendslist | filter:{name:input.searchAll, hasHalle:'1'} | orderBy: ['-hasHalle', 'name']">
+           <ion-item class="item card-item item-borderless" ng-repeat="item in friendslist | filter:{name:input.searchAll} | orderBy: ['-hasHalle', 'name']">
                <div class="card stable-bg ink ink-dark">
                    <div class="item item-avatar">
                        <div ng-if="item.photoFriend == null">

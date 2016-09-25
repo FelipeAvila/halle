@@ -21,7 +21,7 @@ function getLocalStorage() {
   var friendList = "";
 
   this.saveFriendList = function(item) {
-      localStorage.setItem('friend-halle', item);
+      localStorage.setItem('friend-halle', JSON.stringify(item));
   }
 
   this.removeFriendList = function(item) {
@@ -30,6 +30,24 @@ function getLocalStorage() {
 
   this.getFriendList = function() {
       friendList = localStorage.getItem('friend-halle');
-      return friendList;
+      return JSON.parse(friendList);
   }
+
+  /**** localStorage lista de amigos ****/
+
+  var contactList = "";
+
+  this.saveContactList = function(item) {
+      localStorage.setItem('contact-halle', JSON.stringify(item));
+  }
+
+  this.removeContactList = function(item) {
+      localStorage.removeItem('contact-halle');
+  }
+
+  this.getContactList = function() {
+      contactList = localStorage.getItem('contact-halle');
+      return JSON.parse(contactList);
+  }
+
 }

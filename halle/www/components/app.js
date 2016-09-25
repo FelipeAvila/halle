@@ -167,7 +167,7 @@ app.run(function($ionicPlatform, $rootScope) {
   });
 })
 
-app.run(function($ionicPlatform, $interval, $rootScope) {
+app.run(function($ionicPlatform, $interval, $rootScope, LoadFriendsService) {
   $ionicPlatform.ready(function() {
 
       // Iniciar o carregamento das mensagem recebidas
@@ -185,10 +185,11 @@ app.run(function($ionicPlatform, $interval, $rootScope) {
 
       // Carregando as mensagens
       this.loadMessageReceive = function() {
-        $rootScope.initFriendList();
+        LoadFriendsService.runFriends();
 
         $rootScope.promisseMessage = $interval(function(){
-          $rootScope.initFriendList();
+          LoadFriendsService.runFriends();
+          LoadFriendsService.runContacts();
         }, 300000); // 5 minutos
       }
   });
