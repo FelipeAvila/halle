@@ -31,6 +31,11 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
           },
           function(error) {
           });
+
+       if ($rootScope.amountMessage > 0) {
+         $rootScope.amountMessage = $rootScope.amountMessage -1;
+       }
+
     }
   };
 
@@ -45,6 +50,8 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
         $ionicSlideBoxDelegate.update();
 
         if ($scope.messagelist.length > 0) {
+           $rootScope.amountMessage = $rootScope.amountMessage -1;
+
             // acessando o recurso de API
            var info = {'token': token, 'messageid': $scope.messagelist[0].messageId};
            MessageUpdateResource.save(info)

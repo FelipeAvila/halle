@@ -171,26 +171,32 @@ app.run(function($ionicPlatform, $interval, $rootScope, LoadFriendsService) {
   $ionicPlatform.ready(function() {
 
       // Iniciar o carregamento das mensagem recebidas
-      $rootScope.promiseMessage = null;
+      $rootScope.promisseFriends = null;
+      $rootScope.promisseContacts = null;
 
       document.addEventListener("pause", function() {
           console.log("The application is pausing from the background");
-          loadMessageReceive();
+          loadFriendsReceive();
       }, false);
 
       document.addEventListener("resume", function() {
           console.log("The application is resuming from the background");
-          $interval.cancel($rootScope.promiseMessage);
+          $interval.cancel($rootScope.promisseFriends);
+          $interval.cancel($rootScope.promisseContacts);
       }, false);
 
       // Carregando as mensagens
-      this.loadMessageReceive = function() {
+      this.loadFriendsReceive = function() {
         LoadFriendsService.runFriends();
 
-        $rootScope.promisseMessage = $interval(function(){
+        $rootScope.promisseFriends = $interval(function(){
           LoadFriendsService.runFriends();
+        }, 180000); // 3 minutos
+
+        $rootScope.promisseContacts = $interval(function(){
           LoadFriendsService.runContacts();
         }, 300000); // 5 minutos
+
       }
   });
 });
