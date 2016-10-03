@@ -13,7 +13,7 @@
 
   "messageSend" : "Enviado via hallə",
   "messagePaz" : ", deseja a Paz do Senhor.",
-  "messagePush": "Você recebeu a Paz do Senhor.",
+  "messagePush": "Você recebeu um hallə",
 
   "online": "Sua internet está instável!",
   "messageSendSuccess": "A Paz do Senhor foi enviada!",
@@ -164,5 +164,7 @@
   "errorMessageButton": "Tente Novamente",
 
   "welcomeTitle": "Bem vindo ao hallə",
-  "welcomeButton": "Continuar"
+  "welcomeButton": "Continuar",
+
+  "contentFilter" : "Buscar mensagem..."
 }

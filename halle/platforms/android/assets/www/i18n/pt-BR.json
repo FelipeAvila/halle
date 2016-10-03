@@ -164,5 +164,7 @@
   "errorMessageButton": "Tente Novamente",
 
   "welcomeTitle": "Bem vindo ao hallə",
-  "welcomeButton": "Continuar"
+  "welcomeButton": "Continuar",
+
+  "contentFilter" : "Buscar mensagem..."
 }

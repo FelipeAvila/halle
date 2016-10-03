@@ -1,0 +1,44 @@
+<ion-modal-view ng-init="init()">
+  <ion-content overflow-scroll='true'>
+    <br/><br/>
+    <!--
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input id="searchAll" type="search" placeholder="{{message.contentFilter}}" ng-model="input.searchAll">
+      </label>
+      <button class="button button-clear button-positive" ng-if="input.searchAll.length" ng-click="clearSearch();">
+        {{message.clean}}
+      </button>
+    </div>
+    -->
+    <ion-list>
+      <div class="row" ng-repeat="image in images | filter:{subject:input.searchAll}" ng-if="$index % 2 === 0">
+          <div class="col col-50" ng-if="$index < images.length">
+            <div data-content='' class="gallery-image">
+              <img ng-src="{{images[$index].content}}" width="100%" />
+              <a
+                  href="javascript:;"
+                  class="gallery-send"
+                  ng-click="sendMessage(images[$index].messageTypeId)"
+                  close-menu>
+                  <i class="icon ion-paper-airplane">&nbsp;&nbsp;{{message.friendSend}}</i>
+              </a>
+            </div>
+          </div>
+          <div class="col col-50" ng-if="$index + 1 < images.length">
+            <div data-content='' class="gallery-image">
+              <img ng-src="{{images[$index + 1].content}}" width="100%" />
+              <a
+                  href="javascript:;"
+                  class="gallery-send"
+                  ng-click="sendMessage(images[$index + 1].messageTypeId)"
+                  close-menu>
+                    <i class="icon ion-paper-airplane">&nbsp;&nbsp;{{message.friendSend}}</i>
+              </a>
+            </div>
+          </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

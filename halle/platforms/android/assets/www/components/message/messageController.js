@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService, BadgeService) {
 
   // Registrar Analytics
   AnalyticsService.add('messageController');
@@ -51,6 +51,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
         if ($scope.messagelist.length > 0) {
            $rootScope.amountMessage = $rootScope.amountMessage -1;
+           BadgeService.set($rootScope.amountMessage);
 
             // acessando o recurso de API
            var info = {'token': token, 'messageid': $scope.messagelist[0].messageId};

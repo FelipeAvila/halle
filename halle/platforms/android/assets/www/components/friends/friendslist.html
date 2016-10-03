@@ -1,4 +1,4 @@
-<ion-view view-title="friendslist">
+<ion-view>
    <ion-tabs class="tabs-icon-top tabs-custom">
      <ion-tab title="{{message.friendContacts}}" icon="ion-ios-world">
        <ion-nav-bar>
@@ -23,7 +23,7 @@
 
 
            <ion-list>
-             <ion-item class="item card-item item-borderless" auto-list-divider auto-list-divider-value="{{item.name}}" ng-repeat="item in contactslist | filter:{name:input.searchAll} | orderBy: ['-hasHalle', 'name']">
+             <ion-item class="item card-item item-borderless" auto-list-divider auto-list-divider-value="{{item.name}}" ng-repeat="item in contactslist | filter:{name:input.searchAll} | orderBy: ['name']">
                  <div class="card stable-bg ink ink-dark">
                      <div class="item item-avatar">
                          <span>
@@ -65,7 +65,7 @@
            </button>
          </div>
          <ion-list>
-           <ion-item class="item card-item item-borderless" ng-repeat="item in friendslist | filter:{name:input.searchAll} | orderBy: ['-hasHalle', 'name']">
+           <ion-item class="item card-item item-borderless" ng-repeat="item in friendslist | filter:{name:input.searchAll} | orderBy: ['name']">
                <div class="card stable-bg ink ink-dark">
                    <div class="item item-avatar">
                        <div ng-if="item.photoFriend == null">
@@ -79,7 +79,7 @@
                            <i class="icon ion-android-download positive"></i> {{ item.messageReceive }}
                            <i class="icon ion-android-upload positive"></i> {{ item.messageSent }}
                            <div class="pull-left">
-                               <i class="icon ion-paper-airplane" ng-click="sendMessage('{{item.phoneFriend}}', '{{item.tokenPush}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
+                               <i class="icon ion-paper-airplane" ng-click="selectedMessage('{{item.phoneFriend}}', '{{item.tokenPush}}')">&nbsp;&nbsp;{{message.friendSend}}</i>
                            </div>
                        </div>
                    </div>

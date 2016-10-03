@@ -100,6 +100,14 @@ app.factory('ChangePasswordResource', function ($resource, ApiEndpoint) {
     return data;
 });
 
+app.factory('MessageTypeResource', function ($resource, ApiEndpoint) {
+    var data =  $resource(ApiEndpoint.url +'/messagetype/',
+                                      {},
+                                      {get:   {method:'GET', isArray: true, timeout: 3000}}
+                         );
+    return data;
+});
+
 app.factory('DeletePhoneResource', function ($resource, ApiEndpoint) {
     var data =  $resource(ApiEndpoint.url +'/user/:token',
                                       {token: '@token' },

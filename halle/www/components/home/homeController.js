@@ -1,6 +1,5 @@
 var app = angular.module('halleApp.homeController', []);
 
-// Controler da pagina incial
 app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $ionicScrollDelegate, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService, FeedbackResource, GetAllContactsService) {
 
   // Registrar Analytics

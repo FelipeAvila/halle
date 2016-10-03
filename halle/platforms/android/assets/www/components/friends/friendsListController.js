@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.friendsListController', []);
 
-app.controller('friendsListController', function($scope, $rootScope, $ionicTabsDelegate, $timeout, $interval, $ionicPopup, $cordovaSocialSharing, $ionicLoading, FriendsContactsListResource, FriendsFriendsListResource, MessageSendResource, MessageReceiveAmountResource, FindUserResource, EditUserResource, PushNotificationService, BadgeService, AnalyticsService, GetAllContactsService, LoadFriendsService) {
+app.controller('friendsListController', function($scope, $rootScope, $state, $ionicTabsDelegate, $timeout, $interval, $ionicPopup, $cordovaSocialSharing, $ionicLoading, FriendsContactsListResource, MessageReceiveAmountResource, FindUserResource, EditUserResource, BadgeService, AnalyticsService, GetAllContactsService, LoadFriendsService) {
 
   // Registrar Analytics
   AnalyticsService.add('friendsListController');
@@ -45,7 +45,6 @@ app.controller('friendsListController', function($scope, $rootScope, $ionicTabsD
    };
 
   $scope.clearSearch = function() {
-    //console.log('search - ' + $scope.input.searchAll);
     $scope.input.searchAll='';
   };
 
@@ -59,36 +58,12 @@ app.controller('friendsListController', function($scope, $rootScope, $ionicTabsD
     });
   }
 
-  // INIT SEND message
-  $scope.sendMessage = function(phoneFriend, tokenpush) {
-     var messageTypeId = 0;
-     $scope.send(token, phoneFriend, messageTypeId);
-     if (tokenpush != null) {
-         PushNotificationService.push(tokenpush);
-     }
+  // Inicio selectedMessage
+  $scope.selectedMessage = function(phoneFriend, tokenpush) {
+    var params = {'phoneFriend': phoneFriend, 'tokenpush': tokenpush};
+    $state.go('home.content', params);
   }
-  // END SEND message
 
-  // SEND
-  $scope.send = function(token, phoneFriend, messageTypeId) {
-    // Send message
-    $ionicPopup.alert({
-      title: $rootScope.message.title,
-      content: $rootScope.message.messageSendSuccess
-    }).then(function(res) {
-    });
-
-    // acessando o recurso de API
-    var info = {'token': token, 'phoneFriend': phoneFriend, 'messageTypeId': messageTypeId};
-    MessageSendResource.save({}, info)
-     .$promise
-       .then(function(data) {
-         console.log('mensagem enviada com sucesso!');
-       },
-       function(error) {
-         console.log('mensagem enviada com erro - ' + error.data.message);
-       });
-  }
 
   // Inicio INIT
   $scope.init = function() {

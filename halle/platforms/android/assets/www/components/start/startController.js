@@ -24,7 +24,7 @@ app.controller('startController', function($scope, $rootScope, $timeout, $ionicL
 
    $timeout(function () {
      $ionicLoading.hide();
-   }, 2000);
+   }, 1000);
 
    // Acessando o storage local
    var storage = new getLocalStorage();

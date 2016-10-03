@@ -1,5 +1,5 @@
-// Ionic Starter App
-var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.welcomeController', 'halleApp.resources', 'halleApp.services']);
+ // Ionic Starter App
+var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.welcomeController', 'halleApp.contentController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -92,6 +92,17 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
           controller: 'messageController'
         }
       }
+    })
+    .state('home.content', {
+      cache: true,
+      url: '/content/:phoneFriend/:tokenpush',
+      views: {
+        'menuContent' :{
+          templateUrl: 'components/content/content.html',
+          controller: 'contentController'
+        }
+      }
+
     })
     .state('home.inviteFriend', {
       cache: true,
