@@ -12,6 +12,7 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
 
   // Perform the inviteEmail
   $scope.inviteEmail = function() {
+    AnalyticsService.trackEvent('inviteFriend', 'Email');
 
     $scope.data = {};
     // popup email and name friend
@@ -45,6 +46,8 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
 
   // Perform the inviteWhatsApp
   $scope.inviteWhatsApp = function() {
+    AnalyticsService.trackEvent('inviteFriend', 'WhatsApp');
+
     $cordovaSocialSharing
     .shareViaWhatsApp($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net')
     .then(function(result) {
@@ -54,6 +57,8 @@ app.controller('inviteFriendController', function($scope, $rootScope, $state, $c
 
   // Perform the inviteFacebook
   $scope.inviteFacebook = function() {
+    AnalyticsService.trackEvent('inviteFriend', 'Facebook');
+
     $cordovaSocialSharing
       //.shareViaFacebook
       .shareViaFacebookWithPasteMessageHint($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendPaste)

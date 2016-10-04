@@ -22,6 +22,12 @@
           </span>
         </div>
 
+        <div ng-if="selected == 1">
+          <button class="button button-block button-login"
+                  ng-click="onSubmit()">{{ message.editProfileSendPhoto }}</button>
+        </div>
+
+
         <h2 class="h2-menu">{{data.name}}</h2>
 
         <span class="success-container" ng-if="Success">

@@ -49,7 +49,9 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $io
   };
 
   // INVITE
-  $scope.invite = function() {
+  $scope.invite = function(phoneFriend) {
+    AnalyticsService.trackEvent('invite', phoneFriend);
+
     $ionicPopup.alert({
       title: $rootScope.message.title,
       content: $rootScope.message.friendInviteZap

@@ -18,6 +18,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
   var storage = new getLocalStorage();
   var token = storage.get();
 
+  $scope.selected = 0;
+
   // Inicio onload
   $scope.onLoad = function() {
     // acessando o recurso de API
@@ -137,6 +139,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
 
   // Triggered on a button click, or some other target
   $scope.show = function() {
+
+    $scope.selected = 1;
 
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show({

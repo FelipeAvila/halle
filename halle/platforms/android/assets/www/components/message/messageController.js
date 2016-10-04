@@ -73,6 +73,8 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // INICIO REPLY
   $scope.reply = function(phone, messageTypeId, tokenPush) {
+      AnalyticsService.trackEvent('reply', phone);
+
       var token = storage.get();
 
       var info = {'token': token, 'phoneFriend': phone, 'messageTypeId': messageTypeId};
@@ -163,7 +165,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // Perform the shareFacebook
   $scope.shareFacebook = function(nickname, image, content) {
-console.log('shareFacebook - ' + content);
+    AnalyticsService.trackEvent('shareFacebook', null);
 
     var imageSrc = "";
     if (content == null) {

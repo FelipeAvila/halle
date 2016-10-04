@@ -206,15 +206,38 @@ app.service('BadgeService', function($cordovaBadge) {
 app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
   this.add = function(page) {
     if(typeof analytics !== 'undefined'){
-      //console.log("Google Analytics disponivel - " + page);
       $cordovaGoogleAnalytics.debugMode();
       $cordovaGoogleAnalytics.startTrackerWithId('UA-83331611-1');
       $cordovaGoogleAnalytics.trackView(page);
     }
-    else {
-      //console.log("Google Analytics indisponivel - " + page);
-    }
   };
+
+  this.trackEvent = function(event, value) {
+    if(typeof analytics !== 'undefined'){
+      $cordovaGoogleAnalytics.debugMode();
+      $cordovaGoogleAnalytics.startTrackerWithId('UA-83331611-1');
+
+      if (event == "sendMessage") {
+        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Message Type', value);
+      }
+      else if(event == "invite") {
+        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Invite Friend', value);
+      }
+      else if(event == "reply") {
+        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Reply Friend', value);
+      }
+      else if(event == "inviteFriend") {
+        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Type', value);        
+      }
+      else {
+        $cordovaGoogleAnalytics.trackEvent('Action', event);
+      }
+
+
+    }
+
+  }
+
 });
 
 app.service('GetAllContactsService', function($rootScope, $cordovaContacts, InvitePhoneNumberResource, LoadFriendsService, PhoneService) {

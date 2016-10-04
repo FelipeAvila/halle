@@ -1,12 +1,13 @@
 var app = angular.module('halleApp.contentController', []);
 
-app.controller('contentController', function($scope, $rootScope, $stateParams, $state, $ionicPopup, PushNotificationService, MessageTypeResource, MessageSendResource) {
+app.controller('contentController', function($scope, $rootScope, $stateParams, $state, $ionicPopup, PushNotificationService, MessageTypeResource, MessageSendResource, AnalyticsService) {
+
+  // Registrar Analytics
+  AnalyticsService.add('contentController');
 
   $scope.images = [];
   var storage = new getLocalStorage();
   var token = storage.get();
-
-
 
   $scope.init = function() {
 
@@ -42,6 +43,8 @@ app.controller('contentController', function($scope, $rootScope, $stateParams, $
 
   // SEND
   $scope.send = function(token, phoneFriend, messageTypeId) {
+    AnalyticsService.trackEvent('sendMessage', messageTypeId);
+
     // Send message
     $ionicPopup.alert({
       title: $rootScope.message.title,

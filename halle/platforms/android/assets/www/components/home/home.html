@@ -10,7 +10,9 @@
      </ion-nav-back-button>
      <ion-nav-buttons side="right">
          <button class="button-base button-white ion-chatbox" ng-click="goMessage()">&nbsp;</button>
-         <span class="badge badge-assertive" ng-click="goMessage()">{{ amountMessage }}</span>
+         <span ng-if="amountMessage > 0">
+           <span class="badge badge-assertive" ng-click="goMessage()">{{ amountMessage }}</span>
+         </span>
          &nbsp;&nbsp;
          <button class="button-base button-white ion-refresh" ng-click="importContacts()"></button>
          <button class="button-base button-white ion-home" ng-click="goHome()"></button>
