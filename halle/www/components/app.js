@@ -1,5 +1,5 @@
  // Ionic Starter App
-var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.welcomeController', 'halleApp.contentController', 'halleApp.resources', 'halleApp.services']);
+var app = angular.module('halleApp', ['ionic', 'ionic.ion.autoListDivider', 'intlpnIonic', 'ngCordova', 'ngResource', 'halleApp.homeController', 'halleApp.startController', 'halleApp.loginController', 'halleApp.createUserController', 'halleApp.forgotController', 'halleApp.invitePhoneController', 'halleApp.changePasswordController', 'halleApp.friendsListController', 'halleApp.feedbackController', 'halleApp.editProfileController', 'halleApp.messageController', 'halleApp.inviteFriendController', 'halleApp.errorMessageController', 'halleApp.welcomeController', 'halleApp.contentController', 'halleApp.tratarLoginController', 'halleApp.resources', 'halleApp.services']);
 
 /***************Configuração Inicial *************************/
 // estados
@@ -31,6 +31,13 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
       templateUrl: 'components/createUser/createUser.html',
       controller: 'createUserController'
     })
+    .state('tratarLogin', {
+      cache: true,
+      url: '/tratarLogin',
+      templateUrl: 'components/tratarLogin/tratarLogin.html',
+      controller: 'tratarLoginController'
+    })
+
     .state('welcome', {
       cache: true,
       url: '/welcome',
@@ -170,28 +177,42 @@ app.run(function($ionicPlatform, $rootScope) {
     });
 
     push.register(function(token) {
-      console.log("My Device token:",token.token);
-      console.log("My Device token (TOKEN):",token);
       $rootScope.tokenpush = token.token;
       push.saveToken(token);  // persist the token in the Ionic Platform
     });
   });
 })
 
-app.run(function($ionicPlatform, $interval, $rootScope, LoadFriendsService) {
+app.run(function($ionicPlatform, $state, $interval, $rootScope, $cordovaDevice, LoadFriendsService) {
   $ionicPlatform.ready(function() {
 
       // Iniciar o carregamento das mensagem recebidas
       $rootScope.promisseFriends = null;
       $rootScope.promisseContacts = null;
 
+      // Informações do aparelho
+      document.addEventListener('deviceready', function () {
+        $rootScope.platform = $cordovaDevice.getPlatform();
+
+        // tratamento do botão voltar
+        document.addEventListener('backbutton', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          var storage = new getLocalStorage();
+          if (storage.get() === null) {
+             $state.go("login");
+          }
+          else {
+            $state.go("home.friendslist");
+          }
+        }, false);
+      }, false);
+
       document.addEventListener("pause", function() {
-          console.log("The application is pausing from the background");
           loadFriendsReceive();
       }, false);
 
       document.addEventListener("resume", function() {
-          console.log("The application is resuming from the background");
           $interval.cancel($rootScope.promisseFriends);
           $interval.cancel($rootScope.promisseContacts);
       }, false);

@@ -75,32 +75,9 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
   $scope.reply = function(phone, messageTypeId, tokenPush) {
       AnalyticsService.trackEvent('reply', phone);
 
-      var token = storage.get();
-
-      var info = {'token': token, 'phoneFriend': phone, 'messageTypeId': messageTypeId};
-      // acessando o recurso de API
-     MessageSendResource.save({}, info)
-      .$promise
-        .then(function(data) {
-          $scope.Success = true;
-          $scope.msgSuccess =  data.message;
-
-          if (tokenPush != null) {
-              PushNotificationService.push(tokenPush);
-          }
-
-          $ionicPopup.alert({
-            title: $rootScope.message.title,
-            content: $rootScope.message.messageSendSuccess
-          }).then(function(res) {
-          });
-        },
-        function(error) {
-          $ionicPopup.alert({
-            title: $rootScope.message.title,
-            content: error.data.message
-          });
-        });
+      $rootScope.pageOrigem = 'message';
+      var params = {'phoneFriend': phone, 'tokenpush': tokenPush};
+      $state.go('home.content', params);
   }
   // FINAL reply
 

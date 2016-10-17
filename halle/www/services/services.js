@@ -7,7 +7,7 @@ app.service('AuthService', function($q, AuthResource) {
 
   this.send = function(login, password) {
      AuthResource.save({ login: login, password: password })
-        .$promise
+        .$promiseForgotPassNotificationService
           .then(function(data) {
             item = data.toJSON();
           });
@@ -23,7 +23,7 @@ app.service('PushNotificationService', function($http, $rootScope) {
       url: 'https://api.ionic.io/push/notifications',
       headers: {
         'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.Jau9agLgBEF7Is9Ap8psadEqtFOVkUzLmsb5FueIhH8'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.Jau9agLgBEF7Is9Ap8psadEqtFOVkUzLmsb5FueIhH8'
       },
       data: {
         "tokens": tokenpush,
@@ -65,7 +65,7 @@ app.service('ForgotPassNotificationService', function($http, $rootScope) {
       url: 'https://api.ionic.io/push/notifications',
       headers: {
         'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.Jau9agLgBEF7Is9Ap8psadEqtFOVkUzLmsb5FueIhH8'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNDVlMTA5Zi0wMmVjLTRhOWMtODIyZi04NGM5ZjI4ZWI2OTUifQ.Jau9agLgBEF7Is9Ap8psadEqtFOVkUzLmsb5FueIhH8'
       },
       data: {
         "tokens": tokenpush,
@@ -216,24 +216,7 @@ app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
     if(typeof analytics !== 'undefined'){
       $cordovaGoogleAnalytics.debugMode();
       $cordovaGoogleAnalytics.startTrackerWithId('UA-83331611-1');
-
-      if (event == "sendMessage") {
-        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Message Type', value);
-      }
-      else if(event == "invite") {
-        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Invite Friend', value);
-      }
-      else if(event == "reply") {
-        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Reply Friend', value);
-      }
-      else if(event == "inviteFriend") {
-        $cordovaGoogleAnalytics.trackEvent('Action', event, 'Type', value);        
-      }
-      else {
-        $cordovaGoogleAnalytics.trackEvent('Action', event);
-      }
-
-
+      $cordovaGoogleAnalytics.trackEvent('Action', event);
     }
 
   }
@@ -294,6 +277,9 @@ app.service('GetAllContactsService', function($rootScope, $cordovaContacts, Invi
             var dddPadrao = phone.substring(3,5);;
 
             var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[0].value, ddiPadrao, dddPadrao);
+            if (phoneFriend=="") {
+              var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[1].value, ddiPadrao, dddPadrao);
+            }
 
             if (phoneFriend != "") {
                 // acessando o recurso de API

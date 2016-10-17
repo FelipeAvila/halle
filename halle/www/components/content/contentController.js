@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.contentController', []);
 
-app.controller('contentController', function($scope, $rootScope, $stateParams, $state, $ionicPopup, PushNotificationService, MessageTypeResource, MessageSendResource, AnalyticsService) {
+app.controller('contentController', function($ionicHistory, $scope, $rootScope, $stateParams, $state, $ionicPopup, PushNotificationService, MessageTypeResource, MessageSendResource, AnalyticsService) {
 
   // Registrar Analytics
   AnalyticsService.add('contentController');
@@ -16,7 +16,6 @@ app.controller('contentController', function($scope, $rootScope, $stateParams, $
      .then(function(data) {
 
        $scope.images = data;
-       console.log($scope.images.length);
 
      }, function(error) {
        console.log('Não foi possivel carregar as mensagens.');
@@ -50,7 +49,21 @@ app.controller('contentController', function($scope, $rootScope, $stateParams, $
       title: $rootScope.message.title,
       content: $rootScope.message.messageSendSuccess
     }).then(function(res) {
-      $state.go("home.friendslist");
+      console.log('page - ' + $rootScope.pageOrigem);
+
+      if ($rootScope.pageOrigem == "message") {
+
+        if ($rootScope.amountMessage > 0) {
+          $state.go("home.message");
+        }
+        else {
+          $state.go("home.friendslist");
+        }
+      }
+      else {
+          $state.go("home.friendslist");
+      }
+
     });
 
     // acessando o recurso de API

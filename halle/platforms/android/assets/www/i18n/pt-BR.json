@@ -70,7 +70,7 @@
 
   "homeMenu" : "Menu",
   "homeMenuInvite" : "Adicionar amigos - contatos",
-  "homeMenuInviteFriend" : "Indicar",
+  "homeMenuInviteFriend" : "Convidar",
   "homeMenuInvitePhone" : "Adicionar amigo",
   "homeMenuProfile" : "Perfil",
   "homeMenuForgotPwd" : "Esqueci minha senha",
@@ -146,9 +146,9 @@
   "messageFrendShare" : "Compartilhar",
   "messageFriendPaste" : "A mensagem de agradecimento enviada para a área de transferência, pressione para colar a mensagem.",
 
-  "inviteFriendTitle" : "Indicar Amigos",
+  "inviteFriendTitle" : "Convidar Amigos",
   "inviteFriendSubTitle" : "Gostou do hallə?",
-  "inviteFriendSubTitle2" : "Agora você pode indicar amigos para",
+  "inviteFriendSubTitle2" : "Agora você pode convidar os amigos para",
   "inviteFriendSubTitle3" : "experimentar antes de todo mundo.",
   "inviteFriendNameFriend" : "Nome do amigo",
   "inviteFriendEmail" : "E-mail",
@@ -167,5 +167,10 @@
   "welcomeTitle": "Bem vindo ao hallə",
   "welcomeButton": "Continuar",
 
-  "contentFilter" : "Buscar mensagem..."
+  "contentFilter" : "Buscar mensagem...",
+
+  "tratarLoginInfo": "Ocorreu uma falha ao tentar conectar.",
+  "tratarLoginInfo2": "Confira sua conexão ou tente novamente.",
+  "tratarLoginButton": "Tente Novamente",
+  "tratarLoginButton2": "Voltar para o Login"
 }

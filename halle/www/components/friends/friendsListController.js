@@ -62,6 +62,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $io
 
   // Inicio selectedMessage
   $scope.selectedMessage = function(phoneFriend, tokenpush) {
+    $rootScope.pageOrigem = 'friendslist';
     var params = {'phoneFriend': phoneFriend, 'tokenpush': tokenpush};
     $state.go('home.content', params);
   }
@@ -146,7 +147,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $io
   $scope.onLoad = function() {
     $interval(function(){
       $scope.initMessageReceive();
-    }, 15000);
+    }, 20000);
     $scope.initMessageReceive();
 
     $rootScope.contactslist = storage.getContactList();
