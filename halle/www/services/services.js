@@ -218,9 +218,7 @@ app.service('AnalyticsService', function($cordovaGoogleAnalytics) {
       $cordovaGoogleAnalytics.startTrackerWithId('UA-83331611-1');
       $cordovaGoogleAnalytics.trackEvent('Action', event);
     }
-
   }
-
 });
 
 app.service('GetAllContactsService', function($rootScope, $cordovaContacts, InvitePhoneNumberResource, LoadFriendsService, PhoneService) {

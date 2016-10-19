@@ -1,7 +1,4 @@
-cordova.define("cordova-plugin-x-socialsharing.SocialSharing", function(require, exports, module) {
-var cordova = require('cordova');
-
-function SocialSharing() {
+cordova.define("cordova-plugin-x-socialsharing.SocialSharing", function(require, exports, module) { function SocialSharing() {
 }
 
 // Override this method (after deviceready) to set the location where you want the iPad popup arrow to appear.
@@ -123,5 +120,4 @@ SocialSharing.install = function () {
 };
 
 cordova.addConstructor(SocialSharing.install);
-
 });

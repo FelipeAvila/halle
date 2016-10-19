@@ -1,6 +1,6 @@
 var app = angular.module('halleApp.contentController', []);
 
-app.controller('contentController', function($ionicHistory, $scope, $rootScope, $stateParams, $state, $ionicPopup, PushNotificationService, MessageTypeResource, MessageSendResource, AnalyticsService) {
+app.controller('contentController', function($ionicHistory, $scope, $rootScope, $stateParams, $state, $ionicPopup, PushNotificationService, MessageTypeResource, MessageSendResource, LoadFriendsService, AnalyticsService) {
 
   // Registrar Analytics
   AnalyticsService.add('contentController');
@@ -51,6 +51,7 @@ app.controller('contentController', function($ionicHistory, $scope, $rootScope, 
     }).then(function(res) {
       console.log('page - ' + $rootScope.pageOrigem);
 
+      LoadFriendsService.runFriends();
       if ($rootScope.pageOrigem == "message") {
 
         if ($rootScope.amountMessage > 0) {

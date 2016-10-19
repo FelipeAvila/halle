@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService, BadgeService) {
 
   // Registrar Analytics
   AnalyticsService.add('messageController');
@@ -31,6 +31,11 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
           },
           function(error) {
           });
+
+       if ($rootScope.amountMessage > 0) {
+         $rootScope.amountMessage = $rootScope.amountMessage -1;
+       }
+
     }
   };
 
@@ -45,6 +50,9 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
         $ionicSlideBoxDelegate.update();
 
         if ($scope.messagelist.length > 0) {
+           $rootScope.amountMessage = $rootScope.amountMessage -1;
+           BadgeService.set($rootScope.amountMessage);
+
             // acessando o recurso de API
            var info = {'token': token, 'messageid': $scope.messagelist[0].messageId};
            MessageUpdateResource.save(info)
@@ -65,32 +73,11 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // INICIO REPLY
   $scope.reply = function(phone, messageTypeId, tokenPush) {
-      var token = storage.get();
+      AnalyticsService.trackEvent('reply', phone);
 
-      var info = {'token': token, 'phoneFriend': phone, 'messageTypeId': messageTypeId};
-      // acessando o recurso de API
-     MessageSendResource.save({}, info)
-      .$promise
-        .then(function(data) {
-          $scope.Success = true;
-          $scope.msgSuccess =  data.message;
-
-          if (tokenPush != null) {
-              PushNotificationService.push(tokenPush);
-          }
-
-          $ionicPopup.alert({
-            title: $rootScope.message.title,
-            content: $rootScope.message.messageSendSuccess
-          }).then(function(res) {
-          });
-        },
-        function(error) {
-          $ionicPopup.alert({
-            title: $rootScope.message.title,
-            content: error.data.message
-          });
-        });
+      $rootScope.pageOrigem = 'message';
+      var params = {'phoneFriend': phone, 'tokenpush': tokenPush};
+      $state.go('home.content', params);
   }
   // FINAL reply
 
@@ -155,7 +142,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
 
   // Perform the shareFacebook
   $scope.shareFacebook = function(nickname, image, content) {
-console.log('shareFacebook - ' + content);
+    AnalyticsService.trackEvent('shareFacebook', null);
 
     var imageSrc = "";
     if (content == null) {

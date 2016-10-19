@@ -18,6 +18,8 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
   var storage = new getLocalStorage();
   var token = storage.get();
 
+  $scope.selected = 0;
+
   // Inicio onload
   $scope.onLoad = function() {
     // acessando o recurso de API
@@ -88,16 +90,40 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
   }
   // final onSubmit
 
-  // inicio upload
+  // inicio foto
   $scope.photo = function() {
     var options = {
-        quality: 60,
+        quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 250,
-        targetHeight: 250,
+        targetWidth: 150,
+        targetHeight: 150,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false,
+        correctOrientation: false
+    };
+
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+       //var srcImage = "data:image/jpeg;base64," + imageData;
+       $scope.data.photo = imageData;
+    }, function(err) {
+        // error
+    });
+  }
+  // final foto
+
+  // inicio upload
+  $scope.upload = function() {
+    var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 150,
+        targetHeight: 150,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false
     };
@@ -114,30 +140,39 @@ app.controller('editProfileController', function($scope, $rootScope, $state, $ti
   // Triggered on a button click, or some other target
   $scope.show = function() {
 
+    $scope.selected = 1;
+
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show({
       buttons: [
-        { text: $rootScope.message.editProfilePhoto },
-        { text: $rootScope.message.editProfileUpload }
+        { text: '<i class="icon ion-android-camera halle"></i>' + $rootScope.message.editProfilePhoto },
+        { text: '<i class="icon ion-share halle"></i>' + $rootScope.message.editProfileUpload }
       ],
       titleText: '<b>' + $scope.data.photo == null?$rootScope.message.editProfileAddPhoto:$rootScope.message.editProfileChagePhoto + '</b>',
+      destructiveText: $rootScope.message.cancel,
       cancelText: $rootScope.message.cancel,
       cancel: function() {
            // add cancel code..
          },
       buttonClicked: function(index) {
-        console.log('BUTTON CLICKED', index);
+        //console.log('BUTTON CLICKED', index);
         if (index == 0) {
           $scope.photo();
         }
-
+        else {
+          $scope.upload();
+        }
+        return true;
+      },
+      destructiveButtonClicked: function() {
+        //console.log('DESTRUCT');
         return true;
       }
     });
 
     $timeout(function() {
       hideSheet();
-    }, 2000);
+    }, 9000);
 
   };
 

@@ -1,7 +1,6 @@
 var app = angular.module('halleApp.homeController', []);
 
-// Controler da pagina incial
-app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService, FeedbackResource) {
+app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ionicLoading, $ionicScrollDelegate, $state, $stateParams, $cordovaContacts, $ionicPlatform, DeletePhoneResource, InvitePhoneNumberResource, MessageReceiveResource, PhoneService, AnalyticsService, FeedbackResource, GetAllContactsService) {
 
   // Registrar Analytics
   AnalyticsService.add('homeController');
@@ -9,18 +8,14 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
   $scope.searchValue="";
 
   $scope.contacts = {};
-  // mensagem de erro
-  $scope.error = false;
-  $scope.msgError = "";
-  // mensagem de OK
-  $scope.Success = false;
-  $scope.msgSuccess = "";
+
   // Acessando o storage local
   var storage = new getLocalStorage();
   var token = storage.get();
 
   // INIT home
   $scope.goHome = function() {
+    $ionicScrollDelegate.scrollTop();
     $state.go("home.friendslist");
   }
   // FINAL home
@@ -44,62 +39,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
 
   // INIT getAllContacts
   $scope.getAllContacts = function() {
-    var name = "";
-    var phoneFriend = "";
-    var nameFriend = "";
-
-    $scope.phoneContacts = [];
-
-    function onSuccess(contacts) {
-      for (var i = 0; i < contacts.length; i++) {
-        var item = contacts[i];
-
-        // carregando o nome.
-        nameFriend = "";
-        if (item.displayName != null) {
-          nameFriend = item.displayName;
-        } else if (item.nickname != null) {
-          nameFriend = item.nickname;
-        } else if (item.name.givenName) {
-          nameFriend = item.name.givenName;
-        } else {
-          nameFriend = item.name.formatted;
-        }
-
-        if (nameFriend != null && item.phoneNumbers != null) {
-
-          var ddiPadrao = $rootScope.phone.substring(0,3);
-          var dddPadrao = $rootScope.phone.substring(3,5);;
-
-          var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[0].value, ddiPadrao, dddPadrao);
-          if (phoneFriend != "") {
-              // acessando o recurso de API
-              InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
-              .$promise
-                .then(function(data) {
-                  $scope.Success = true;
-                  $scope.msgSuccess =  data.message;
-              },
-              function(error) {
-                $scope.msgError =  error.data.message;
-              });
-          }
-        }
-      }
-
-    };
-    function onError(contactError) {
-    };
-
-    try {
-      var options = {};
-      options.multiple = true;
-      options.hasPhoneNumber = true;
-      $cordovaContacts.find(options).then(onSuccess, onError);
-    }
-    catch(e) {
-    }
-
+    GetAllContactsService.run();
   };
   // FINAL getAllContacts
 
@@ -113,8 +53,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
     });
 
     confirmPopup.then(function(res) {
-      // Tudo ok vamos iniciar a troca da senha
-
       if(res) {
         $scope.getAllContacts();
       }
@@ -146,8 +84,6 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
           }
 
         }, function(error) {
-          $scope.error = true;
-
           if (error.data === null) {
             $scope.msgError = $rootScope.message.deleteError;
           }
@@ -180,6 +116,8 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
      if(res) {
        // Acessando o storage local
        storage.remove();
+       storage.removeFriendList();
+       storage.removeContactList();
 
        // redirecionando para o Login
        $state.go("login");

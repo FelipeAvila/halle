@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.forgotController', []);
 
 // Controller da pagina de criar usuario
-app.controller('forgotController', function($scope, $rootScope, $state, $ionicPopup, ForgotResource, AnalyticsService) {
+app.controller('forgotController', function($scope, $rootScope, $state, $ionicPopup, ForgotResource, AnalyticsService, ForgotPassNotificationService) {
 
   // Registrar Analytics
   AnalyticsService.add('forgotController');
@@ -49,9 +49,12 @@ app.controller('forgotController', function($scope, $rootScope, $state, $ionicPo
        .$promise
        .then(function(data) {
 
+         // Push com a nova senha
+         ForgotPassNotificationService.push($rootScope.tokenpush, data.newPassword);
+
          var alertPopup = $ionicPopup.alert({
-           title: $rootScope.message.forgotCopyPass,
-           template: data.newPassword
+           title: $rootScope.message.forgotTitle,
+           template: $rootScope.message.forgotNewPass
          });
 
        }, function(error) {
