@@ -32,8 +32,6 @@ app.controller('startController', function($scope, $rootScope, $timeout, $ionicL
        $state.go("login");
     }
     else {
-      $state.go("home.friendslist");
-        /*
          // acessando o recurso de API
         // INICIO
         ValidTokenResource.get({ token: storage.get() })
@@ -51,6 +49,5 @@ app.controller('startController', function($scope, $rootScope, $timeout, $ionicL
 
         });
         // final
-        */
     }
 });
