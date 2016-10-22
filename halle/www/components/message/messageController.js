@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.messageController', []);
 
 // Controller da pagina de criar usuario
-app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService, BadgeService) {
+app.controller('messageController', function($scope, $rootScope, $state, $http, $ionicPopup, $interval, $ionicSlideBoxDelegate, $cordovaSocialSharing, MessageReceiveResource, InvitePhoneNumberResource, MessageSendResource, MessageUpdateResource, PushNotificationService, AnalyticsService, BadgeService, LoadFriendsService) {
 
   // Registrar Analytics
   AnalyticsService.add('messageController');
@@ -28,6 +28,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
        MessageUpdateResource.save(info)
         .$promise
           .then(function(data) {
+            LoadFriendsService.runFriends();
           },
           function(error) {
           });
@@ -58,6 +59,7 @@ app.controller('messageController', function($scope, $rootScope, $state, $http, 
            MessageUpdateResource.save(info)
             .$promise
               .then(function(data) {
+                LoadFriendsService.runFriends();
               },
               function(error) {
               });

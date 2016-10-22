@@ -220,6 +220,7 @@ app.run(function($ionicPlatform, $state, $interval, $rootScope, $cordovaDevice, 
       // Carregando as mensagens
       this.loadFriendsReceive = function() {
         LoadFriendsService.runFriends();
+        LoadFriendsService.runContacts();
 
         $rootScope.promisseFriends = $interval(function(){
           LoadFriendsService.runFriends();

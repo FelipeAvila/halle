@@ -1,7 +1,7 @@
 var app = angular.module('halleApp.invitePhoneController', []);
 
 // Controller da pagina de criar usuario
-app.controller('invitePhoneController', function($scope, $rootScope, $state, $http, InvitePhoneNumberResource, AnalyticsService) {
+app.controller('invitePhoneController', function($scope, $rootScope, $state, $http, InvitePhoneNumberResource, AnalyticsService, LoadFriendsService) {
 
   // Registrar Analytics
   AnalyticsService.add('invitePhoneController');
@@ -56,6 +56,8 @@ app.controller('invitePhoneController', function($scope, $rootScope, $state, $ht
         .then(function(data) {
           $scope.Success = true;
           $scope.msgSuccess =  data.message;
+          LoadFriendsService.runFriends();
+          LoadFriendsService.runContacts();
         },
         function(error) {
           $scope.error = true;
