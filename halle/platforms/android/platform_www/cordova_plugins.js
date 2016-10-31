@@ -183,7 +183,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.3",
     "ionic-plugin-keyboard": "2.2.1",
-    "phonegap-plugin-push": "1.8.3"
+    "phonegap-plugin-push": "1.8.3",
+    "cordova-plugin-wkwebview-engine": "1.1.1-dev"
 };
 // BOTTOM OF METADATA
 });

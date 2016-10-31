@@ -118,6 +118,7 @@ app.controller('homeController', function($scope, $rootScope, $ionicPopup, $ioni
        storage.remove();
        storage.removeFriendList();
        storage.removeContactList();
+       storage.removeInfoUsuario();
 
        // redirecionando para o Login
        $state.go("login");

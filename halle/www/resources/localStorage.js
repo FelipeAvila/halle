@@ -50,4 +50,22 @@ function getLocalStorage() {
       return JSON.parse(contactList);
   }
 
+  /**** localStorage info-usuario ****/
+
+  var infoUsuario = "";
+
+  this.saveInfoUsuario = function(item) {
+      localStorage.setItem('info-usuario', JSON.stringify(item));
+  }
+
+  this.removeInfoUsuario = function(item) {
+      localStorage.removeItem('info-usuario');
+  }
+
+  this.getInfoUsuario = function() {
+      contactList = localStorage.getItem('info-usuario');
+      return JSON.parse(contactList);
+  }
+
+
 }

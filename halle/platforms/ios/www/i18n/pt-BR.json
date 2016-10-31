@@ -172,5 +172,8 @@
   "tratarLoginInfo": "Ocorreu uma falha ao tentar conectar.",
   "tratarLoginInfo2": "Confira sua conexão ou tente novamente.",
   "tratarLoginButton": "Tente Novamente",
-  "tratarLoginButton2": "Voltar para o Login"
+  "tratarLoginButton2": "Voltar para o Login",
+
+  "inviteFacebook": "Convide seus amigos do Facebook para o hallə.",
+  "inviteFacebookButton": "Convidar agora"
 }

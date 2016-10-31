@@ -158,6 +158,18 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $io
     }
   }
 
+  // Perform the inviteFacebook
+  $scope.inviteFacebook = function() {
+    AnalyticsService.trackEvent('inviteFacebook', 'Facebook');
+
+    $cordovaSocialSharing
+      //.shareViaFacebook
+      .shareViaFacebook($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendPaste)
+      .then(function(result) {
+      }, function(err) {
+      });
+  }
+
   $scope.onLoad();
 
 });

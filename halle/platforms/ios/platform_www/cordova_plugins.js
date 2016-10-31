@@ -183,6 +183,14 @@ module.exports = [
         "clobbers": [
             "PushNotification"
         ]
+    },
+    {
+        "id": "cordova-plugin-wkwebview-engine.ios-wkwebview-exec",
+        "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview-exec.js",
+        "pluginId": "cordova-plugin-wkwebview-engine",
+        "clobbers": [
+            "cordova.exec"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -199,7 +207,8 @@ module.exports.metadata =
     "cordova-plugin-contacts": "2.2.1-dev",
     "cordova-plugin-device": "1.1.3",
     "cordova-plugin-x-socialsharing": "5.1.3",
-    "phonegap-plugin-push": "1.8.3"
-}
+    "phonegap-plugin-push": "1.8.3",
+    "cordova-plugin-wkwebview-engine": "1.1.1-dev"
+};
 // BOTTOM OF METADATA
 });

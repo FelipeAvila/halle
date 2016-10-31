@@ -243,6 +243,7 @@ app.service('GetAllContactsService', function($rootScope, $cordovaContacts, Invi
         console.log('GetAllContactsService - onSuccess');
         var phoneContacts = [];
         var phone = $rootScope.phone;
+        console.log('phone - ' + phone);
         var storage = new getLocalStorage();
         var token = storage.get();
 
@@ -274,19 +275,21 @@ app.service('GetAllContactsService', function($rootScope, $cordovaContacts, Invi
             var ddiPadrao = phone.substring(0,3);
             var dddPadrao = phone.substring(3,5);;
 
-            var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[0].value, ddiPadrao, dddPadrao);
-            if (phoneFriend=="") {
-              var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[1].value, ddiPadrao, dddPadrao);
+            for (var k=0; k < item.phoneNumbers.length; k++)  {
+
+              var phoneFriend = PhoneService.contactPattern(item.phoneNumbers[k].value, ddiPadrao, dddPadrao);
+
+              if (phoneFriend != "") {
+                  // acessando o recurso de API
+                  InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
+                  .$promise
+                    .then(function(data) {
+                  },
+                  function(error) {});
+              }
+
             }
 
-            if (phoneFriend != "") {
-                // acessando o recurso de API
-                InvitePhoneNumberResource.save({ token: token, name: nameFriend, phone: phoneFriend })
-                .$promise
-                  .then(function(data) {
-                },
-                function(error) {});
-            }
           }
         }
       };

@@ -99,5 +99,14 @@
         "variables": {
             "SENDER_ID": "471393976592"
         }
+    },
+    "cordova-plugin-wkwebview-engine": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/driftyco/cordova-plugin-wkwebview-engine.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

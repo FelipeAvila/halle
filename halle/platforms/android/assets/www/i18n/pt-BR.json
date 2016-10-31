@@ -142,7 +142,7 @@
   "messageInviteSuccess" : "Amigo incluído!",
   "messageFriendName" : "Confirme o nome do amigo",
   "messageFriendReturn" : "Recebi esta mensagem de ",
-  "messageFriendReturn2" : " através do aplicativo hallə. Baixe você também nos endereços abaixo. \n  Google Play -> http://goo.gl/4YVLLo \n Apple Store -> http://goo.gl/JzIoTG  \n #hallə #pazdosenhor",
+  "messageFriendReturn2" : " através do aplicativo hallə. Baixe você também nos endereços abaixo. \n  Google Play -> http://goo.gl/4YVLLo \n Apple Store -> http://goo.gl/JzIoTG  \n @halleapp #hallə #pazdosenhor",
   "messageFrendShare" : "Compartilhar",
   "messageFriendPaste" : "A mensagem de agradecimento enviada para a área de transferência, pressione para colar a mensagem.",
 
@@ -154,7 +154,7 @@
   "inviteFriendEmail" : "E-mail",
   "inviteFriendWhatsapp" : "Whatsapp",
   "inviteFriendFacabook" : "Facebook",
-  "inviteFriendMessage" : "Este é um convite para você participar do hallə. O aplicativo onde você compartilha a palavra do Senhor para as pessoas que você mais gosta. Baixe na sua loja de aplicativos ou acesse o nosso site. \n  Google Play -> http://goo.gl/4YVLLo \n Apple Store -> http://goo.gl/JzIoTG",
+  "inviteFriendMessage" : "Este é um convite para você participar do @halleapp. O aplicativo onde você compartilha a palavra do Senhor para as pessoas que você mais gosta. Baixe o aplicativos ou acesse o nosso site. \n  Google Play -> http://goo.gl/4YVLLo \n Apple Store -> http://goo.gl/JzIoTG",
   "inviteFriendSubject" : "Você recebeu uma indicação para espalhar a palavra do Senhor pelo mundo!",
   "inviteFriendFriend" : "AMIGOS",
   "inviteFriendPaste" : "A mensagem do seu convite foi enviada para a área de transferência, pressione para colar a mensagem.",
@@ -172,5 +172,8 @@
   "tratarLoginInfo": "Ocorreu uma falha ao tentar conectar.",
   "tratarLoginInfo2": "Confira sua conexão ou tente novamente.",
   "tratarLoginButton": "Tente Novamente",
-  "tratarLoginButton2": "Voltar para o Login"
+  "tratarLoginButton2": "Voltar para o Login",
+
+  "inviteFacebook": "Convide seus amigos do Facebook para o hallə.",
+  "inviteFacebookButton": "Convidar agora"
 }

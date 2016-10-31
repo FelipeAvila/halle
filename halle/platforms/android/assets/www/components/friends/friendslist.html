@@ -21,7 +21,6 @@
              </button>
            </div>
 
-
            <ion-list>
              <ion-item class="item card-item item-borderless" auto-list-divider auto-list-divider-value="{{item.name}}" ng-repeat="item in contactslist | filter:{name:input.searchAll}"> <!-- | orderBy: ['name'] -->
                  <div class="card stable-bg ink ink-dark">
@@ -64,6 +63,17 @@
              {{message.clean}}
            </button>
          </div>
+
+         <div class="card" ng-if="platform == 'Android'">
+           <div class="item item-text-wrap">
+             <b>{{message.inviteFacebook}}</b>
+             <br/>
+             <button class="button halle" ng-click="inviteFacebook()">
+                {{message.inviteFacebookButton}}
+              </button>
+           </div>
+         </div>
+
          <ion-list>
            <ion-item class="item card-item item-borderless" ng-repeat="item in friendslist | filter:{name:input.searchAll}"> <!-- | orderBy: ['name']-->
                <div class="card stable-bg ink ink-dark">
