@@ -164,7 +164,7 @@ app.controller('friendsListController', function($scope, $rootScope, $state, $io
 
     $cordovaSocialSharing
       //.shareViaFacebook
-      .shareViaFacebook($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendPaste)
+      .shareViaFacebookWithPasteMessageHint($rootScope.message.inviteFriendMessage, null, 'http://www.halleapp.net', $rootScope.message.inviteFriendPaste)
       .then(function(result) {
       }, function(err) {
       });
