@@ -1,0 +1,57 @@
+<ion-view scroll="true" view-title="login">
+
+  <ion-footer-bar class="bar bar-footer bar-footer-login ">
+
+        <button  ng-click="create();" class="button-login-create">{{message.loginCreate}}</button>
+
+  </ion-footer-bar>
+
+  <ion-content ng-controller="loginController">
+      <div class="spacer" style="width: 320px; height: 20px;"></div>
+
+      <img class="ico_logo" src="img\ico_logo.svg" >
+
+      <form name="loginForm">
+
+        <div class="list">
+          <span class="error-container" ng-if="error">
+            <p class="error">
+             <i class="ion-information-circled"></i>
+             {{ msgError }}
+           </p>
+          </span>
+
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.login }}</span>
+            <input type="text"
+                   maxlength="50"
+                   class="placeholder-input"
+                   placeholder="{{ message.login }}"
+                   name="login"
+                   ng-model="login">
+          </label>
+
+          <label class="item item-input item-floating-label label-input">
+            <span class="input-label label-input label-login-heigth">{{ message.loginPwd }}</span>
+            <input type="password"
+                   maxlength="8"
+                   class="placeholder-input"
+                   placeholder="{{ message.loginPwd }}"
+                   name="password"
+                   ng-model="password">
+          </label>
+
+        <div class="spacer" style="width: 320px; height: 25px;"></div>
+
+        <button class="button button-block button-login"
+                  ng-click="submit(login, password)">{{ message.loginBtnEnter }}</button>
+        </div>
+
+        <div class="row">
+
+            <a nav-direction="foward" class="label-forgotpass" href="#/forgot">{{ message.loginForgotPwd }}</a>
+
+        </div>
+      </form>
+    </ion-content>
+</ion-view>

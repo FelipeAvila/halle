@@ -1,0 +1,484 @@
+/* Empty. Add your own CSS if you like */
+
+/******************FONTS**********************/
+@font-face {
+  font-family: "wmMensch";
+  src: url("../fonts/HelveticaNeueLTStd Lt.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*******************halle**********************/
+.halle, a.halle {
+  color: #2b98d5;
+}
+
+
+/****************** TAGS **********************/
+body {
+    background-color: white;
+}
+
+/******************* H1 *******************/
+.h1-terms {
+    color: #FFFFFF;
+    font-family: verdana;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+
+/****************** IMAGES **********************/
+.ico_logo {
+    width: 170px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/****************** LABEL **********************/
+.label-input {
+    color:#2b98d5;
+    font-size: 20px;
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    border-bottom: 1px solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-family: Helvetica Neue;
+}
+
+.label-login-heigth{
+    height:30px;
+    margin-left: 0;
+    border:0;
+}
+
+.placeholder-input::-webkit-input-placeholder{
+    color:#2b98d5;
+    font-size: 20px;
+    font-family: Helvetica Neue;
+}
+
+.label-forgotpass{
+    font-family: Helvetica Neue;
+    font-size: 400;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color:#2b98d5;
+    text-decoration: none;
+}
+
+/****************** BUTTON **********************/
+.button-login{
+  width:100%;
+  height: 40px;
+  background: #ffffff;
+  margin:auto;
+  border: 0;
+  text-align: center;
+  color: #2b98d5;
+  font-size: 28px;
+  border-left-color: #2b98d5;
+}
+
+.button-login-create {
+  width:100%;
+  height: auto;
+  background: #2b98d5;
+  margin-top: auto!important;
+  margin-bottom: auto!important;
+  vertical-align: middle!important;
+  position: absolute!important;
+  display: block!important;
+  border: 0;
+  text-align: center;
+  color: #ffffff;
+  font-family: Helvetica Neue!important;
+  font-size: 28px!important;
+  font-weight: 500!important;
+  padding: 0px;
+
+}
+.button-base{
+    border-color: transparent;
+     box-shadow: none;
+   background: none;
+    font-size: 25px!important;
+}
+.button-blue{
+   color: #2b98d5;"
+}
+.button-white{
+    color: #fff;"
+}
+
+/****************** HEADER **********************/
+.header-title {
+  color: red;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 24px;
+}
+
+/****************** FOOTER LOGIN **********************/
+.bar-footer-login {
+    background-color: #2b98d5;
+    vertical-align: middle;
+    display: block;
+    position: absolute;
+}
+
+/*******************LOADING************************/
+.loading-container .loading {
+  width:100%;
+  height:100%;
+  background-color: white;
+  text-align: center;
+  color: #2b98d5;
+  font-size: 12;
+  display: inline-block;
+}
+
+/*******************MENU******************************/
+.h1-menu {
+    color: #FFFFFF;
+    font-family: verdana;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.text-menu{
+    color:#2b98d5;
+    font-family: Helvetica Neue;
+}
+
+
+/****************CARD ********************************/
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    color:#2b98d5;
+    text-align: center;
+    font-family: Helvetica Neue;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+/****************TITLE********************************/
+.title {
+  color:#2b98d5;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 24px;
+}
+
+.subtitle {
+  color:#2b98d5;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 14px;
+}
+
+/****************AVATAR*******************************/
+.align-avatar-photo{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: center;
+}
+
+.align-avatar{
+    text-align: center;
+    padding-left: 32px;
+}
+
+.align-avatar-txt-profile{
+    text-align: center;
+}
+
+.bgcolor-avatar{
+    background: #88d0f7;
+}
+
+/******************* SLIDE ****************************/
+.slider {
+  margin: 0 auto;
+  min-height: 480px;
+  min-width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  color:#2b98d5;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-size: 12px;
+
+}
+.slider-slide {
+  padding-top: -2px;
+  line-height: 1.3;
+  font-size:26px;
+  color:#2b98d5;
+  text-align: center;
+  font-family:Helvetica Neue;
+}
+
+.slider-date {
+  font-size:12px;
+  color:#2b98d5;
+  text-align: right;
+  font-family:Helvetica Neue;
+}
+
+
+.icon-message {
+  font-size:20px;
+  color:#2b98d5;
+  text-align: center;
+  font-family:Helvetica Neue;
+}
+
+.img-message {
+  height: 85%;
+  width: 85%;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hr-line {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+.title-message {
+  font-size: 1.4rem;
+  color:#2b98d5;
+  text-align: center;
+  font-family:Helvetica Neue;
+}
+
+.footer-message {
+  font-size:15px;
+  color:#2b98d5;
+  text-align: center;
+  font-family:Helvetica Neue;
+}
+
+/********************MESSAGE ERROR/SUCCESS*****************************/
+.error-container {
+  margin: 5px 0;
+}
+.error-container:last-child {
+    margin: 10px 0 0;
+}
+.error {
+  padding: 10px 55px;
+  font-family: "helvetica Neue";
+  font-size: 12px;
+  color: #555;
+  vertical-align: middle;
+}
+.error i {
+  font-size: 24px;
+  color: #B83E2C;
+  vertical-align: middle;
+}
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+
+.success-container {
+  margin: 5px 0;
+}
+.success-container:last-child {
+    margin: 10px 0 0;
+}
+.success {
+  padding: 10px 55px;
+  font-family: "helvetica Neue";
+  font-size: 12px;
+  color: #555;
+  vertical-align: middle;
+}
+.success i {
+  font-size: 24px;
+  color: #0000ff;
+  vertical-align: middle;
+}
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+.error-message {
+  padding: 10px 55px;
+  font-family: "helvetica Neue";
+  font-size: 16px;
+  color: #2b98d5;
+  vertical-align: middle;
+}
+
+
+/*************** badge ********************/
+.badge {
+  position:absolute;
+  top:-2px;
+  left:25px;
+  font-size:16px !important
+}
+
+/**************TABS***********************/
+.tabs-custom > .tabs,
+.tabs.tabs-custom {
+border-color: #2b98d5;
+background-color: #2b98d5;
+background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
+color: #fff; }
+.tabs-custom > .tabs .tab-item .badge,
+.tabs.tabs-custom .tab-item .badge {
+  background-color: #fff;
+  color: #387ef5; }
+
+.tabs-striped.tabs-custom .tabs {
+background-color: #2b98d5; }
+
+.tabs-striped.tabs-custom .tab-item {
+color: rgba(255, 255, 255, 0.4);
+opacity: 1; }
+.tabs-striped.tabs-custom .tab-item .badge {
+  opacity: 0.4; }
+.tabs-striped.tabs-custom .tab-item.tab-item-active, .tabs-striped.tabs-custom .tab-item.active, .tabs-striped.tabs-positive .tab-item.activated {
+  margin-top: -2px;
+  color: #fff;
+  border-style: solid;
+  border-width: 2px 0 0 0;
+  border-color: #fff;
+}
+/**************INVITE ********************/
+.item-invite {
+  color:#2b98d5;
+  text-align: left;
+  font-family:Helvetica Neue;
+}
+
+/*Disabling platform specific tweaks */
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header
+{
+  height: 44px !important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader)
+{
+  height: 44px !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper
+{
+  margin-top: 0px !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > *
+{
+  margin-top: 0px !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-ios.platform-cordova:not(.fullscreen) .tabs.tabs-top
+{
+  top: 44px !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header, .platform-ios.platform-cordova:not(.fullscreen) .bar-subheader
+{
+  top: 44px !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-subheader {
+  top: 88px !important;
+}
+
+/***************** Tutorial *********************/
+#focus-item{
+  margin-top: 60vh;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: inline-block;
+}
+
+/************** Content **********************/
+.gallery-image {
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+.gallery-image img {
+    width:100%;
+    vertical-align:top;
+}
+.gallery-image:after, .gallery-image:before {
+    position:absolute;
+    opacity:0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+.gallery-image:after {
+    content:'\A';
+    width:100%; height:100%;
+    top:0; left:0;
+    background:rgba(0,0,0,0.6);
+}
+.gallery-image:before {
+    width:100%;
+    color:#fff;
+    z-index:1;
+    bottom:0;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+.gallery-image:hover:after, .gallery-image:hover:before {
+    opacity:0.2;
+}
+.gallery-send {
+  left: 5px;
+  z-index: 1;
+  position: relative;
+  top: -25px;
+  text-decoration: none;
+}
+
+.gallery-button-float{
+  background-color: #2b98d5 !important;
+  color:white !important;
+  z-index: 12 !important;
+  position: absolute !important;
+  bottom: 0px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transition: 0.2s linear !important;
+  transition: 0.2s linear !important;
+  -webkit-transition-property: -webkit-transform, all !important;
+  transition-property: transform, all !important;
+}

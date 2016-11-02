@@ -1,0 +1,47 @@
+<ion-modal-view>
+  <ion-content>
+    <br/><br/><br/><br/><br/><br/>
+    <form ng-submit="onSubmit()">
+      <div class="list">
+
+        <span class="success-container" ng-if="Success">
+          <p class="success">
+           <i class="ion-information-circled"></i>
+           {{ msgSuccess }}
+         </p>
+        </span>
+
+        <span class="error-container" ng-if="error">
+          <p class="error">
+           <i class="ion-information-circled"></i>
+           {{ msgError }}
+         </p>
+        </span>
+
+        <label class="item item-input item-floating-label label-input">
+          <span class="input-label label-input label-login-heigth">{{ message.feedbackSubject }}</span>
+          <input type="text"
+                 class="placeholder-input"
+                 placeholder="{{ message.feedbackSubject }}"
+                 name="subject"
+                 ng-model="data.subject">
+        </label>
+        <label class="item item-input item-floating-label label-input">
+        <span class="input-label label-input label-login-heigth">{{ message.feedbackDescription }}</span>
+          <textarea
+                 rows="4"
+                 cols="50"
+                 maxlength="2000"
+                 class="placeholder-input"
+                 placeholder="{{ message.feedbackDescription }}"
+                 name="description"
+                 ng-model="data.description"></textarea>
+        </label>
+
+        <button class="button button-block button-login"
+                type="submit">{{ message.feedbackSubmit }}</button>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

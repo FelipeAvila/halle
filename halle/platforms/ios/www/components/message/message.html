@@ -1,0 +1,71 @@
+<ion-modal-view ng-init="onLoad()">
+  <ion-content scroll="false">
+  <br/><br/><br/>
+    <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)">
+      <ion-slide ng-repeat="item in messagelist">
+        <div class="row">
+          <div  ng-if="item.photo == null">
+            <img class="avatar" src="avatar\profile.svg">
+          </div>
+          <div ng-if="item.photo != null">
+            <img class="avatar" ng-src="data:image/JPEG;base64,{{item.photo}}">
+          </div>
+        </div>
+        <div class="title-message">
+          <div class="row">
+              <div class="col col-15">
+              </div>
+              <div class="col col-75">
+                <p>{{item.nickname}}</p>
+              </div>
+          </div>
+        <div>
+        <div class='hr-line'></div>
+        <div class='slider-date'>
+          {{ item.register | date: 'dd/MM/yyyy HH:mm'}}&nbsp;&nbsp;&nbsp;
+        </div>
+
+        <div class="row" ng-if="item.messageType.content != null">
+            <img class='img-message' src="{{item.messageType.content}}" />
+        </div>
+        <div class='hr-line'></div>
+        <div class="row">
+            <div class="col col-100">
+              <div class="footer-message text-right">
+                <a
+                    href="javascript:;"
+                    style="text-decoration: none"
+                    ng-click="reply(item.phone, item.messageType.messageTypeId, item.tokenPush)"
+                    close-menu>
+                      <i class="icon ion-android-favorite"></i> {{message.messageReply}}
+                </a>
+                &nbsp;
+                  <a  ng-if="platform == 'Android'"
+                      href="javascript:;"
+                      style="text-decoration: none"
+                      ng-click="shareFacebook(item.nickname, item.messageType.image, item.messageType.content)"
+                      close-menu>
+                        <i class="icon ion-social-facebook halle"></i> {{message.messageFrendShare}}
+                  </a>
+                  <a  ng-if="platform != 'Android'"
+                      href="javascript:;"
+                      style="text-decoration: none"
+                      ng-click="shareWhatsApp(item.nickname, item.messageType.image, item.messageType.content)"
+                      close-menu>
+                        <i class="icon ion-social-whatsapp halle"></i> {{message.messageFrendShare}}
+                  </a>
+                &nbsp;
+                <a ng-if="item.isFriend == 0"
+                    href="javascript:;"
+                    style="text-decoration: none"
+                    ng-click="invite(item.nickname, item.phone)"
+                    close-menu>
+                      <i class="icon ion-person-add halle"></i> {{message.messageAdd}}
+                </a>
+              </div>
+            </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-modal-view>
